@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package ca.ryerson.scs.RUS;
+package ca.ryerson.scs.rus;
 
 public final class R {
     public static final class attr {
@@ -14,10 +14,39 @@ public final class R {
         public static final int ic_action_search=0x7f020000;
         public static final int ic_launcher=0x7f020001;
     }
+    public static final class id {
+        public static final int BtnBack=0x7f060001;
+        public static final int BtnFriendsList=0x7f060003;
+        public static final int BtnLookAround=0x7f060005;
+        public static final int BtnMessages=0x7f060000;
+        public static final int BtnPreferences=0x7f060004;
+        public static final int BtnProfile=0x7f060007;
+        public static final int BtnSocialiteListView=0x7f060002;
+        public static final int BtnSocialiteMapView=0x7f060006;
+    }
+    public static final class layout {
+        public static final int friends_list=0x7f030000;
+        public static final int menu=0x7f030001;
+        public static final int messages=0x7f030002;
+        public static final int preferences=0x7f030003;
+        public static final int profile=0x7f030004;
+        public static final int socialite_list=0x7f030005;
+        public static final int socialize_map=0x7f030006;
+        public static final int splash=0x7f030007;
+    }
     public static final class string {
-        public static final int app_name=0x7f030000;
+        public static final int BtnBack=0x7f040001;
+        public static final int BtnDummy=0x7f040007;
+        public static final int BtnFriendsList=0x7f040005;
+        public static final int BtnLookAround=0x7f040002;
+        public static final int BtnMessages=0x7f040004;
+        public static final int BtnPreferences=0x7f040006;
+        public static final int BtnProfile=0x7f040003;
+        public static final int BtnSocialiteList=0x7f040009;
+        public static final int BtnSocialiteMap=0x7f040008;
+        public static final int app_name=0x7f040000;
     }
     public static final class style {
-        public static final int AppTheme=0x7f040000;
+        public static final int AppTheme=0x7f050000;
     }
 }

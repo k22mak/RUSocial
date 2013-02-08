@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Ryerson University Social</string>
+    
+    <string name="BtnBack">Back Button</string>
+    <string name="BtnLookAround">Look Around</string>
+    <string name="BtnProfile">Profile</string>
+    <string name="BtnMessages">Messages</string>
+	<string name="BtnFriendsList">Friends List</string>
+	<string name="BtnPreferences">Preferences</string>
+        
+    <string name="BtnDummy">Dummy Feature</string>
+    <string name="BtnSocialiteMap">Map View</string>
+    <string name="BtnSocialiteList">List View</string>
+    
+    
 </resources>
