@@ -19,7 +19,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class HttpRequestModule {
+public class HttpRequestAdapter {
 
 	public static JSONObject httpRequest(String url,
 			HashMap<String, String> inputs) {

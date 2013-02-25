@@ -20,7 +20,8 @@ public class SplashActivity extends Activity {
 		Thread timer = new Thread() {
 			public void run() {
 				try {
-					sleep(100);
+					sleep(1000);
+					finish();
 					startActivity(new Intent(MENU_STRING));
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
