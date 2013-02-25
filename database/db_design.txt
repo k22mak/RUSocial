@@ -1,0 +1,56 @@
+USER TABLE
+  ( Primary Key: user_id
+    Foreign keys: 
+    ---------------
+    user_id           int
+    user_name         varchar()
+    password          varchar()
+    user_image        blob            
+    email             varchar()
+    first_name        varchar()
+    last_name         varchar()
+    desc              varchar()
+    from              varchar()
+    )
+    
+FRIEND TABLE
+  ( Primary Key: user_id
+    Foreign key: user_id
+    ---------------
+    user_id           int
+    friend_id         int
+    status            int /*0 for friend, 1 for blocked*/
+  )
+
+
+MESSAGE TABLE
+  ( Primary Key: msg_id
+    Foreign key: user_id
+    ---------------
+    msg_id            int
+    user_id           int 
+    body              varchar()
+    msg_date          date
+  )
+  
+LOCATION TABLE
+  ( Primary Key: user_id
+    Foreign key: user_id
+    ---------------
+    user_id           int
+    location_id       int  
+    long              int
+    lat               int
+  )  
+
+=====================
+SQL
+=====================
+
+CREATE TABLE User(user_id int NOT NULL, user_name varchar(15), user_image blob, password varchar(25), email varchar(30), first_name varchar(15), last_name varchar(15), desc varchar (150), from varchar(15), primary key(user_id))
+
+CREATE TABLE Friend(user_id int NOT NULL, friend_id int, status int, primary key(user_id), foreign key UFK(user_id) references User)
+
+CREATE TABLE Message(msg_id int NOT NULL, user_id int, body varchar(200), msg_date date, primary key(msg_id), foreign key UFK(user_id) references User)
+
+CREATE TABLE Location(user_id NOT NULL, long int, lat int, primary key(user_id), foreign key UFK(user_id) references USER)
