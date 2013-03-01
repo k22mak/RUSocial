@@ -1,16 +1,22 @@
 <resources>
     <string name="app_name">Ryerson University Social</string>
     
+    <!-- Button Strings -->
     <string name="BtnBack">Back Button</string>
     <string name="BtnLookAround">Look Around</string>
     <string name="BtnProfile">Profile</string>
     <string name="BtnMessages">Messages</string>
 	<string name="BtnFriendsList">Friends List</string>
 	<string name="BtnPreferences">Preferences</string>
-        
     <string name="BtnDummy">Dummy Feature</string>
     <string name="BtnSocialiteMap">Map View</string>
     <string name="BtnSocialiteList">List View</string>
+    <string name="BtnSubmit">Submit</string>
+    
+    <!--  TextView Strings -->
+	<string name="TVUsername">Username</string>
+	<string name="TVPassword">Password</string>    
     
     
+    <!--  EditView Strings -->
 </resources>

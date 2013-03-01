@@ -9,7 +9,7 @@ public class SplashActivity extends Activity {
 	// Flag for debug/log messages
 	public static final boolean DEBUG = true;
 
-	private final String MENU_STRING = "ca.ryerson.scs.rus.MENU";
+	private final String LOGIN_STRING = "ca.ryerson.scs.rus.LOGIN";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class SplashActivity extends Activity {
 				try {
 					sleep(1000);
 					finish();
-					startActivity(new Intent(MENU_STRING));
+					startActivity(new Intent(LOGIN_STRING));
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
