@@ -1,0 +1,112 @@
+"Command History of the date" 
+02/03/2013 
+cd C:\Sites
+dir
+cd WebApp
+dir
+cd RUSocial
+dir
+cd backend
+dir
+cd rubyBackend
+dir
+git pull upstream develop
+dir
+cd ..
+dir
+cd rubyBackend
+dir
+rails --version
+dir
+git branch -f database
+git checkout
+git branch
+git checkout database
+git branch
+git status
+git checkout backend
+git status
+git checkout database
+git branch
+git branch -D backend
+git status
+git branch
+git status
+git add doc/Database Configuration Note.txt
+git add doc/DatabaseConfigurationNote.txt
+git status
+rake db:create
+DOSKEY /history
+cd ..
+cd doc
+cd ..
+cd backend
+cd rubyBackend
+cd doc
+dir
+AppendToCommandHistory.bat
+date /t
+date
+date ?
+date /?
+dir
+AppendToCommandHistory.bat
+echo hello
+AppendToCommandHistory.bat
+"Command History of the date" 
+02/03/2013 
+cd C:\Sites
+dir
+cd WebApp
+dir
+cd RUSocial
+dir
+cd backend
+dir
+cd rubyBackend
+dir
+git pull upstream develop
+dir
+cd ..
+dir
+cd rubyBackend
+dir
+rails --version
+dir
+git branch -f database
+git checkout
+git branch
+git checkout database
+git branch
+git status
+git checkout backend
+git status
+git checkout database
+git branch
+git branch -D backend
+git status
+git branch
+git status
+git add doc/Database Configuration Note.txt
+git add doc/DatabaseConfigurationNote.txt
+git status
+rake db:create
+DOSKEY /history
+cd ..
+cd doc
+cd ..
+cd backend
+cd rubyBackend
+cd doc
+dir
+AppendToCommandHistory.bat
+date /t
+date
+date ?
+date /?
+dir
+AppendToCommandHistory.bat
+echo hello
+AppendToCommandHistory.bat
+"Command History of the date" 
+02/03/2013 
