@@ -1,0 +1,3 @@
+March 2, 2013
+
+You don’t have to update the database configurations manually. If you look at the options of the application generator, you will see that one of the options is named —database. This option allows you to choose an adapter from a list of the most used relational databases. You can even run the generator repeatedly: cd .. && rails new blog —database=mysql. When you confirm the overwriting of the config/database.yml file, your application will be configured for MySQL instead of SQLite. Detailed examples of the common database connections are below.
