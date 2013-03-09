@@ -2,43 +2,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#000000"
+    android:background="#000F1F"
     android:orientation="vertical" >
 
-    <Button
+    <ImageButton
         android:id="@+id/BtnSocialiteListView"
-        android:layout_height="0dip"
         android:layout_width="fill_parent"
-        android:layout_weight="0.2"
-        android:background="#DBDBDB"
-        android:text="@string/BtnLookAround"
-        android:layout_margin="10dip" />
+        android:layout_height="0dip"
+        android:layout_margin="10dip"
+        android:layout_weight="0.18"
+        android:background="#000F1F"
+        android:src="@drawable/btnlookaround" />
 
-	<Button
+	<ImageButton
 	    android:id="@+id/BtnMessages"
         android:layout_height="0dip"
         android:layout_width="fill_parent"
         android:layout_weight="0.2"
-        android:background="#DBDBDB"
-        android:text="@string/BtnMessages" 
+        android:background="#000F1F"
+        android:text="@string/BtnMessages"
+        android:src="@drawable/btnmenu" 
         android:layout_margin="10dip"/>
     
-	<Button
+	<ImageButton
 	    android:id="@+id/BtnFriendsList"
         android:layout_height="0dip"
         android:layout_width="fill_parent"
         android:layout_weight="0.2"
-        android:background="#FFFFFF"
-        android:text="@string/BtnFriendsList" 
+        android:background="#000F1F"
+        android:text="@string/BtnFriendsList"
+        android:src="@drawable/btnfriends" 
         android:layout_margin="10dip"/>
 	
-	<Button
+	<ImageButton
 	    android:id="@+id/BtnPreferences"
         android:layout_height="0dip"
         android:layout_width="fill_parent"
         android:layout_weight="0.2"
-        android:background="#DBDBDB"
+        android:background="#000F1F"
         android:text="@string/BtnPreferences" 
+        android:src="@drawable/btnpreferences"
         android:layout_margin="10dip"/>
 		   
 </LinearLayout>
