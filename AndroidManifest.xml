@@ -44,7 +44,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="ca.ryerson.scs.rus.REGISTER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MenuActivity"
             android:screenOrientation="portrait" >
@@ -112,7 +119,6 @@
           <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCx3_6NPRBGVSKVaDoSyKBYoKHA_Fw8i84" />
-          
           
     </application>
 

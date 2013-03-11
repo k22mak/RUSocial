@@ -12,10 +12,14 @@
     <string name="BtnSocialiteMap">Map View</string>
     <string name="BtnSocialiteList">List View</string>
     <string name="BtnSubmit">Submit</string>
+    <string name="BtnRegister">Register</string>
     
     <!--  TextView Strings -->
 	<string name="TVUsername">Username</string>
-	<string name="TVPassword">Password</string>    
+	<string name="TVPassword">Password</string> 
+	<string name="TVConfirmPassword">Confirm Password</string>
+	<string name="TVEmail">E-mail</string>
+	    
     
     
     <!--  EditView Strings -->
