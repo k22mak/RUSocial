@@ -14,16 +14,15 @@ public class LoginActivity extends Activity implements OnClickListener {
 	// Flag for debug/log messages
 	public static final boolean DEBUG = true;
 
-
-
 	// Tag for debugging
 	public static final String TAG = "RyeSocial";
 
 	private final String MENU_STRING = "ca.ryerson.scs.rus.MENU";
-	
-	private Button btnSubmit;
-	
-	private EditText evUsername,evPassword;
+	private final String REGISTER_STRING = "ca.ryerson.scs.rus.REGISTER";
+
+	private Button btnSubmit, btnRegister;
+
+	private EditText evUsername, evPassword;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,15 +31,18 @@ public class LoginActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.login);
 
 		btnSubmit = (Button) findViewById(R.id.BtnSubmit);
-		evUsername= (EditText) findViewById(R.id.EVUsername);
-		evPassword= (EditText) findViewById(R.id.EVPassword);
-		
+		btnRegister = (Button) findViewById(R.id.BtnRegister);
+		evUsername = (EditText) findViewById(R.id.EVUsername);
+		evPassword = (EditText) findViewById(R.id.EVPassword);
+
 		btnSubmit.setFocusable(true);
+		btnRegister.setFocusable(true);
 		evUsername.setFocusable(true);
 		evPassword.setFocusable(true);
-		
+
 		btnSubmit.setOnClickListener(this);
-		
+		btnRegister.setOnClickListener(this);
+
 		// TODO: Implement persistence checking for saved username and password
 	}
 
@@ -48,12 +50,16 @@ public class LoginActivity extends Activity implements OnClickListener {
 		if (v == btnSubmit) {
 			if (SplashActivity.DEBUG) {
 				Log.i(TAG, "Login Button");
-				Log.i(TAG, evUsername.getText()+" ");
-				Log.i(TAG, evPassword.getText()+" ");
+				Log.i(TAG, evUsername.getText() + " ");
+				Log.i(TAG, evPassword.getText() + " ");
 			}
-			
-			// TODO: Create URL using inputs and make an HTTTP Request for authentication
+
+			// TODO: Create URL using inputs and make an HTTTP Request for
+			// authentication
 			startActivity(new Intent(MENU_STRING));
+		} else if (v == btnRegister) {
+			startActivity(new Intent(REGISTER_STRING));
 		}
+
 	}
 }
