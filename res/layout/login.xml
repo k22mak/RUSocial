@@ -1,10 +1,101 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/bglogin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_login"
     android:orientation="vertical" >
 
+    <ImageView
+        android:contentDescription="@string/CDLogo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dip"
+        android:background="@drawable/logologin"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_weight="0.01"
+        android:layout_height="0dip"
+        android:layout_marginLeft="25dip"
+        android:layout_marginRight="25dip"
+        android:text="@string/TVLogin"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"        
+        />
+    <EditText
+        android:id="@+id/EVUsername"
+        android:layout_width="fill_parent"
+        android:layout_weight="0.07"
+        android:layout_height="1dip"
+        android:layout_marginLeft="25dip"
+        android:layout_marginRight="25dip"
+        android:textColorHint="#999999"
+        android:hint="@string/EVUsername"
+        
+        />
+    
+    <EditText
+        android:id="@+id/EVPassword"
+        android:layout_width="fill_parent"
+        android:layout_weight="0.07"
+        android:layout_height="1dip"
+        android:layout_marginLeft="25dip"
+        android:layout_marginRight="25dip"
+        android:textColorHint="#999999"
+        android:hint="@string/EVPassword"
+        />
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_weight="0.04"
+        android:layout_height="1dip"
+        android:layout_marginLeft="25dip"
+        android:layout_marginBottom="2dip"
+        android:layout_marginRight="25dip"
+        
+        android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/chkIos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/CBSave" 
+                android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+    <TextView 
+        android:id="@+id/BtnSubmit"
+		android:layout_width="fill_parent"
+        android:layout_weight="0.05"
+        android:layout_height="1dip"
+        android:text="@string/BtnSubmit"
+        android:textSize="25sp"
+		android:background="@drawable/btn_gradient_yellow"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="2dip"
+        android:layout_marginLeft="25dip"
+        android:layout_marginRight="25dip"
+        android:clickable="true"                           
+        />
+    
+    <TextView 
+        android:id="@+id/BtnRegister"
+		android:layout_width="fill_parent"
+        android:layout_weight="0.05"
+        android:layout_height="1dip"
+        android:text="@string/BtnRegister"
+        android:textSize="25sp"
+        android:background="@drawable/btn_gradient_blue"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="30dip"
+        android:layout_marginLeft="25dip"
+        android:layout_marginRight="25dip"
+		android:clickable="true"          
+		/>
+        
+<!-- 
     <TextView
         android:id="@+id/TVUsername"
         android:layout_height="0dip"
@@ -58,4 +149,5 @@
         android:background="#DBDBDB"
         android:text="@string/BtnRegister" 
         android:layout_margin="10dip" />
+   -->       
     </LinearLayout>

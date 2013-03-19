@@ -19,8 +19,16 @@
 	<string name="TVPassword">Password</string> 
 	<string name="TVConfirmPassword">Confirm Password</string>
 	<string name="TVEmail">E-mail</string>
+	<string name="TVLogin">>login</string>
 	    
+	<!--  Content Description Strings -->
+    <string name="CDLogo">logo</string>
     
     
     <!--  EditView Strings -->
+    <string name="EVUsername">Username</string>
+    <string name="EVPassword">Password</string>
+    
+    <!--  Checkbox Strings -->
+    <string name="CBSave">Save username and password</string>
 </resources>

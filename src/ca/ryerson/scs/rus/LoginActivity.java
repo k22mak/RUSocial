@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class LoginActivity extends Activity implements OnClickListener {
 	// Flag for debug/log messages
@@ -20,7 +20,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private final String MENU_STRING = "ca.ryerson.scs.rus.MENU";
 	private final String REGISTER_STRING = "ca.ryerson.scs.rus.REGISTER";
 
-	private Button btnSubmit, btnRegister;
+	private TextView btnSubmit, btnRegister;
 
 	private EditText evUsername, evPassword;
 
@@ -30,8 +30,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.login);
 
-		btnSubmit = (Button) findViewById(R.id.BtnSubmit);
-		btnRegister = (Button) findViewById(R.id.BtnRegister);
+		btnSubmit = (TextView) findViewById(R.id.BtnSubmit);
+		btnRegister = (TextView) findViewById(R.id.BtnRegister);
 		evUsername = (EditText) findViewById(R.id.EVUsername);
 		evPassword = (EditText) findViewById(R.id.EVPassword);
 

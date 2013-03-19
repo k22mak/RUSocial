@@ -24,8 +24,8 @@ public class SocialiteListActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.socialite_list);
 
 		btnMapView = (Button) findViewById(R.id.BtnSocialiteMapView);
-		btnProfile = (Button) findViewById(R.id.BtnProfile);
-		btnBack = (Button) findViewById(R.id.BtnBack);
+		//btnProfile = (Button) findViewById(R.id.BtnProfile);
+		//btnBack = (Button) findViewById(R.id.BtnBack);
 		
 		btnMapView.setFocusable(true);
 		btnProfile.setFocusable(true);

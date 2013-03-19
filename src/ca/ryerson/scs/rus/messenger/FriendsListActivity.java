@@ -24,7 +24,7 @@ public class FriendsListActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.friends_list);
 		
 	btnMessages = (Button) findViewById(R.id.BtnMessages);
-	btnBack = (Button) findViewById(R.id.BtnBack);
+	//btnBack = (Button) findViewById(R.id.BtnBack);
 	
 	btnMessages.setFocusable(true);
 	btnBack.setFocusable(true);
