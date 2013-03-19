@@ -12,29 +12,27 @@
         android:layout_margin="40dip"
         android:background="@drawable/logologin"
         android:scaleType="fitXY" />
-
     <TextView
         android:layout_width="fill_parent"
         android:layout_weight="0.01"
         android:layout_height="0dip"
         android:layout_marginLeft="25dip"
         android:layout_marginRight="25dip"
-        android:text="@string/TVLogin"
+        android:text="@string/TVRegister"
         android:textColor="#FFFFFF"
         android:textSize="25sp"        
         />
+
     <EditText
         android:id="@+id/EVUsername"
         android:layout_width="fill_parent"
-        android:layout_weight="0.07"
         android:layout_height="1dip"
         android:layout_marginLeft="25dip"
         android:layout_marginRight="25dip"
-        android:textColorHint="#999999"
-        android:singleLine="true"
+        android:layout_weight="0.07"
         android:hint="@string/EVUsername"
-        
-        />
+        android:singleLine="true"
+        android:textColorHint="#999999" />
     
     <EditText
         android:id="@+id/EVPassword"
@@ -44,44 +42,35 @@
         android:layout_height="1dip"
         android:layout_marginLeft="25dip"
         android:layout_marginRight="25dip"
-        android:textColorHint="#999999"
         android:singleLine="true"
+        android:textColorHint="#999999"
         android:hint="@string/EVPassword"
         />
-    <LinearLayout 
+ 	 <EditText
+        android:id="@+id/EVConfirmPassword"
+        android:inputType="textPassword"
         android:layout_width="fill_parent"
-        android:layout_weight="0.04"
+        android:layout_weight="0.07"
         android:layout_height="1dip"
         android:layout_marginLeft="25dip"
-        android:layout_marginBottom="2dip"
         android:layout_marginRight="25dip"
-        
-        android:orientation="horizontal" >
-
-            <CheckBox
-                android:id="@+id/chkIos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/CBSave" 
-                android:textColor="#FFFFFF"/>
-
-    </LinearLayout>
-    <TextView 
-        android:id="@+id/BtnSubmit"
-		android:layout_width="fill_parent"
-        android:layout_weight="0.05"
-        android:layout_height="1dip"
-        android:text="@string/BtnSubmit"
-        android:textSize="25sp"
-		android:background="@drawable/btn_gradient_yellow"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="2dip"
-        android:layout_marginLeft="25dip"
-        android:layout_marginRight="25dip"
-        android:clickable="true"                           
+        android:singleLine="true"
+        android:textColorHint="#999999"
+        android:hint="@string/EVConfirmPassword"
         />
-    
+
+	 <EditText
+		android:id="@+id/EVEmail"
+		android:layout_width="fill_parent"
+		android:layout_height="1dip"
+		android:layout_marginLeft="25dip"
+		android:layout_marginRight="25dip"
+		android:layout_weight="0.07"
+		android:hint="@string/EVEmail"
+		android:inputType="textEmailAddress"
+		android:singleLine="true"
+		android:textColorHint="#999999" />
+ 	 
     <TextView 
         android:id="@+id/BtnRegister"
 		android:layout_width="fill_parent"
