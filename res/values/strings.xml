@@ -19,10 +19,15 @@
 	
 	<string name="TVLogin">>login</string>
 	<string name="TVRegister">>register</string>
+	<string name="TVSocialiteList">>socialite list</string>
 	    
 	<!--  Content Description Strings -->
     <string name="CDLogo">logo</string>
-    
+    <string name="IBHome">home</string>
+    <string name="IBFriend">friend</string>
+    <string name="IBPref">preference</string>
+    <string name="IBMsg">message</string>
+    <string name="IBLook">look</string>
     
     <!--  EditView Strings -->
     <string name="EVUsername">Username</string>

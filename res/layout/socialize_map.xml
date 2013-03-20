@@ -1,5 +1,18 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
- android:id="@+id/map"
- android:layout_width="match_parent"
- android:layout_height="match_parent"
- class="com.google.android.gms.maps.MapFragment"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_socialitelist"
+    android:orientation="vertical" >
+    
+    <fragment 
+ 		android:id="@+id/map"
+ 		android:layout_width="match_parent"
+ 		android:layout_height="455dip"
+ 		android:layout_marginTop="70dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+ 		class="com.google.android.gms.maps.MapFragment"/>
+
+</LinearLayout>

@@ -10,52 +10,79 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class SocialiteListActivity extends Activity implements OnClickListener {
 
-	private Button btnMapView, btnProfile, btnBack;
+	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
 	private final String SOCIALITE_MAP_STRING="ca.ryerson.scs.rus.socialite.SOCIALITE_MAP";
-	private final String PROFILE_STRING = "ca.ryerson.scs.rus.messenger.PROFILE";
+	private final String MESSAGE_STRING="ca.ryerson.scs.rus.messenger.MESSAGES_LIST";
+	private final String PREFERENCE_STRING="ca.ryerson.scs.rus.PREFERENCES";
+	private final String FRIEND_STRING="ca.ryerson.scs.rus.messenger.FRIENDS_LIST";
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.socialite_list);
 
-		btnMapView = (Button) findViewById(R.id.BtnSocialiteMapView);
-		//btnProfile = (Button) findViewById(R.id.BtnProfile);
-		//btnBack = (Button) findViewById(R.id.BtnBack);
+		btnMapView = (ImageButton) findViewById(R.id.IBLook);
+		btnHome = (ImageButton) findViewById(R.id.IBHome);
+		btnMsg = (ImageButton) findViewById(R.id.IBMsg);
+		btnPref = (ImageButton) findViewById(R.id.IBPref);
+		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
 		
+				
 		btnMapView.setFocusable(true);
-		btnProfile.setFocusable(true);
-		btnBack.setFocusable(true);
+		btnHome.setFocusable(true);
+		btnMsg.setFocusable(true);
+		btnPref.setFocusable(true);
+		btnFriend.setFocusable(true);
 		
 		btnMapView.setOnClickListener(this);
-		btnProfile.setOnClickListener(this);
-		btnBack.setOnClickListener(this);
+		btnHome.setOnClickListener(this);
+		btnMsg.setOnClickListener(this);
+		btnPref.setOnClickListener(this);
+		btnFriend.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
-		if (v == btnBack) {
+		if (v == btnHome) {
 			if (SplashActivity.DEBUG) {
-				Log.i(MenuActivity.TAG, "Back Button");
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Home button");
 			}
 			// TODO: Make it go back to the main page while finishing all other activities
 			
-		} else if (v == btnProfile) {
-			if (SplashActivity.DEBUG) {
-				Log.i(MenuActivity.TAG, "Profile Button");
-			}
-			startActivity(new Intent(PROFILE_STRING));
 		}else if (v == btnMapView) {
 			if (SplashActivity.DEBUG) {
-				Log.i(MenuActivity.TAG, "Map View Button");
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Map View Button");
 			}
 			finish();
 			startActivity(new Intent(SOCIALITE_MAP_STRING));
+		
+		}else if (v == btnMsg) {
+			if (SplashActivity.DEBUG){
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Message Button");
+			}
+			finish();
+			startActivity(new Intent(MESSAGE_STRING));
+		
+		}else if (v == btnFriend) {
+			if (SplashActivity.DEBUG){
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Friend Button");
+			}
+			finish();
+			startActivity(new Intent(FRIEND_STRING));
+			
+		}else if (v == btnPref) {
+			if (SplashActivity.DEBUG){
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Preference Button");
+				}
+			finish();
+			startActivity(new Intent(PREFERENCE_STRING));
+			}
 		}
+		
 	}
 
-}
+
