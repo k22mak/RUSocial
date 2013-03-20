@@ -7,7 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
+
+import android.widget.ImageButton;
 
 public class MenuActivity extends Activity implements OnClickListener {
 	// Tag for debugging
@@ -18,7 +19,7 @@ public class MenuActivity extends Activity implements OnClickListener {
 	private final String FRIENDS_STRING = "ca.ryerson.scs.rus.messenger.FRIENDS_LIST";
 	private final String PREFERENCES_STRING = "ca.ryerson.scs.rus.PREFERENCES";
 
-	private Button btnLookAround, btnMessages, btnPreferences,
+	private ImageButton btnLookAround, btnMessages, btnPreferences,
 			btnFriendsList;
 
 	@Override
@@ -27,10 +28,10 @@ public class MenuActivity extends Activity implements OnClickListener {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.menu);
 
-		btnLookAround = (Button) findViewById(R.id.BtnSocialiteListView);
-		btnMessages = (Button) findViewById(R.id.BtnMessages);
-		btnPreferences = (Button) findViewById(R.id.BtnPreferences);
-		btnFriendsList = (Button) findViewById(R.id.BtnFriendsList);
+		btnLookAround = (ImageButton) findViewById(R.id.IBLook);
+		btnMessages = (ImageButton) findViewById(R.id.IBMsg);
+		btnPreferences = (ImageButton) findViewById(R.id.IBPref);
+		btnFriendsList = (ImageButton) findViewById(R.id.IBFriend);
 
 		btnLookAround.setFocusable(true);
 		btnMessages.setFocusable(true);
