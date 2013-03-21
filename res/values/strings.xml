@@ -28,6 +28,7 @@
     <string name="IBPref">preference</string>
     <string name="IBMsg">message</string>
     <string name="IBLook">look</string>
+    <string name="IVDivisor">divider</string>
     
     <!--  EditView Strings -->
     <string name="EVUsername">Username</string>
