@@ -6,6 +6,188 @@
     android:orientation="vertical"
     >
 
+    <LinearLayout 
+        android:id="@+id/LLLook"
+        android:layout_marginTop="70dip"
+        android:layout_weight="0.18"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        >
+        
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:orientation="horizontal"
+			android:background="@drawable/btn_menu_main"
+			>
+			<ImageView
+	            android:layout_width="wrap_content"
+				android:layout_height="60dp"
+				android:src="@drawable/btn_menu_lookaround"
+				android:layout_marginLeft="30dp"
+				
+	            />
+			<TextView
+		            android:text="Look Around"
+		            android:layout_width="wrap_content"
+					android:layout_height="60dp"
+		            android:textSize="30sp"
+		            android:layout_centerHorizontal="true"
+		            android:gravity="center"
+		            android:textColor="#ffffff"
+		            android:layout_marginLeft="40dp"
+		            />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/TVLookStatus"
+            android:background="@drawable/btn_menu_sub"
+            android:textColor="#ffffff"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="5 People Around You"
+            />
+    </LinearLayout>
+
+	<LinearLayout 
+        android:id="@+id/LLFriends"
+        android:layout_weight="0.18"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        >
+        
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:orientation="horizontal"
+			android:background="@drawable/btn_menu_main"
+			>
+			<ImageView
+	            android:layout_width="wrap_content"
+				android:layout_height="60dp"
+				android:src="@drawable/btn_menu_lookaround"
+				android:layout_marginLeft="30dp"
+				
+	            />
+			<TextView
+		            android:text="Friends"
+		            android:layout_width="wrap_content"
+					android:layout_height="60dp"
+		            android:textSize="30sp"
+		            android:layout_centerHorizontal="true"
+		            android:gravity="center"
+		            android:textColor="#ffffff"
+		            android:layout_marginLeft="40dp"
+		            />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/TVFriendsStatus"
+            android:background="@drawable/btn_menu_sub"
+            android:textColor="#ffffff"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="2 Friends Online"
+            />
+    </LinearLayout>
+
+	<LinearLayout 
+        android:id="@+id/LLMessages"
+        android:layout_weight="0.18"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        >
+        
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:orientation="horizontal"
+			android:background="@drawable/btn_menu_main"
+			>
+			<ImageView
+	            android:layout_width="wrap_content"
+				android:layout_height="60dp"
+				android:src="@drawable/btn_menu_lookaround"
+				android:layout_marginLeft="30dp"
+				
+	            />
+			<TextView
+		            android:text="Messages"
+		            android:layout_width="wrap_content"
+					android:layout_height="60dp"
+		            android:textSize="30sp"
+		            android:layout_centerHorizontal="true"
+		            android:gravity="center"
+		            android:textColor="#ffffff"
+		            android:layout_marginLeft="40dp"
+		            />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/TVMessagesStatus"
+            android:background="@drawable/btn_menu_sub"
+            android:textColor="#ffffff"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="10 New Messages"
+            />
+    </LinearLayout>
+    
+	<LinearLayout 
+        android:id="@+id/LLPrefs"
+        android:layout_weight="0.18"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        >
+        
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:orientation="horizontal"
+			android:background="@drawable/btn_menu_main"
+			>
+			<ImageView
+	            android:layout_width="wrap_content"
+				android:layout_height="60dp"
+				android:src="@drawable/btn_menu_lookaround"
+				android:layout_marginLeft="30dp"
+				
+	            />
+			<TextView
+		            android:text="Look Around"
+		            android:layout_width="wrap_content"
+					android:layout_height="60dp"
+		            android:textSize="30sp"
+		            android:layout_centerHorizontal="true"
+		            android:gravity="center"
+		            android:textColor="#ffffff"
+		            android:layout_marginLeft="40dp"
+		            />
+        </RelativeLayout>
+    </LinearLayout>
+    <!-- 
     <ImageButton
         android:id="@+id/IBLook"
         android:layout_width="fill_parent"
@@ -18,7 +200,7 @@
 		android:background="@android:color/transparent"
 		android:contentDescription="@string/IBLook"
         android:src="@drawable/btnlookaround" />
-
+ 	
 	<ImageButton
 	    android:id="@+id/IBMsg"
         android:layout_height="10dip"
@@ -51,5 +233,5 @@
         android:src="@drawable/btnpreferences"
         android:layout_margin="10dip"
         android:contentDescription="@string/IBPref" />
-		   
+	-->	   
 </LinearLayout>
