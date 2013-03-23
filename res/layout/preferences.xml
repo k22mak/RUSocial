@@ -4,6 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <!-- Menu Bar -->
     <LinearLayout
         android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -62,26 +63,133 @@
         	android:src="@drawable/btn_prefs4" />
     
     </LinearLayout>
-    
+    	
+    <!-- Profile Content -->
     <LinearLayout
         android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:layout_marginTop="5dip"
 		android:layout_marginBottom="5dip" 
 		android:orientation="vertical"
-		android:background="@drawable/bg_regular"
-		>
+		android:background="@drawable/bg_regular" >
     	
-    	<TextView
+        <TextView
         	android:layout_width="wrap_content"
-        	android:layout_height="0dp"
-        	android:layout_weight="0.5"
+        	android:layout_weight="0.01"
+        	android:layout_height="0dip"
         	android:layout_marginTop="5dip"
         	android:layout_marginLeft="5dip"
-        	android:text=">preferences"        
+        	android:text="@string/TVPreference"        
         	android:textColor="#FFFFFF"
-        	android:textSize="12sp"        
-        />
+        	android:textSize="12sp" />
+
+        <RelativeLayout
+		    android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:orientation="horizontal"
+			android:background="@drawable/btn_menu_main" >
+
+            <ImageView
+	            android:layout_width="wrap_content"
+				android:layout_height="60dp"
+				android:src="@drawable/btn_menu_lookaround"
+				android:layout_marginLeft="30dp" />
+            
+            <TextView 
+        		android:id="@+id/BtnUpload"
+				android:layout_width="60dip"
+        		android:layout_weight="0.05"
+        		android:layout_height="1dip"
+        		android:text="@string/BtnUpload"
+        		android:textSize="15sp"
+				android:background="@drawable/btn_gradient_yellow"
+        		android:gravity="center"
+        		android:textColor="#FFFFFF"
+        		android:layout_marginBottom="10dip"
+        		android:layout_marginLeft="240dip"
+        		android:layout_marginRight="25dip"
+        		android:clickable="true" />
+        
+        </RelativeLayout>
+        
+        <TextView
+        	android:layout_width="fill_parent"
+        	android:layout_weight="0.01"
+        	android:layout_height="0dip"
+        	android:layout_marginLeft="25dip"
+        	android:layout_marginRight="25dip"
+        	android:text="@string/TVName"
+        	android:textColor="#FFFFFF"
+        	android:textSize="15sp" />
+        
+        <EditText
+        	android:id="@+id/EVName"
+        	android:layout_width="fill_parent"
+        	android:layout_weight="0.07"
+        	android:layout_height="1dip"
+        	android:layout_marginLeft="25dip"
+        	android:layout_marginRight="25dip"
+        	android:textColorHint="#999999"
+        	android:singleLine="true"
+        	android:hint="@string/EVName" />
+        
+        <TextView
+        	android:layout_width="fill_parent"
+        	android:layout_weight="0.01"
+        	android:layout_height="0dip"
+        	android:layout_marginLeft="25dip"
+        	android:layout_marginRight="25dip"
+        	android:text="@string/TVEmail"
+        	android:textColor="#FFFFFF"
+        	android:textSize="15sp" />
+        
+        <EditText
+			android:id="@+id/EVEmail"
+			android:layout_width="fill_parent"
+			android:layout_height="1dip"
+			android:layout_marginLeft="25dip"
+			android:layout_marginRight="25dip"
+			android:layout_weight="0.07"
+			android:hint="@string/EVEmail"
+			android:inputType="textEmailAddress"
+			android:singleLine="true"
+			android:textColorHint="#999999" />
+        
+        <TextView
+        	android:layout_width="fill_parent"
+        	android:layout_weight="0.01"
+        	android:layout_height="0dip"
+        	android:layout_marginLeft="25dip"
+        	android:layout_marginRight="25dip"
+        	android:text="@string/TVAbout"
+        	android:textColor="#FFFFFF"
+        	android:textSize="15sp" />
+        
+        <EditText
+			android:id="@+id/EVBio"
+			android:layout_width="fill_parent"
+			android:layout_height="10dip"
+			android:layout_marginLeft="25dip"
+			android:layout_marginRight="25dip"
+			android:layout_weight="0.07"
+			android:hint="@string/EVBio"
+			android:inputType="textEmailAddress"
+			android:singleLine="true"
+			android:textColorHint="#999999" />
+        
+        <TextView 
+        	android:id="@+id/BtnSave"
+			android:layout_width="fill_parent"
+        	android:layout_weight="0.05"
+        	android:layout_height="1dip"
+        	android:text="@string/BtnSave"
+        	android:textSize="15sp"
+			android:background="@drawable/btn_gradient_yellow"
+        	android:gravity="center"
+        	android:textColor="#FFFFFF"
+        	android:layout_marginBottom="10dip"
+        	android:layout_marginLeft="25dip"
+        	android:layout_marginRight="25dip"
+        	android:clickable="true" />
     	
    </LinearLayout>
 		   

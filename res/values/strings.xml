@@ -13,13 +13,20 @@
     <string name="BtnSocialiteList">List View</string>
     <string name="BtnSubmit">Submit</string>
     <string name="BtnRegister">Register</string>
+    <string name="BtnSave">Save</string>
+    <string name="BtnUpload">Upload</string>
     
     <!--  TextView Strings -->
-	
-	
 	<string name="TVLogin">>login</string>
 	<string name="TVRegister">>register</string>
 	<string name="TVSocialiteList">>socialite list</string>
+	<string name="TVSocialiteMap">>socialite map view</string>
+	<string name="TVName">Name</string>
+	<string name="TVPreference">>preferences</string>
+	<string name="TVProfile">>profile</string>
+	<string name="TVAbout">About</string>
+	<string name="TVEmail">E-mail</string>
+	<string name="TVFriendsList">>friends list</string>
 	    
 	<!--  Content Description Strings -->
     <string name="CDLogo">logo</string>
@@ -35,6 +42,8 @@
     <string name="EVPassword">Password</string>
     <string name="EVConfirmPassword">Confirm Password</string>
     <string name="EVEmail">E-mail</string>
+    <string name="EVName">Name</string>
+    <string name="EVBio">Enter your biography here</string>
     
     <!--  Checkbox Strings -->
     <string name="CBSave">Save username and password</string>
