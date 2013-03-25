@@ -31,14 +31,16 @@ public class ValidityCheck {
 	//method to get password
 	public static String getPassword(){
 		
-		return preferences.getString(PASSWORD,DEFAULT_RETURN);
+		return ("the");
+		//return preferences.getString(PASSWORD,DEFAULT_RETURN);
 		
 	}
 	
 	//method to get confirmed password
 	public static String getConfirmedPassword(){
 		
-		return preferences.getString(CONFIRMED_PASSWORD,DEFAULT_RETURN);
+		return("the");
+		//return preferences.getString(CONFIRMED_PASSWORD,DEFAULT_RETURN);
 	}
 	
 	//method to get email

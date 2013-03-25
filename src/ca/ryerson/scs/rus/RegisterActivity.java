@@ -1,5 +1,6 @@
 package ca.ryerson.scs.rus;
 
+import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -49,6 +50,18 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				Log.i(TAG, evPassword.getText() + " ");
 				Log.i(TAG, evConfirmPassword.getText() + " ");
 				Log.i(TAG, evEmail.getText() + " ");
+			}
+			else{
+				System.out.println("Testestest");
+				
+			if ((ValidityCheck.passwordCheck(ValidityCheck.getConfirmedPassword(), ValidityCheck.getPassword()))==true)
+					{
+						System.out.println("This is true!!!");
+					}
+			else
+					{
+						System.out.println("These passwords do not match.");
+					}
 			}
 
 			// TODO: Create URL using inputs and make an HTTTP Request for

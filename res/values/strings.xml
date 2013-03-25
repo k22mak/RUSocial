@@ -36,6 +36,7 @@
     <string name="IBMsg">message</string>
     <string name="IBLook">look</string>
     <string name="IVDivisor">divider</string>
+    <string name="IVProfilePic">profilepic</string>
     
     <!--  EditView Strings -->
     <string name="EVUsername">Username</string>
