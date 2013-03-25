@@ -27,6 +27,10 @@
 	<string name="TVAbout">About</string>
 	<string name="TVEmail">E-mail</string>
 	<string name="TVFriendsList">>friends list</string>
+	<string name="TVFriend">Friend</string>
+	<string name="TVMessage">Message</string>
+	<string name="TVFLProfile">Profile</string>
+	<string name="TVMsg">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</string>
 	    
 	<!--  Content Description Strings -->
     <string name="CDLogo">logo</string>

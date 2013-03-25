@@ -63,25 +63,11 @@
     
     </LinearLayout>
     
-	<!-- Friend Content -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="5dip"
-		android:layout_marginBottom="5dip" 
-		android:orientation="vertical"
-		android:background="@drawable/bg_regular" >
-    	
-        <TextView
-        	android:layout_width="wrap_content"
-        	android:layout_weight="0.01"
-        	android:layout_height="0dip"
-        	android:layout_marginTop="5dip"
-        	android:layout_marginLeft="5dip"
-        	android:text="@string/TVFriendsList"        
-        	android:textColor="#FFFFFF"
-        	android:textSize="12sp" />
-    	
-   </LinearLayout>
-		   
+	<ListView 
+         android:id="@+id/list" 
+         android:layout_width="fill_parent"
+         android:background="@drawable/bg_regular"
+         android:paddingRight="5dp" android:scrollbarStyle="outsideOverlay"
+         android:cacheColorHint="#000F1F"
+         android:layout_height="fill_parent" />		   
 </LinearLayout>

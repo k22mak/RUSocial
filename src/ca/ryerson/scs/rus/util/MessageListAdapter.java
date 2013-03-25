@@ -3,6 +3,7 @@ package ca.ryerson.scs.rus.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.messenger.objects.Message;
 import ca.ryerson.scs.rus.socialite.objects.User;
 
@@ -31,6 +32,11 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Message message = getItem(position);
+		//View v = convertView;
+	    //if (v == null) {
+	      //      LayoutInflater vi = (LayoutInflater).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	        //    v = vi.inflate(R.layout.listview_msgs, null);
+	    //}
 
 		// TODO: uncomment when layout is done
 		/*

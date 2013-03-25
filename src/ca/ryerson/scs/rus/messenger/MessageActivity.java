@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class MessageActivity extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
@@ -32,7 +34,6 @@ public class MessageActivity extends Activity implements OnClickListener {
 		btnPref = (ImageButton) findViewById(R.id.IBPref);
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
 		
-				
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
 		btnMsg.setFocusable(true);
@@ -44,6 +45,13 @@ public class MessageActivity extends Activity implements OnClickListener {
 		btnMsg.setOnClickListener(this);
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
+	
+		String[] items = {"user1", "user2", "user2"};
+		
+		setContentView(R.layout.messages);
+		
+		ListView listView = (ListView) findViewById(R.id.list);
+		listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items));
 	}
 
 	@Override
