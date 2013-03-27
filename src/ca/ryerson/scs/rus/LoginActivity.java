@@ -1,9 +1,7 @@
 package ca.ryerson.scs.rus;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import ca.ryerson.scs.rus.util.HttpRequestAdapter;
 import ca.ryerson.scs.rus.util.URLResource;
 import android.os.Bundle;
@@ -86,7 +84,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private class LoginHandler implements HttpRequestAdapter.ResponseHandler {
 		@Override
 		public void postResponse(JSONObject response) {
-			//TODO: Parse the response and act accordingly here
+			
 		}
 
 		@Override
