@@ -1,11 +1,15 @@
 package ca.ryerson.scs.rus;
 
+import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Dialog;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,7 +29,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.register);
-		
+	
 		btnRegister = (TextView) findViewById(R.id.BtnRegister);
 		evUsername = (EditText) findViewById(R.id.EVUsername);
 		evPassword = (EditText) findViewById(R.id.EVPassword);
@@ -37,11 +41,11 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		evPassword.setFocusable(true);
 
 		btnRegister.setOnClickListener(this);
-
 		// TODO: Implement persistence checking for saved username and password
 	}
 
 	public void onClick(View v) {
+		int i =6;
 		if (v == btnRegister) {
 			if (SplashActivity.DEBUG) {
 				Log.i(TAG, "Login Button");
@@ -49,9 +53,87 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				Log.i(TAG, evPassword.getText() + " ");
 				Log.i(TAG, evConfirmPassword.getText() + " ");
 				Log.i(TAG, evEmail.getText() + " ");
+				
+				if (ValidityCheck.passwordCheck(evPassword.getText().toString(), evConfirmPassword.getText().toString())== false) //!(ValidityCheck.passwordCheck("else", "no"))
+				{
+
+					final Dialog dialog = new Dialog(RegisterActivity.this);
+	                dialog.setContentView(R.layout.dialouge_email);
+	                dialog.setTitle("Password Error");
+	                dialog.setCancelable(true);
+	              
+	              //set up text
+	                TextView text = (TextView) dialog.findViewById(R.id.dia_email);
+	                text.setText(R.string.TVErrPassword); 
+	                
+	              //set up button
+	                Button button = (Button) dialog.findViewById(R.id.Button01);
+	                button.setOnClickListener(new OnClickListener() {
+	                @Override
+	                    public void onClick(View v) {
+	                        dialog.dismiss();
+	                        evPassword.setText("");
+	                        evConfirmPassword.setText("");
+	                    }
+	                });  
+	                
+	                dialog.show();
+				}
+				
+				if (ValidityCheck.emailCheck(evEmail.getText().toString())==false)
+				{
+					final Dialog dialogEmail = new Dialog(RegisterActivity.this);
+	                dialogEmail.setContentView(R.layout.dialouge_email);
+	                dialogEmail.setTitle("Email Error");
+	                dialogEmail.setCancelable(true);
+	              
+	              //set up text
+	                TextView text = (TextView) dialogEmail.findViewById(R.id.dia_email);
+	                text.setText(R.string.TVErrEmail); 
+	                
+	              //set up button
+	                Button button = (Button) dialogEmail.findViewById(R.id.Button01);
+	                button.setOnClickListener(new OnClickListener() {
+	                @Override
+	                    public void onClick(View v) {
+	                        dialogEmail.dismiss();
+	                    }
+	                });  
+	                
+	                dialogEmail.show();
+				}
+				
+				if (ValidityCheck.usernameCheck(evUsername.getText().toString())==false)
+				{
+					final Dialog dialogUser = new Dialog(RegisterActivity.this);
+	                dialogUser.setContentView(R.layout.dialouge_email);
+	                dialogUser.setTitle("Username Error");
+	                dialogUser.setCancelable(true);
+	              
+	              //set up text
+	                TextView text = (TextView) dialogUser.findViewById(R.id.dia_email);
+	                text.setText(R.string.TVErrUsername); 
+	                
+	              //set up button
+	                Button button = (Button) dialogUser.findViewById(R.id.Button01);
+	                button.setOnClickListener(new OnClickListener() {
+	                @Override
+	                    public void onClick(View v) {
+	                        dialogUser.dismiss();
+	                    }
+	                });  
+	                
+	                dialogUser.show();
+				}
+				
+
+			}
+			else{
+				
+			
 			}
 
-			// TODO: Create URL using inputs and make an HTTTP Request for
+			// TODO: Create URL using inputs and make an HTTP Request for
 			// authentication
 			
 		} 

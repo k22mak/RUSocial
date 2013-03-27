@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+   android:layout_height="wrap_content"
+   android:gravity="left|center"
+   android:layout_width="wrap_content"
+   android:paddingBottom="5dp"
+   android:paddingTop="5dp"
+   android:paddingLeft="5dp"
+   android:background="@drawable/btn_gray">
+
+    <ImageView
+       android:id="@+id/avatar"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginRight="6dip"
+       android:src="@drawable/profilepic_sm"
+       android:background="@drawable/stroke_element"
+       android:contentDescription="@string/IVProfilePic" />
+    
+    <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="0dip"
+       android:layout_weight="1"
+       android:layout_height="wrap_content">
+       
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TVName"
+        android:gravity="center"
+        android:textColor="#0380db"/>
+    
+     <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TVMsg"
+        android:gravity="left"
+        android:textColor="#9c9a9a"/>
+    
+     <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="fill_parent"
+       android:gravity="center"
+       android:layout_marginTop="5dp"
+       android:layout_height="wrap_content">
+       
+      <TextView
+                android:id="@+id/BtnFLFriend"
+                android:layout_width="50dip"
+                android:layout_height="25dip"
+                android:background="@drawable/btn_yellow"
+                android:clickable="true"
+                android:text="@string/TVFriend"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:textSize="12sp" />
+      <TextView
+          		android:layout_marginLeft="5dp"
+                android:id="@+id/BtnFLProfile"
+                android:layout_width="50dip"
+                android:layout_height="25dip"
+                android:background="@drawable/btn_yellow"
+                android:clickable="true"
+                android:text="@string/TVFLProfile"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:textSize="12sp" />
+      <TextView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/BtnFLMessage"
+                android:layout_width="55dip"
+                android:layout_height="25dip"
+                android:background="@drawable/btn_yellow"
+                android:clickable="true"
+                android:text="@string/TVMessage"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:textSize="12sp" />
+      </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
