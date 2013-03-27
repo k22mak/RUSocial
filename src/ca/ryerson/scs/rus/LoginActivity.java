@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.util.HttpRequestAdapter;
+import ca.ryerson.scs.rus.util.URLResource;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -71,7 +72,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			HttpRequestAdapter.httpRequest(this, "http://24.52.208.137:3000/logins",json,new LoginHandler());
+			HttpRequestAdapter.httpRequest(this, URLResource.LOGIN,json,new LoginHandler());
 			
 			// TODO: Create URL using inputs and make an HTTTP Request for
 			// authentication
