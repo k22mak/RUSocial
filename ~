@@ -1,0 +1,16 @@
+Validity checking done on registration page.
+Pop up warning if input is not corect
+
+Issue #39
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch checker
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   res/layout/dialouge_email.xml
+#	modified:   res/values/strings.xml
+#	modified:   src/ca/ryerson/scs/rus/RegisterActivity.java
+#	modified:   src/ca/ryerson/scs/rus/util/MessageListAdapter.java
+#	modified:   src/ca/ryerson/scs/rus/util/ValidityCheck.java
+#
