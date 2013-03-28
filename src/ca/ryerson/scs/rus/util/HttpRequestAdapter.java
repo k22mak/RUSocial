@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class HttpRequestAdapter {
 
@@ -54,6 +55,7 @@ public class HttpRequestAdapter {
 				while ((line = br.readLine()) != null) {
 					fullResponse.append(line + "\n");
 				}
+				Log.i("RESPONSE", fullResponse.toString());
 				return (new JSONObject(fullResponse.toString()));
 			}
 
@@ -90,6 +92,7 @@ public class HttpRequestAdapter {
 				while ((line = br.readLine()) != null) {
 					fullResponse.append(line + "\n");
 				}
+				Log.i("RESPONSEGET", fullResponse.toString());
 				return (new JSONObject(fullResponse.toString()));
 			}
 
@@ -115,12 +118,14 @@ public class HttpRequestAdapter {
 		public Request(Context context,ResponseHandler handler) {
 			this.context = context;
 			this.handler=handler;
+			this.dialog = new ProgressDialog(context);
 		}
 		
 		public Request(Context context,JSONObject data,ResponseHandler handler) {
 			this.context = context;
-			
 			this.handler=handler;
+			this.data = data;
+			this.dialog = new ProgressDialog(context);
 		}
 		
 		@Override
@@ -133,8 +138,10 @@ public class HttpRequestAdapter {
 		protected JSONObject doInBackground(String... url) {
 			JSONObject response = null;
 			if (data==null){
+				Log.i("DOING GET","DOING GET");
 				response=HttpRequestAdapter.httpProcessRequest(context, url[0]);
 			}else if(data!=null){
+				Log.i("DOING POST","DOING POST");
 				response=HttpRequestAdapter.httpProcessRequest(context, url[0],data);
 			}			
 			return response;

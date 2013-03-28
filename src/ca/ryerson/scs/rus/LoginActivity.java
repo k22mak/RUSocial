@@ -74,7 +74,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			
 			// TODO: Create URL using inputs and make an HTTTP Request for
 			// authentication
-			startActivity(new Intent(MENU_STRING));
+			
 		} else if (v == btnRegister) {
 			startActivity(new Intent(REGISTER_STRING));
 		}
@@ -84,7 +84,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private class LoginHandler implements HttpRequestAdapter.ResponseHandler {
 		@Override
 		public void postResponse(JSONObject response) {
-			
+			Log.i("RESPONSE INFO",""+response.keys());
+			startActivity(new Intent(MENU_STRING));
 		}
 
 		@Override
