@@ -156,7 +156,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		public void postResponse(JSONObject response) {
 			Toast.makeText(getApplicationContext(), "Successfully Registered",
 					Toast.LENGTH_LONG).show();
-
 			finish();
 		}
 

@@ -70,10 +70,12 @@ public class LoginActivity extends Activity implements OnClickListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			HttpRequestAdapter.httpRequest(this, URLResource.LOGIN,json,new LoginHandler());
 			
-			// TODO: Create URL using inputs and make an HTTTP Request for
-			// authentication
+			// TODO: Make use of HTTPRequest and handler instead of straight authentication
+			//HttpRequestAdapter.httpRequest(this, URLResource.REGISTER,json,new LoginHandler());
+			
+			
+			startActivity(new Intent(MENU_STRING));
 			
 		} else if (v == btnRegister) {
 			startActivity(new Intent(REGISTER_STRING));
@@ -85,7 +87,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 		@Override
 		public void postResponse(JSONObject response) {
 			Log.i("RESPONSE INFO",""+response.keys());
-			startActivity(new Intent(MENU_STRING));
+			Intent intent = new Intent(MENU_STRING);
+			intent.putExtra("username", evUsername.getText().toString());
+			startActivity(intent);
 		}
 
 		@Override
