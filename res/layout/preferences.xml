@@ -130,7 +130,7 @@
             
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.01"
+        		android:layout_weight="0.02"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
@@ -141,7 +141,7 @@
         	<EditText
         		android:id="@+id/EVName"
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.07"
+        		android:layout_weight="0.05"
         		android:layout_height="1dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
@@ -151,7 +151,7 @@
        	 
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.01"
+        		android:layout_weight="0.02"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
@@ -165,7 +165,7 @@
 				android:layout_height="1dip"
 				android:layout_marginLeft="25dip"
 				android:layout_marginRight="25dip"
-				android:layout_weight="0.07"
+				android:layout_weight="0.05"
 				android:hint="@string/EVEmail"
 				android:inputType="textEmailAddress"
 				android:singleLine="true"
@@ -173,7 +173,7 @@
        	 
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.01"
+        		android:layout_weight="0.02"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
@@ -187,7 +187,7 @@
 				android:layout_height="10dip"
 				android:layout_marginLeft="25dip"
 				android:layout_marginRight="25dip"
-				android:layout_weight="0.07"
+				android:layout_weight="0.05"
 				android:hint="@string/EVBio"
 				android:inputType="textEmailAddress"
 				android:singleLine="true"

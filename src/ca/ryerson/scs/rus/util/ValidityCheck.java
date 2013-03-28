@@ -2,7 +2,10 @@ package ca.ryerson.scs.rus.util;
 
 import java.util.regex.Pattern;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 public class ValidityCheck {
 
@@ -40,4 +43,5 @@ public class ValidityCheck {
 			return true;
 		return false;
 	}
+	
 }

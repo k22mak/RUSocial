@@ -149,6 +149,7 @@ public class HttpRequestAdapter {
 		
 		@Override
 		protected void onPostExecute(JSONObject result) {
+			if (dialog.isShowing()) dialog.dismiss();
 			handler.postResponse(result);
 		}
 	}
