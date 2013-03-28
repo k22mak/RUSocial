@@ -22,14 +22,27 @@
        android:layout_width="0dip"
        android:layout_weight="1"
        android:layout_height="fill_parent">
-       
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/TVName"
-        android:gravity="center"
-        android:textColor="#0380db"/>
-    
+    <RelativeLayout
+       android:orientation="horizontal"
+       android:layout_height="wrap_content"
+       android:layout_width="fill_parent">
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/TVName"
+	        android:gravity="center"
+	        android:textColor="#0380db"/>
+
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:gravity="center"
+	        android:text="@string/TVDate"
+	        android:layout_marginRight="5dip"
+	        android:textColor="#0380db" />
+	    
+    </RelativeLayout>
      <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
