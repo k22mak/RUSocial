@@ -3,6 +3,7 @@ package ca.ryerson.scs.rus.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.messenger.objects.Message;
 import ca.ryerson.scs.rus.socialite.objects.User;
 
@@ -31,22 +32,27 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Message message = getItem(position);
+		View v = convertView;
+	    //if (convertView == null) {
+	           // LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	            //convertView = vi.inflate(R.layout.listview_msgs, null);
+	    //}
 
 		// TODO: uncomment when layout is done
-		/*
+		
 		if (convertView==null){
-			convertView =  inflater.inflate(R.layout.bulletin_row_top, null);
+			convertView =  inflater.inflate(R.layout.listview_msgs, null);
 		}
 		
-		TextView username = (TextView) convertView.findViewById(R.id.topTitle);
-		username.setText(user.getUsername());
+		//TextView username = (TextView) convertView.findViewById(R.id.topTitle);
+		//username.setText(user.getUsername());
 		
-		TextView description = (TextView) convertView.findViewById(R.id.topTitle);
-		description.setText(user.getDescription());
+		//TextView description = (TextView) convertView.findViewById(R.id.topTitle);
+		//description.setText(user.getDescription());
 		
-		TextView distance = (TextView) convertView.findViewById(R.id.topTitle);
-		distance.setText(user.getDistance());
-		*/
+		//TextView distance = (TextView) convertView.findViewById(R.id.topTitle);
+		//distance.setText(user.getDistance());
+		
 		return convertView;
 	}
 

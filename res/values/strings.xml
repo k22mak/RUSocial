@@ -13,15 +13,34 @@
     <string name="BtnSocialiteList">List View</string>
     <string name="BtnSubmit">Submit</string>
     <string name="BtnRegister">Register</string>
+    <string name="BtnSave">Save</string>
+    <string name="BtnUpload">Upload</string>
     
     <!--  TextView Strings -->
-	
-	
 	<string name="TVLogin">>login</string>
 	<string name="TVRegister">>register</string>
 	<string name="TVSocialiteList">>socialite list</string>
-	    
+	<string name="TVSocialiteMap">>socialite map view</string>
+	<string name="TVName">Name</string>
+	<string name="TVPreference">>preferences</string>
+	<string name="TVProfile">>profile</string>
+	<string name="TVAbout">About</string>
+	<string name="TVEmail">E-mail</string>
+	<string name="TVDate">March 12, 2013</string>
+	<string name="TVFriendsList">>friends list</string>
+	<string name="TVFriend">Friend</string>
+	<string name="TVFriends">Friends</string>
+	<string name="TVMessage">Message</string>
+	<string name="TVMessages">Messages</string>
+	<string name="TVFLProfile">Profile</string>
+	<string name="TVMsg">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</string>
+	<string name="TVErrPassword">Your passwords do not match. Please re-enter your password.</string>
+	<string name="TVErrUsername">Your username must be at least 3 characters long.</string>
+	<string name="TVErrEmail">You must use a valid Ryerson email (ryerson.ca or scs.ryerson.ca)</string>
+	<string name="TVLookAround">Look Around</string>
+	
 	<!--  Content Description Strings -->
+	<string name="CDDefault">default</string>
     <string name="CDLogo">logo</string>
     <string name="IBHome">home</string>
     <string name="IBFriend">friend</string>
@@ -29,12 +48,15 @@
     <string name="IBMsg">message</string>
     <string name="IBLook">look</string>
     <string name="IVDivisor">divider</string>
+    <string name="IVProfilePic">profilepic</string>
     
     <!--  EditView Strings -->
     <string name="EVUsername">Username</string>
     <string name="EVPassword">Password</string>
     <string name="EVConfirmPassword">Confirm Password</string>
     <string name="EVEmail">E-mail</string>
+    <string name="EVName">Name</string>
+    <string name="EVBio">Enter your biography here</string>
     
     <!--  Checkbox Strings -->
     <string name="CBSave">Save username and password</string>
