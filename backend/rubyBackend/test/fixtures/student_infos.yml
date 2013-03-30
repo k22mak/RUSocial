@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  student: MyString
+  xCoord: 9.99
+  yCoord: 9.99
+  sessionStatus: false
+  timeConnected: 2013-03-26 02:48:10
+  lastModified: 2013-03-26 02:48:10
+
+two:
+  student: MyString
+  xCoord: 9.99
+  yCoord: 9.99
+  sessionStatus: false
+  timeConnected: 2013-03-26 02:48:10
+  lastModified: 2013-03-26 02:48:10

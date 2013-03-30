@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303002916) do
+ActiveRecord::Schema.define(:version => 20130326064810) do
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -23,10 +23,44 @@ ActiveRecord::Schema.define(:version => 20130303002916) do
 
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
 
+  create_table "logins", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "name"
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "student_infos", :force => true do |t|
+    t.string   "student"
+    t.decimal  "xCoord"
+    t.decimal  "yCoord"
+    t.boolean  "sessionStatus"
+    t.datetime "timeConnected"
+    t.datetime "lastModified"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "student_records", :force => true do |t|
+    t.datetime "timeConnected"
+    t.datetime "lastModified"
+    t.decimal  "xCoord"
+    t.decimal  "yCoord"
+    t.boolean  "sessionStatus"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "tests", :force => true do |t|
+    t.string   "hello"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,4 +1,10 @@
 RubyBackend::Application.routes.draw do
+  resources :student_infos
+
+  resources :logins
+
+  resources :tests
+
   resources :posts do
      resources :comments
   end
