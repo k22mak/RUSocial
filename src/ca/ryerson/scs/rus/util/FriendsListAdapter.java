@@ -2,13 +2,19 @@ package ca.ryerson.scs.rus.util;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.socialite.objects.User;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FriendsListAdapter extends ArrayAdapter<User> {
@@ -30,19 +36,21 @@ public class FriendsListAdapter extends ArrayAdapter<User> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		User user = getItem(position);
 
-		// TODO: uncomment when layout is done
-		/*
 		if (convertView==null){
-			convertView =  inflater.inflate(R.layout.bulletin_row_top, null);
+			convertView =  inflater.inflate(R.layout.listview_friends, null);
 		}
 		
-		TextView username = (TextView) convertView.findViewById(R.id.topTitle);
+		TextView username = (TextView) convertView.findViewById(R.id.FriendUsername);
 		username.setText(user.getUsername());
 		
-		TextView description = (TextView) convertView.findViewById(R.id.topTitle);
-		description.setText(user.getDescription());
+		TextView about = (TextView) convertView.findViewById(R.id.FriendAbout);
+		about.setText(user.getAbout());
 		
-		*/
+		ImageView avatar = (ImageView) convertView.findViewById(R.id.FriendAvatar);
+		byte[] decodedString = Base64.decode(user.getPicture(), Base64.DEFAULT);
+		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length); 
+		avatar.setImageBitmap(decodedByte);
+		
 		return convertView;
 	}
 
