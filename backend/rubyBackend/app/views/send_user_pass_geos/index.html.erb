@@ -1,0 +1,29 @@
+<h1>Listing send_user_pass_geos</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Geox</th>
+    <th>Geoy</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @send_user_pass_geos.each do |send_user_pass_geo| %>
+  <tr>
+    <td><%= send_user_pass_geo.username %></td>
+    <td><%= send_user_pass_geo.password %></td>
+    <td><%= send_user_pass_geo.geoX %></td>
+    <td><%= send_user_pass_geo.geoY %></td>
+    <td><%= link_to 'Show', send_user_pass_geo %></td>
+    <td><%= link_to 'Edit', edit_send_user_pass_geo_path(send_user_pass_geo) %></td>
+    <td><%= link_to 'Destroy', send_user_pass_geo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Send user pass geo', new_send_user_pass_geo_path %>

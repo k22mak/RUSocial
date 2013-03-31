@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Geox:</b>
+  <%= @send_geo.geoX %>
+</p>
+
+<p>
+  <b>Geoy:</b>
+  <%= @send_geo.geoY %>
+</p>
+
+
+<%= link_to 'Edit', edit_send_geo_path(@send_geo) %> |
+<%= link_to 'Back', send_geos_path %>

@@ -1,13 +1,27 @@
-RubyBackend::Application.routes.draw do
-  resources :student_infos
+RUSocial::Application.routes.draw do
+  resources :registers
 
-  resources :logins
 
-  resources :tests
+  resources :send_user_receiver_messages
 
-  resources :posts do
-     resources :comments
-  end
+
+  resources :people
+
+
+  resources :send_username_statuses
+
+
+  resources :send_username_find_messages
+
+
+  resources :send_username_find_friends
+
+
+  resources :send_geos
+
+
+  resources :send_user_pass_geos
+
 
   get "home/index"
 

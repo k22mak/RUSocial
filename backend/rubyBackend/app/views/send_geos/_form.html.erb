@@ -1,0 +1,25 @@
+<%= form_for(@send_geo) do |f| %>
+  <% if @send_geo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@send_geo.errors.count, "error") %> prohibited this send_geo from being saved:</h2>
+
+      <ul>
+      <% @send_geo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :geoX %><br />
+    <%= f.text_field :geoX %>
+  </div>
+  <div class="field">
+    <%= f.label :geoY %><br />
+    <%= f.text_field :geoY %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

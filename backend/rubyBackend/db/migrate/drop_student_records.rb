@@ -1,1 +1,0 @@
-drop_table :student_records

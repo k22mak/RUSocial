@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  geoX: 9.99
+  geoY: 9.99
+
+two:
+  geoX: 9.99
+  geoY: 9.99

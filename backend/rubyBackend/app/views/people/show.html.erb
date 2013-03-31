@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= @person.username %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @person.password %>
+</p>
+
+<p>
+  <b>Geox:</b>
+  <%= @person.geoX %>
+</p>
+
+<p>
+  <b>Geoy:</b>
+  <%= @person.geoY %>
+</p>
+
+<p>
+  <b>Sessionstatus:</b>
+  <%= @person.sessionStatus %>
+</p>
+
+<p>
+  <b>Messages:</b>
+  <%= @person.messages %>
+</p>
+
+<p>
+  <b>Timeconnected:</b>
+  <%= @person.timeConnected %>
+</p>
+
+<p>
+  <b>Lastmodified:</b>
+  <%= @person.lastModified %>
+</p>
+
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

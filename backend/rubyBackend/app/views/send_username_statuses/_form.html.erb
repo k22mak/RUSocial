@@ -1,0 +1,25 @@
+<%= form_for(@send_username_status) do |f| %>
+  <% if @send_username_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@send_username_status.errors.count, "error") %> prohibited this send_username_status from being saved:</h2>
+
+      <ul>
+      <% @send_username_status.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.check_box :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
