@@ -24,8 +24,8 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
 	Context context;
 	
 	public MessageListAdapter(Context context, int textViewResourceId,
-			ArrayList<Message> message) {
-		super(context, textViewResourceId, message);
+			ArrayList<Message> messages) {
+		super(context, textViewResourceId, messages);
 		this.messages = messages;
 		this.inflater = LayoutInflater.from(context);
 		this.context = context;

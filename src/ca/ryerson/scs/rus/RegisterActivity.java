@@ -139,13 +139,10 @@ public class RegisterActivity extends Activity implements OnClickListener {
 					e.printStackTrace();
 				}
 
-				HttpRequestAdapter.httpRequest(this, URLResource.LOGIN, json,
+				HttpRequestAdapter.httpRequest(this, URLResource.REGISTER, json,
 						new RegisterHandler());
 
 			}
-
-			// TODO: Create URL using inputs and make an HTTP Request for
-			// authentication
 
 		}
 	}

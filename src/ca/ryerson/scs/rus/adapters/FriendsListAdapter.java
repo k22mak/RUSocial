@@ -1,22 +1,15 @@
 package ca.ryerson.scs.rus.adapters;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.IntentRes;
-
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FriendsListAdapter extends ArrayAdapter<User> {
@@ -26,8 +19,8 @@ public class FriendsListAdapter extends ArrayAdapter<User> {
 	Context context;
 	
 	public FriendsListAdapter(Context context, int textViewResourceId,
-			ArrayList<User> user) {
-		super(context, textViewResourceId, user);
+			ArrayList<User> users) {
+		super(context, textViewResourceId, users);
 		this.users = users;
 		this.inflater = LayoutInflater.from(context);
 		this.context = context;
@@ -61,7 +54,7 @@ public class FriendsListAdapter extends ArrayAdapter<User> {
 		
 		messageBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent showProfile = new Intent("");
+				Intent showProfile = new Intent(IntentRes.NEW_MESSAGE_STRING);
 				showProfile.putExtra("username", user.getUsername());
 				context.startActivity(showProfile); // start the ShowPosts view
 			}

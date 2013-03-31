@@ -1,21 +1,24 @@
 package ca.ryerson.scs.rus.adapters;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.socialite.objects.User;
+import ca.ryerson.scs.rus.util.DefaultUser;
+import ca.ryerson.scs.rus.util.IntentRes;
+import ca.ryerson.scs.rus.util.URLResource;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SocialiteListAdapter extends ArrayAdapter<User> {
 
@@ -24,8 +27,8 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 	Context context;
 	
 	public SocialiteListAdapter(Context context, int textViewResourceId,
-			ArrayList<User> user) {
-		super(context, textViewResourceId, user);
+			ArrayList<User> users) {
+		super(context, textViewResourceId, users);
 		this.users = users;
 		this.inflater = LayoutInflater.from(context);
 		this.context = context;
@@ -34,7 +37,7 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		User user = getItem(position);
+		final User user = getItem(position);
 		
 		if (convertView==null){
 			convertView =  inflater.inflate(R.layout.listview_socialite, null);
@@ -55,12 +58,71 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 		TextView latitude = (TextView) convertView.findViewById(R.id.SocialLat);
 		latitude.setText(Double.toString(user.getLatitude()));
 		
+		TextView profileBtn = (TextView) convertView.findViewById(R.id.BtnFLProfile);
+		TextView messageBtn = (TextView) convertView.findViewById(R.id.BtnFLMessage);
+		final TextView requestBtn = (TextView) convertView.findViewById(R.id.BtnFLFriend);
+		
+		profileBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent showProfile = new Intent(IntentRes.PROFILE_STRING);
+				showProfile.putExtra("username", user.getUsername());
+				context.startActivity(showProfile); // start the ShowPosts view
+			}
+		});
+		
+		messageBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent showProfile = new Intent(IntentRes.NEW_MESSAGE_STRING);
+				showProfile.putExtra("username", user.getUsername());
+				context.startActivity(showProfile); // start the ShowPosts view
+			}
+		});
+		
+		requestBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				//TODO: CORRECT THE URL, SHOW A TOAST
+				
+				JSONObject json = new JSONObject();
+				try {
+					json.put("username", DefaultUser.getUser());
+					json.put("requestUser", user.getUsername());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				HttpRequestAdapter.httpRequest(context, URLResource.REGISTER, json,
+						new FriendRequestHandler());
+				requestBtn.setText("Request Sent");
+				requestBtn.setClickable(false);
+			}
+		});
+		
+		
+		/*
 		ImageView avatar = (ImageView) convertView.findViewById(R.id.SocialAvatar);
 		byte[] decodedString = Base64.decode(user.getPicture(), Base64.DEFAULT);
 		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length); 
 		avatar.setImageBitmap(decodedByte);
+		*/		
 		
 		return convertView;
+	}
+	
+	private class FriendRequestHandler implements HttpRequestAdapter.ResponseHandler {
+
+		@Override
+		public void postResponse(JSONObject response) {
+			Toast.makeText(context, "Friend Request Sent", Toast.LENGTH_LONG)
+			.show();
+		}
+
+		@Override
+		public void postTimeout() {
+			// TODO Auto-generated method stub
+
+		}
+
 	}
 
 }
