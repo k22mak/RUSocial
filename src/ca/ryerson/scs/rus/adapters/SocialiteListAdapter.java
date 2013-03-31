@@ -73,7 +73,7 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 		messageBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent showProfile = new Intent(IntentRes.NEW_MESSAGE_STRING);
-				showProfile.putExtra("username", user.getUsername());
+				showProfile.putExtra("usernameRequest", user.getUsername());
 				context.startActivity(showProfile); // start the ShowPosts view
 			}
 		});

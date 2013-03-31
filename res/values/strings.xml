@@ -15,6 +15,7 @@
     <string name="BtnRegister">Register</string>
     <string name="BtnSave">Save</string>
     <string name="BtnUpload">Upload</string>
+    <string name="BtnSend">Send</string>
     
     <!--  TextView Strings -->
 	<string name="TVLogin">>login</string>
@@ -41,6 +42,7 @@
 	<string name="TVProgram">Program: Computer Science</string>
 	<string name="TVLong">( Long coord,</string>
 	<string name="TVLat">Lat coord )</string>
+	<string name="TVNewMessage">>new message</string>
 	
 	<!--  Content Description Strings -->
 	<string name="CDDefault">default</string>

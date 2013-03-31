@@ -78,7 +78,7 @@
         	android:layout_height="0dip"
         	android:layout_marginTop="5dip"
         	android:layout_marginLeft="5dip"
-        	android:text="@string/TVPreference"        
+        	android:text="@string/TVNewMessage"        
         	android:textColor="#FFFFFF"
         	android:textSize="12sp" />
 
@@ -100,18 +100,7 @@
                 android:background="@drawable/stroke_element"
                 android:contentDescription="@string/IVProfilePic" />
 
-            <TextView
-                android:id="@+id/BtnUpload"
-                android:layout_width="50dip"
-                android:layout_height="25dip"
-                android:layout_marginTop="105dip"
-                android:layout_marginLeft="210dip"
-                android:background="@drawable/btn_gradient_yellow"
-                android:clickable="true"
-                android:gravity="center"
-                android:text="@string/BtnUpload"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp" />
+           
 
         </RelativeLayout>
         
@@ -130,7 +119,7 @@
             
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.02"
+        		android:layout_weight="0.01"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
@@ -138,67 +127,44 @@
         		android:textColor="#9c9a9a"
         		android:textSize="15sp" />
         
-        	<EditText
-        		android:id="@+id/EVName"
+        	<TextText
+        		android:id="@+id/TVName"
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
+        		android:layout_weight="0.01"
         		android:layout_height="1dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
         		android:textColorHint="#999999"
         		android:singleLine="true"
-        		android:hint="@string/EVName" />
+        		android:hint="@string/TVName" />
        	 
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.02"
+        		android:layout_weight="0.01"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
-        		android:text="@string/TVEmail"
+        		android:text="@string/TVMessage"
         		android:textColor="#9c9a9a"
         		android:textSize="15sp" />
         	
         	<EditText
-				android:id="@+id/EVEmail"
-				android:layout_width="fill_parent"
-				android:layout_height="1dip"
-				android:layout_marginLeft="25dip"
-				android:layout_marginRight="25dip"
-				android:layout_weight="0.05"
-				android:hint="@string/EVEmail"
-				android:inputType="textEmailAddress"
-				android:singleLine="true"
-				android:textColorHint="#999999" />
-       	 
-        	<TextView
-        		android:layout_width="fill_parent"
-        		android:layout_weight="0.02"
-        		android:layout_height="0dip"
-        		android:layout_marginLeft="25dip"
-        		android:layout_marginRight="25dip"
-        		android:text="@string/TVAbout"
-        		android:textColor="#9c9a9a"
-      			android:textSize="15sp" />
-       	 
-      	  <EditText
-				android:id="@+id/EVBio"
-				android:layout_width="fill_parent"
-				android:layout_height="10dip"
-				android:layout_marginLeft="25dip"
-				android:layout_marginRight="25dip"
-				android:layout_weight="0.05"
-				android:hint="@string/EVBio"
-				android:inputType="textEmailAddress"
-				android:singleLine="true"
-				android:textColorHint="#999999" />
+        	    android:id="@+id/EVEmail"
+        	    android:layout_width="fill_parent"
+        	    android:layout_height="1dip"
+        	    android:layout_marginLeft="25dip"
+        	    android:layout_marginRight="25dip"
+        	    android:layout_weight="0.07"
+        	    android:hint="@string/EVEmail"
+        	    android:inputType="textEmailAddress|textMultiLine"
+        	    android:textColorHint="#999999" />
         
        	 <TextView 
-        		android:id="@+id/BtnSave"
+        		android:id="@+id/BtnSend"
 				android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
+        		android:layout_weight="0.01"
         		android:layout_height="1dip"
-        		android:text="@string/BtnSave"
+        		android:text="@string/BtnSend"
         		android:textSize="15sp"
 				android:background="@drawable/btn_gradient_yellow"
         		android:gravity="center"
