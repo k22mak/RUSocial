@@ -38,6 +38,9 @@
 	<string name="TVErrUsername">Your username must be at least 3 characters long.</string>
 	<string name="TVErrEmail">You must use a valid Ryerson email (ryerson.ca or scs.ryerson.ca)</string>
 	<string name="TVLookAround">Look Around</string>
+	<string name="TVProgram">Program: Computer Science</string>
+	<string name="TVLong">( Long coord,</string>
+	<string name="TVLat">Lat coord )</string>
 	
 	<!--  Content Description Strings -->
 	<string name="CDDefault">default</string>

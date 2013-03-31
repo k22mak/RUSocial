@@ -2,14 +2,14 @@
   xmlns:tools="http://schemas.android.com/tools"
    android:layout_height="wrap_content"
    android:gravity="left|center"
-   android:layout_width="wrap_content"
+   android:layout_width="fill_parent"
    android:paddingBottom="5dp"
    android:paddingTop="5dp"
    android:paddingLeft="5dp"
    android:background="@drawable/btn_gray">
 
     <ImageView
-       android:id="@+id/FriendAvatar"
+       android:id="@+id/SocialAvatar"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginRight="6dip"
@@ -22,22 +22,52 @@
        android:layout_width="0dip"
        android:layout_weight="1"
        android:layout_height="wrap_content">
-       
+    
+    <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+    
     <TextView 
-        android:id="@+id/FriendUsername"
+        android:id="@+id/SocialUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TVName"
         android:gravity="center"
         android:textColor="#0380db"/>
-    
-     <TextView 
-        android:id="@+id/FriendAbout"
+       
+    <TextView
+        android:id="@+id/SocialLong" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/TVMsg"
-        android:gravity="left"
+        android:paddingLeft="2dip"
+        android:text="@string/TVLong"
+        android:textColor="#0380db"/>
+    
+    <TextView
+        android:id="@+id/SocialLat" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dip"
+        android:text="@string/TVLat"
+        android:textColor="#0380db"/>
+    </LinearLayout>
+    
+     <TextView 
+        android:id="@+id/SocialProgram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TVProgram"
+        android:textSize="12sp"  
         android:textColor="#9c9a9a"/>
+     
+     <TextView
+         android:id="@+id/SocialAbout"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/TVMsg"
+         android:textColor="#000000"
+         android:textSize="12sp" />
     
      <LinearLayout
        android:orientation="horizontal"
