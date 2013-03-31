@@ -43,6 +43,5 @@ public class Message {
 	public String getPicture(){
 		return picture;
 	}
-	
 
 }

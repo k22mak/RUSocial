@@ -9,7 +9,7 @@
    android:background="@drawable/btn_gray">
 
     <ImageView
-       android:id="@+id/avatar"
+       android:id="@+id/MsgIVAvatar"
        android:layout_width="wrap_content"
        android:layout_height="fill_parent"
        android:layout_marginRight="6dip"
@@ -27,6 +27,7 @@
        android:layout_height="wrap_content"
        android:layout_width="fill_parent">
 	    <TextView 
+	        android:id="@+id/MsgTVUser"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/TVName"
@@ -34,6 +35,7 @@
 	        android:textColor="#0380db"/>
 
 	    <TextView
+	        android:id="@+id/MsgTVDate"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentRight="true"
@@ -44,6 +46,7 @@
 	    
     </RelativeLayout>
      <TextView 
+        android:id="@+id/MsgTVMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TVMsg"
