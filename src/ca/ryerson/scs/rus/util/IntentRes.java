@@ -11,4 +11,5 @@ public class IntentRes {
 	public static final String REGISTER_STRING = "ca.ryerson.scs.rus.REGISTER";
 	public static final String SOCIALITE_LIST_STRING = "ca.ryerson.scs.rus.socialite.SOCIALITE_LIST";
 	public static final String LOGIN_STRING = "ca.ryerson.scs.rus.LOGIN";
+	public static final String NEW_MESSAGE_STRING = "ca.ryerson.scs.rus.messenger.NEW_MESSAGE";
 }

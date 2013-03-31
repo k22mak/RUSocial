@@ -97,6 +97,15 @@
             </intent-filter>
         </activity>
         
+         <activity
+            android:name=".messenger.NewMessage"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="ca.ryerson.scs.rus.messenger.NEW_MESSAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
         <activity
             android:name=".Preferences"
             android:screenOrientation="portrait" >
