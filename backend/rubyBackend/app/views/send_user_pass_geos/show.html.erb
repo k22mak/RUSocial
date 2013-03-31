@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= @send_user_pass_geo.username %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @send_user_pass_geo.password %>
+</p>
+
+<p>
+  <b>Geox:</b>
+  <%= @send_user_pass_geo.geoX %>
+</p>
+
+<p>
+  <b>Geoy:</b>
+  <%= @send_user_pass_geo.geoY %>
+</p>
+
+
+<%= link_to 'Edit', edit_send_user_pass_geo_path(@send_user_pass_geo) %> |
+<%= link_to 'Back', send_user_pass_geos_path %>

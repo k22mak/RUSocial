@@ -1,0 +1,23 @@
+<h1>Listing send_username_find_messages</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @send_username_find_messages.each do |send_username_find_message| %>
+  <tr>
+    <td><%= send_username_find_message.username %></td>
+    <td><%= link_to 'Show', send_username_find_message %></td>
+    <td><%= link_to 'Edit', edit_send_username_find_message_path(send_username_find_message) %></td>
+    <td><%= link_to 'Destroy', send_username_find_message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Send username find message', new_send_username_find_message_path %>

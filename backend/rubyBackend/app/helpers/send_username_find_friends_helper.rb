@@ -1,0 +1,2 @@
+module SendUsernameFindFriendsHelper
+end

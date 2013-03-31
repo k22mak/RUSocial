@@ -11,56 +11,59 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326064810) do
+ActiveRecord::Schema.define(:version => 20130330233420) do
 
-  create_table "comments", :force => true do |t|
-    t.string   "commenter"
-    t.text     "body"
-    t.integer  "post_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "people", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.decimal  "geoX"
+    t.decimal  "geoY"
+    t.boolean  "sessionStatus"
+    t.text     "messages"
+    t.datetime "timeConnected"
+    t.datetime "lastModified"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
-  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
-
-  create_table "logins", :force => true do |t|
+  create_table "registers", :force => true do |t|
     t.string   "username"
     t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "posts", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "content"
+  create_table "send_geos", :force => true do |t|
+    t.decimal  "geoX"
+    t.decimal  "geoY"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "student_infos", :force => true do |t|
-    t.string   "student"
-    t.decimal  "xCoord"
-    t.decimal  "yCoord"
-    t.boolean  "sessionStatus"
-    t.datetime "timeConnected"
-    t.datetime "lastModified"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "send_user_pass_geos", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.decimal  "geoX"
+    t.decimal  "geoY"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "student_records", :force => true do |t|
-    t.datetime "timeConnected"
-    t.datetime "lastModified"
-    t.decimal  "xCoord"
-    t.decimal  "yCoord"
-    t.boolean  "sessionStatus"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "send_username_find_friends", :force => true do |t|
+    t.string   "username"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "tests", :force => true do |t|
-    t.string   "hello"
+  create_table "send_username_find_messages", :force => true do |t|
+    t.string   "username"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "send_username_statuses", :force => true do |t|
+    t.string   "username"
+    t.boolean  "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
