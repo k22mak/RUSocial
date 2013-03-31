@@ -54,10 +54,12 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
 		String stringDate = formatter.format(message.getDate());
 		msgDate.setText(stringDate); 
 		
+		/*
 		ImageView avatar = (ImageView) convertView.findViewById(R.id.MsgIVAvatar);
 		byte[] decodedString = Base64.decode(message.getPicture(), Base64.DEFAULT);
 		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length); 
 		avatar.setImageBitmap(decodedByte);
+		*/
 
 		return convertView;
 	}

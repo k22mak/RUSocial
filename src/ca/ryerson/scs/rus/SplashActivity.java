@@ -1,5 +1,6 @@
 package ca.ryerson.scs.rus;
 
+import ca.ryerson.scs.rus.util.IntentRes;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,8 +12,6 @@ import android.view.Window;
 public class SplashActivity extends Activity {
 	// Flag for debug/log messages
 	public static final boolean DEBUG = true;
-
-	private final String LOGIN_STRING = "ca.ryerson.scs.rus.LOGIN";
 
 	public static Context context;
 
@@ -33,7 +32,7 @@ public class SplashActivity extends Activity {
 					if (netInfo != null && netInfo.isConnectedOrConnecting()) {
 
 						finish();
-						startActivity(new Intent(LOGIN_STRING));
+						startActivity(new Intent(IntentRes.LOGIN_STRING));
 					} else {
 						finish();
 					}

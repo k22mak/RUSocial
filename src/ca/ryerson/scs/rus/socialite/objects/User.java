@@ -1,7 +1,7 @@
 package ca.ryerson.scs.rus.socialite.objects;
 
 public class User {
-	private String username,picture, program, about;
+	private String username,picture, program, about,email;
 	private double latitude,longitude;
 	
 	
@@ -59,6 +59,14 @@ public class User {
 	
 	public String getPicture(){
 		return picture;
+	}
+	
+	public void setEmail(String newEmail){
+		email= newEmail;
+	}
+	
+	public String getEmail(){
+		return email;
 	}
 
 }

@@ -47,19 +47,9 @@
        android:layout_height="wrap_content">
        
       <TextView
-                android:id="@+id/BtnFLFriend"
-                android:layout_width="50dip"
-                android:layout_height="25dip"
-                android:background="@drawable/btn_yellow"
-                android:clickable="true"
-                android:text="@string/TVFriend"
-                android:textColor="#FFFFFF"
-                android:gravity="center"
-                android:textSize="12sp" />
-      <TextView
           		android:layout_marginLeft="5dp"
                 android:id="@+id/BtnFLProfile"
-                android:layout_width="50dip"
+                android:layout_width="100dip"
                 android:layout_height="25dip"
                 android:background="@drawable/btn_yellow"
                 android:clickable="true"
@@ -70,7 +60,7 @@
       <TextView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/BtnFLMessage"
-                android:layout_width="55dip"
+                android:layout_width="100dip"
                 android:layout_height="25dip"
                 android:background="@drawable/btn_yellow"
                 android:clickable="true"

@@ -1,6 +1,7 @@
 package ca.ryerson.scs.rus;
 
 import ca.ryerson.scs.rus.R;
+import ca.ryerson.scs.rus.util.IntentRes;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +13,6 @@ import android.widget.ImageButton;
 
 public class Preferences extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
-	private final String SOCIALITE_MAP_STRING="ca.ryerson.scs.rus.socialite.SOCIALITE_MAP";
-	private final String MESSAGE_STRING="ca.ryerson.scs.rus.messenger.MESSAGES_LIST";
-	private final String PREFERENCE_STRING="ca.ryerson.scs.rus.PREFERENCES";
-	private final String FRIEND_STRING="ca.ryerson.scs.rus.messenger.FRIENDS_LIST";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,28 +53,28 @@ public class Preferences extends Activity implements OnClickListener {
 					if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Map View Button");
 				}
 				finish();
-				startActivity(new Intent(SOCIALITE_MAP_STRING));
+				startActivity(new Intent(IntentRes.SOCIALITE_MAP_STRING));
 			
 			}else if (v == btnMsg) {
 				if (SplashActivity.DEBUG){
 					if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Message Button");
 				}
 				finish();
-				startActivity(new Intent(MESSAGE_STRING));
+				startActivity(new Intent(IntentRes.MESSAGE_STRING));
 			
 			}else if (v == btnFriend) {
 				if (SplashActivity.DEBUG){
 					if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Friend Button");
 				}
 				finish();
-				startActivity(new Intent(FRIEND_STRING));
+				startActivity(new Intent(IntentRes.FRIEND_STRING));
 				
 			}else if (v == btnPref) {
 				if (SplashActivity.DEBUG){
 					if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Preference Button");
 					}
 				finish();
-				startActivity(new Intent(PREFERENCE_STRING));
+				startActivity(new Intent(IntentRes.PREFERENCE_STRING));
 				}
 			}
 

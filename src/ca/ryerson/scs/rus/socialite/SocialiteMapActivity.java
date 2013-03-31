@@ -17,6 +17,8 @@ import android.view.Menu;
 import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
+import ca.ryerson.scs.rus.util.DefaultUser;
+import ca.ryerson.scs.rus.util.IntentRes;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
@@ -37,10 +39,6 @@ public class SocialiteMapActivity extends Activity implements LocationListener, 
   private static final long MIN_TIME = 400;
   private static final float MIN_DISTANCE = 1000;
   private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
-  private final String SOCIALITE_MAP_STRING="ca.ryerson.scs.rus.socialite.SOCIALITE_MAP";
-  private final String MESSAGE_STRING="ca.ryerson.scs.rus.messenger.MESSAGES_LIST";
-  private final String PREFERENCE_STRING="ca.ryerson.scs.rus.PREFERENCES";
-  private final String FRIEND_STRING="ca.ryerson.scs.rus.messenger.FRIENDS_LIST";
 
 
   @Override
@@ -93,7 +91,7 @@ public class SocialiteMapActivity extends Activity implements LocationListener, 
   
   @Override
   public void onClick(View v) {
-		if (v == btnHome) {
+	  if (v == btnHome) {
 			if (SplashActivity.DEBUG) {
 				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Home button");
 			}
@@ -103,29 +101,38 @@ public class SocialiteMapActivity extends Activity implements LocationListener, 
 			if (SplashActivity.DEBUG) {
 				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Map View Button");
 			}
+			Intent newIntent = new Intent(IntentRes.SOCIALITE_MAP_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
-			startActivity(new Intent(SOCIALITE_MAP_STRING));
+			startActivity(newIntent);
 		
 		}else if (v == btnMsg) {
 			if (SplashActivity.DEBUG){
 				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Message Button");
 			}
+			Intent newIntent = new Intent(IntentRes.MESSAGE_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
-			startActivity(new Intent(MESSAGE_STRING));
+			startActivity(newIntent);
 		
 		}else if (v == btnFriend) {
 			if (SplashActivity.DEBUG){
 				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Friend Button");
 			}
+			Intent newIntent = new Intent(IntentRes.FRIEND_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
-			startActivity(new Intent(FRIEND_STRING));
+			startActivity(newIntent);
+			
 			
 		}else if (v == btnPref) {
 			if (SplashActivity.DEBUG){
 				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Preference Button");
 				}
+			Intent newIntent = new Intent(IntentRes.PREFERENCE_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
-			startActivity(new Intent(PREFERENCE_STRING));
+			startActivity(newIntent);
 			}
 		}
 

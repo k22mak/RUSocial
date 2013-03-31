@@ -8,7 +8,9 @@ import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
 import ca.ryerson.scs.rus.messenger.objects.Message;
+import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.HttpRequestAdapter;
+import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.MessageListAdapter;
 import ca.ryerson.scs.rus.util.ProcessList;
 import ca.ryerson.scs.rus.util.URLResource;
@@ -27,11 +29,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class MessageActivity extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
-	private final String SOCIALITE_MAP_STRING = "ca.ryerson.scs.rus.socialite.SOCIALITE_MAP";
-	private final String MESSAGE_STRING = "ca.ryerson.scs.rus.messenger.MESSAGES_LIST";
-	private final String PREFERENCE_STRING = "ca.ryerson.scs.rus.PREFERENCES";
-	private final String FRIEND_STRING = "ca.ryerson.scs.rus.messenger.FRIENDS_LIST";
-	
+
 	MessageListAdapter mla;
 	Context context;
 	
@@ -68,7 +66,7 @@ public class MessageActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HttpRequestAdapter.httpRequest(this, URLResource.LOGIN, json,
+		HttpRequestAdapter.httpRequest(this, URLResource.MESSAGES, json,
 				new MessageHandler());
 	}
 
@@ -76,67 +74,63 @@ public class MessageActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		if (v == btnHome) {
 			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Home button");
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Home button");
 			}
-			// TODO: Make it go back to the main page while finishing all other
-			// activities
-
-		} else if (v == btnMapView) {
+			// TODO: Make it go back to the main page while finishing all other activities
+			
+		}else if (v == btnMapView) {
 			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Map View Button");
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Map View Button");
 			}
+			Intent newIntent = new Intent(IntentRes.SOCIALITE_MAP_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
-			startActivity(new Intent(SOCIALITE_MAP_STRING));
-
-		} else if (v == btnMsg) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Message Button");
+			startActivity(newIntent);
+		
+		}else if (v == btnMsg) {
+			if (SplashActivity.DEBUG){
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Message Button");
 			}
+			Intent newIntent = new Intent(IntentRes.MESSAGE_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
-			startActivity(new Intent(MESSAGE_STRING));
-
-		} else if (v == btnFriend) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Friend Button");
+			startActivity(newIntent);
+		
+		}else if (v == btnFriend) {
+			if (SplashActivity.DEBUG){
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Friend Button");
 			}
+			Intent newIntent = new Intent(IntentRes.FRIEND_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
-			startActivity(new Intent(FRIEND_STRING));
-
-		} else if (v == btnPref) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Preference Button");
+			startActivity(newIntent);
+			
+			
+		}else if (v == btnPref) {
+			if (SplashActivity.DEBUG){
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "Preference Button");
+				}
+			Intent newIntent = new Intent(IntentRes.PREFERENCE_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
+			finish();
+			startActivity(newIntent);
 			}
-			finish();
-			startActivity(new Intent(PREFERENCE_STRING));
-		}
 	}
 	
 	private class MessageHandler implements HttpRequestAdapter.ResponseHandler {
 
 		@Override
 		public void postResponse(JSONObject response) {
-			ArrayList<Message> messageList = ProcessList.processMessages(response);
-			
+			final ArrayList<Message> messageList = ProcessList.processMessages(response);
 			mla = new MessageListAdapter(context, 0, messageList);
-			
 			ListView messageListView = (ListView) findViewById(R.id.list);
 			messageListView.setAdapter(mla);
-
-			// add an on click listener for each list item, to show topics for the Category
 			messageListView.setOnItemClickListener(new OnItemClickListener() {
 
 				public void onItemClick(AdapterView<?> av, View v, int position, long id) {
-					// onClick of a category, respective data is sent into the intent
-					// topic view for category will be shown
-					/* ======== START SINGLE MESSAGE ACTIVITY HERE ========*/
-					//Intent showTopics = new Intent(ActionsList.BULLETIN_SHOWTOPICS);
-					//showTopics.putExtra("catID", cla.getItem(position).getId());
-					//startActivity(showTopics); // start the ShowTopics view
+					Intent intent = new Intent(IntentRes.PROFILE_STRING);
+					intent.putExtra("username", messageList.get(position).getUsername());
+					startActivity(intent);
 				}
 			});
 			
