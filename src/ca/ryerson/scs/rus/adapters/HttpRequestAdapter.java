@@ -1,4 +1,4 @@
-package ca.ryerson.scs.rus.util;
+package ca.ryerson.scs.rus.adapters;
 
 import java.io.BufferedReader;
 import java.io.IOException;

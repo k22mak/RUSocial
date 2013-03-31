@@ -1,4 +1,4 @@
-package ca.ryerson.scs.rus.util;
+package ca.ryerson.scs.rus.adapters;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

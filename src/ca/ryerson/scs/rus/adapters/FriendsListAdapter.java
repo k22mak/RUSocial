@@ -1,10 +1,11 @@
-package ca.ryerson.scs.rus.util;
+package ca.ryerson.scs.rus.adapters;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.socialite.objects.User;
+import ca.ryerson.scs.rus.util.IntentRes;
 
 import android.content.Context;
 import android.content.Intent;

@@ -3,7 +3,7 @@ package ca.ryerson.scs.rus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ca.ryerson.scs.rus.util.HttpRequestAdapter;
+import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.util.URLResource;
 import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.os.Bundle;

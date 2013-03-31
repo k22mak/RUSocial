@@ -4,8 +4,8 @@ package ca.ryerson.scs.rus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.util.DefaultUser;
-import ca.ryerson.scs.rus.util.HttpRequestAdapter;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.URLResource;
 import android.location.Location;
