@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -33,7 +34,6 @@ public class HttpRequestAdapter {
 	private static JSONObject httpProcessRequest(Context context, String url,
 			JSONObject data) {
 		try {
-
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(url);
 			
@@ -75,11 +75,18 @@ public class HttpRequestAdapter {
 	private static JSONObject httpProcessRequest(Context context, String url) {
 
 		try {
-
+/*
+			String finalURL = url+"?user="+data.getString("user");
+			Log.i("FINALURL",""+finalURL);
 			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpPost httpPost = new HttpPost(url);
-
-			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpGet httpGet = new HttpGet(finalURL);
+*/			
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+			HttpGet httpGet = new HttpGet(url);
+			
+			httpGet.setHeader("Content-Type","application/json");
+			
+			HttpResponse httpResponse = httpClient.execute(httpGet);
 			HttpEntity httpEntity = httpResponse.getEntity();
 
 			if (httpEntity != null) {
@@ -130,8 +137,10 @@ public class HttpRequestAdapter {
 		
 		@Override
 		protected void onPreExecute() {
+			
 			dialog.setMessage("Connecting to Server");
 			dialog.show();
+			
 		}
 		
 		@Override

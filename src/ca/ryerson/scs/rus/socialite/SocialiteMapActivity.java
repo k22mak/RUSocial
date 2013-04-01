@@ -28,12 +28,14 @@ import com.google.android.gms.maps.MapFragment;
 
 
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class SocialiteMapActivity extends Activity implements LocationListener, OnClickListener {
-  static final LatLng HAMBURG = new LatLng(53.558, 9.927);
-  static final LatLng KIEL = new LatLng(53.551, 9.993);
+  static final LatLng USER1 = new LatLng(43.659, -79.387);
+  static final LatLng USER2 = new LatLng(43.659, -79.378);
   private GoogleMap map;
   LocationManager locationManager;
   private static final long MIN_TIME = 400;
@@ -72,6 +74,10 @@ public class SocialiteMapActivity extends Activity implements LocationListener, 
 	    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE, this);         
 
 
+	    Marker user1 = map.addMarker(new MarkerOptions().position(USER1)
+		        .title("USER1").snippet("Population: 4,137,400"));
+	    Marker user2 = map.addMarker(new MarkerOptions().position(USER2)
+		        .title("USER2").snippet("TESTESTESTETEST"));
 	    /*
 	    Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG)
 	        .title("Hamburg"));
@@ -146,6 +152,8 @@ public class SocialiteMapActivity extends Activity implements LocationListener, 
   @Override
   public void onLocationChanged(Location location) {
       LatLng defaultLocation = new LatLng(location.getLatitude(), location.getLongitude());
+      Log.i("LAT", ""+Double.toString(location.getLatitude()));
+      Log.i("LONG", ""+Double.toString(location.getLongitude()));
       CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(defaultLocation, 17);
       map.moveCamera(cameraUpdate);
       map.addMarker(new MarkerOptions().position(defaultLocation));

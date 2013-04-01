@@ -8,5 +8,6 @@ public static final String FRIENDS = "http://rusocial-rusocialbackend.rhcloud.co
 public static final String LOOK_AROUND = "";
 public static final String SEND_MESSAGES = "http://rusocial-rusocialbackend.rhcloud.com/send_user_receiver_messages.json";
 public static final String PREFERENCES = "";
+public static final String DUMMY = "http://rusocial-rusocialbackend.rhcloud.com/user_tables.json";
 
 }

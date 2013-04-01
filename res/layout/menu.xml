@@ -179,7 +179,7 @@
 				
 	            />
 			<TextView
-		            android:text="Look Around"
+		            android:text="Preferences"
 		            android:layout_width="wrap_content"
 					android:layout_height="60dp"
 		            android:textSize="30sp"
