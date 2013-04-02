@@ -39,4 +39,9 @@ public class ValidityCheck {
 		return false;
 	}
 	
+	public static String whiteSPace (String w){
+		w.replaceAll("\\s", "");
+		return w;
+		
+	}
 }
