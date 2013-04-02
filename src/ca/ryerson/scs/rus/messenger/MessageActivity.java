@@ -58,7 +58,9 @@ public class MessageActivity extends Activity implements OnClickListener {
 		btnMsg.setOnClickListener(this);
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
-
+		
+		//Bundle extras = getIntent().getExtras();
+/*
 		JSONObject json = new JSONObject();
 		try {
 			json.put("username", "mak");
@@ -66,7 +68,12 @@ public class MessageActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HttpRequestAdapter.httpRequest(this, URLResource.MESSAGES, json,
+*/
+		//this will be a GET
+		String URLfinal = "http://rusocial-rusocialbackend.rhcloud.com/messages" 
+				+ DefaultUser.getUser();
+		
+		HttpRequestAdapter.httpRequest(this, URLResource.MESSAGES,
 				new MessageHandler());
 	}
 

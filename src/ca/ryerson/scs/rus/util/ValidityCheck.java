@@ -39,4 +39,10 @@ public class ValidityCheck {
 		return false;
 	}
 	
+	public static String removeWhiteSpace (String w){
+		
+		w.replaceAll("\\s","");
+		return w;
+		
+	}
 }

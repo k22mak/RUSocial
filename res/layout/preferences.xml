@@ -177,7 +177,7 @@
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
-        		android:text="@string/TVAbout"
+        		android:text="@string/TVStatusMsg"
         		android:textColor="#9c9a9a"
       			android:textSize="15sp" />
        	 

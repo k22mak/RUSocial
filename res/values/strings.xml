@@ -25,7 +25,7 @@
 	<string name="TVName">Name</string>
 	<string name="TVPreference">>preferences</string>
 	<string name="TVProfile">>profile</string>
-	<string name="TVAbout">About</string>
+	<string name="TVStatusMsg">Status Message</string>
 	<string name="TVEmail">E-mail</string>
 	<string name="TVDate">March 12, 2013</string>
 	<string name="TVFriendsList">>friends list</string>
