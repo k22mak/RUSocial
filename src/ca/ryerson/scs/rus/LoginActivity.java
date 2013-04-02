@@ -94,7 +94,7 @@ public class LoginActivity extends Activity implements LocationListener,
 					
 			HttpRequestAdapter.httpRequest(this, URLfinal, json,
 					new LoginHandler());
-			startActivity(new Intent(IntentRes.MENU_STRING));
+			//startActivity(new Intent(IntentRes.MENU_STRING));
 
 		} else if (v == btnRegister) {
 			startActivity(new Intent(IntentRes.REGISTER_STRING));
