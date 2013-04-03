@@ -1,7 +1,12 @@
 package ca.ryerson.scs.rus.socialite;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -13,8 +18,14 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import ca.ryerson.scs.rus.R;
+import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
+import ca.ryerson.scs.rus.adapters.SocialiteListAdapter;
+import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.socialite.objects.UserBoxInfo;
 import ca.ryerson.scs.rus.socialite.objects.ModifiedFragment;
+import ca.ryerson.scs.rus.util.ProcessList;
+import ca.ryerson.scs.rus.util.URLResource;
+import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -28,6 +39,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +52,7 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 	private HashMap<String, UserBoxInfo> infoBoxMap;
 	private UserBoxInfo infoBox;
 	private Marker infoMarker;
+	private Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +61,18 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 
 		setContentView(R.layout.socialize_map);
 
+		context = this;
+
 		mapFragment = new ModifiedFragment();
 
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 
 		ft.add(R.id.map, mapFragment);
 		ft.commit();
+
+		String URLfinal = ValidityCheck.whiteSpace(URLResource.LOOK_AROUND
+				+ "?geoX=43.812" + "&geoY=-79.298");
+		HttpRequestArrayAdapter.httpRequest(this, URLfinal, new MapHandler());
 
 	}
 
@@ -74,18 +93,18 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 
 		infoBoxMap = new HashMap<String, UserBoxInfo>();
 
-		infoBox = new UserBoxInfo(new LatLng(43.656, -79.390),
-				"MARKER 1", new Date(), "MARKER 1");
+		infoBox = new UserBoxInfo(new LatLng(43.656, -79.390), "user1","a@b.com","weyaeww"
+				);
 		infoMarker = mapFragment.placeMarker(infoBox);
 		infoBoxMap.put(infoMarker.getId(), infoBox);
 
-		infoBox = new UserBoxInfo(new LatLng(43.653, -79.390), "MARKER 2",
-				new Date(1032, 5, 25), "Convention");
+		infoBox = new UserBoxInfo(new LatLng(43.656, -79.392), "user2","a@b.com","hello world"
+				);
 		infoMarker = mapFragment.placeMarker(infoBox);
 		infoBoxMap.put(infoMarker.getId(), infoBox);
 
-		infoBox = new UserBoxInfo(new LatLng(43.625, -79.390), "MARKER 3", new Date(
-				1032, 5, 25), "Event");
+		infoBox = new UserBoxInfo(new LatLng(43.658, -79.390), "user3","a@b.com","abcdefghijkl"
+				);
 		infoMarker = mapFragment.placeMarker(infoBox);
 		infoBoxMap.put(infoMarker.getId(), infoBox);
 
@@ -94,11 +113,11 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 
 					@Override
 					public void onInfoWindowClick(Marker marker) {
-						UserBoxInfo eventInfo = infoBoxMap.get(marker.getId());
+						UserBoxInfo userInfo = infoBoxMap.get(marker.getId());
 						Toast.makeText(
 								getBaseContext(),
-								"The date of " + eventInfo.getName() + " is "
-										+ eventInfo.getSomeDate(),
+								"The date of " + userInfo.getUsername() + " is "
+										+ userInfo.getEmail(),
 								Toast.LENGTH_LONG).show();
 					}
 
@@ -119,12 +138,12 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 			@Override
 			public View getInfoContents(Marker marker) {
 				Log.i("MARKER ID PRESSED", "" + marker.getId());
-				UserBoxInfo eventInfo = infoBoxMap.get(marker.getId());
+				UserBoxInfo userInfo = infoBoxMap.get(marker.getId());
 
 				String title = marker.getTitle();
 
 				TextView txtTitle = ((TextView) contents
-						.findViewById(R.id.txtInfoWindowTitle));
+						.findViewById(R.id.tvTitle));
 
 				if (title != null) {
 
@@ -145,9 +164,9 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 				}
 
 				TextView txtType = ((TextView) contents
-						.findViewById(R.id.txtInfoWindowEventType));
+						.findViewById(R.id.tvStatus));
 
-				txtType.setText(eventInfo.getType());
+				txtType.setText(userInfo.getStatus());
 
 				return contents;
 
@@ -187,6 +206,47 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 	@Override
 	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
 		// TODO Auto-generated method stub
+
+	}
+
+	private class MapHandler implements HttpRequestArrayAdapter.ResponseHandler {
+
+		@Override
+		public void postResponse(JSONArray response) {
+			JSONObject jd;
+			for (int i = 0; i < response.length(); i++) {
+				try {
+
+					jd = response.getJSONObject(i);
+
+					String username = jd.getString("username");
+					String email = jd.getString("email");
+					String status = jd.getString("status");
+					String geoX = jd.getString("geoX");
+					String geoY = jd.getString("geoY");
+
+					
+					
+					System.out.println(i + ") "
+							+ "Your socialite friend [USER: " + username + "]"
+							+ "[EMAIL: " + email + "]" + "[STATUS: " + status
+							+ "]" + "[LOCATION: " + geoY + ", " + geoX + " ]");
+
+					//
+					// alReturn.add(tempUser);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
+
+		@Override
+		public void postTimeout() {
+			// TODO Auto-generated method stub
+
+		}
 
 	}
 

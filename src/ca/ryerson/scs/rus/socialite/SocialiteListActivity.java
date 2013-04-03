@@ -13,6 +13,7 @@ import ca.ryerson.scs.rus.adapters.FriendsListAdapter;
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
 import ca.ryerson.scs.rus.adapters.MessageListAdapter;
+import ca.ryerson.scs.rus.adapters.SocialiteListAdapter;
 import ca.ryerson.scs.rus.messenger.objects.Message;
 import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.DefaultUser;
@@ -38,13 +39,15 @@ public class SocialiteListActivity extends Activity implements OnClickListener {
 	private Context context;
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
 	
-	FriendsListAdapter fla;
+	SocialiteListAdapter sla;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.socialite_list);
 
+		context = this;
+		
 		btnMapView = (ImageButton) findViewById(R.id.IBLook);
 		btnHome = (ImageButton) findViewById(R.id.IBHome);
 		btnMsg = (ImageButton) findViewById(R.id.IBMsg);
@@ -66,8 +69,7 @@ public class SocialiteListActivity extends Activity implements OnClickListener {
 		
 		
 		String URLfinal = ValidityCheck.whiteSpace(URLResource.LOOK_AROUND
-				+ "?geoX=1" + "&geoY=2");
-		// Log.i("URLFINAL",URLfinal+"a");
+				+ "?geoX=43.812" + "&geoY=-79.298");
 		HttpRequestArrayAdapter.httpRequest(this, URLfinal, new UpdateHandler());
 		
 	}
@@ -124,26 +126,14 @@ public class SocialiteListActivity extends Activity implements OnClickListener {
 		@Override
 		public void postResponse(JSONArray response) {
 			
-			try {
+			
+				ArrayList<User> userList = ProcessList.processLocations(response);
+				Log.i("TESTING LENGTH OF ARRAY", userList.size()+" ");
+				sla = new SocialiteListAdapter(context, 0, userList);
+				ListView userListView = (ListView) findViewById(R.id.list);
+				userListView.setAdapter(sla);
 				
-				Log.i("PARSING", "THE ARRAY"); 
-			     for(int i=0;i<response.length();i++){
-			      JSONObject jd = response.getJSONObject(i);
-			      String username = jd.getString("username");
-			      String email =  jd.getString("email");
-			      String status = jd.getString("status");
-			      String geoX = jd.getString("geoX");
-			      String geoY = jd.getString("geoY");
-			      System.out.println(i+") " + "Your socialite friend [USER: " + username + "]" + "[EMAIL: " + email + "]" + "[STATUS: " + status + "]" + "[LOCATION: " + geoY +", " +geoX + " ]"); 
-				
-			   }//FORLOOPEND
-			  }
-			catch (Exception ex)
-			   {
-			    Log.e("log_tag", "Error getJSONfromURL "+ex.toString());    
-			    Toast.makeText(context, "Service Currently Unavailable",
-						Toast.LENGTH_LONG).show();
-			  }
+			
 		}
 			
 			@Override

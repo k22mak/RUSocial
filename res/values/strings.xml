@@ -16,6 +16,7 @@
     <string name="BtnSave">Save</string>
     <string name="BtnUpload">Upload</string>
     <string name="BtnSend">Send</string>
+    <string name="BtnRequest">Add Friend</string>
     
     <!--  TextView Strings -->
 	<string name="TVLogin">>login</string>

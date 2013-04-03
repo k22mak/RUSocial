@@ -53,10 +53,10 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 		about.setText(user.getAbout());
 		
 		TextView longitude = (TextView) convertView.findViewById(R.id.SocialLong);
-		longitude.setText(Double.toString(user.getLongitude()));
+		longitude.setText("(Long: "+user.getLongitude());
 		
 		TextView latitude = (TextView) convertView.findViewById(R.id.SocialLat);
-		latitude.setText(Double.toString(user.getLatitude()));
+		latitude.setText(",Lat: "+user.getLatitude()+")");
 		
 		TextView profileBtn = (TextView) convertView.findViewById(R.id.BtnFLProfile);
 		TextView messageBtn = (TextView) convertView.findViewById(R.id.BtnFLMessage);
@@ -66,6 +66,8 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 			public void onClick(View view) {
 				Intent showProfile = new Intent(IntentRes.PROFILE_STRING);
 				showProfile.putExtra("username", user.getUsername());
+				showProfile.putExtra("email", user.getEmail());
+				showProfile.putExtra("status", user.getAbout());
 				context.startActivity(showProfile); // start the ShowPosts view
 			}
 		});
@@ -93,7 +95,6 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 				
 				HttpRequestAdapter.httpRequest(context, URLResource.REGISTER, json,
 						new FriendRequestHandler());
-				requestBtn.setText("Request Sent");
 				requestBtn.setClickable(false);
 			}
 		});

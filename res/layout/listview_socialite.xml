@@ -34,10 +34,12 @@
         android:layout_height="wrap_content"
         android:text="@string/TVName"
         android:gravity="center"
+        android:textSize="20sp"
         android:textColor="#0380db"/>
        
     <TextView
         android:id="@+id/SocialLong" 
+        android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="2dip"
@@ -45,7 +47,7 @@
         android:textColor="#0380db"/>
     
     <TextView
-        android:id="@+id/SocialLat" 
+        android:id="@+id/SocialLat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="2dip"

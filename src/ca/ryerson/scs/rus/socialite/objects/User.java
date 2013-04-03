@@ -1,11 +1,11 @@
 package ca.ryerson.scs.rus.socialite.objects;
 
 public class User {
-	private String username,picture, program, about,email;
-	private double latitude,longitude;
+	private String username,picture, program, about,email,latitude,longitude;
 	
 	
-	public User(String username, String program, String about, String picture, double latitude, double longitude) {
+	
+	public User(String username, String program, String about, String picture, String latitude, String longitude) {
 		this.username=username;
 		this.program=program;
 		this.about=about;
@@ -37,19 +37,19 @@ public class User {
 		about = newAbout;
 	}
 	
-	public void setLongitude(Double newLongitude){
+	public void setLongitude(String newLongitude){
 		longitude = newLongitude;
 	}
 	
-	public double getLongitude(){
+	public String getLongitude(){
 		return longitude;
 	}
 	
-	public void setLatitude(Double newLatitude){
+	public void setLatitude(String newLatitude){
 		latitude = newLatitude;
 	}
 	
-	public double getLatitude(){
+	public String getLatitude(){
 		return latitude;
 	}
 	

@@ -44,4 +44,9 @@ public class ValidityCheck {
 		return w;
 		
 	}
+	public static String removeWhiteSpace (String w){
+		w=w.replaceAll("\\s", "");
+		return w;
+		
+	}
 }

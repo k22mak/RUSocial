@@ -1,6 +1,5 @@
 package ca.ryerson.scs.rus;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
@@ -80,10 +79,11 @@ public class LoginActivity extends Activity implements LocationListener,
 				Log.i(TAG, evPassword.getText() + " ");
 			}
 			
-			String URLfinal = ValidityCheck.whiteSpace(URLResource.LOGIN
-					+ evUsername.getText().toString()
+			String URLfinal = ValidityCheck.removeWhiteSpace(URLResource.LOGIN);
+					/*+ evUsername.getText().toString()
 					+ "&password="
 					+ evPassword.getText().toString());
+					*/
 			HttpRequestAdapter.httpRequest(this, URLfinal,new LoginHandler());
 
 		} else if (v == btnRegister) {
@@ -99,6 +99,8 @@ public class LoginActivity extends Activity implements LocationListener,
 			// Log.i("RESPONSETESTETSTETESTJEIOTUEWIOTUEIOWTUTEIO",
 			// response.getString(JSON_STATUS));
 			// if (response.getString(JSON_STATUS)==""){
+			Log.i("LAT", ""+Double.toString(locationSend.getLatitude()));
+			Log.i("LONG", ""+Double.toString(locationSend.getLongitude()));
 			Intent intent = new Intent(IntentRes.MENU_STRING);
 			intent.putExtra("user", evUsername.getText().toString());
 			intent.putExtra("location", locationSend);

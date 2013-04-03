@@ -119,68 +119,66 @@
             
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.02"
+        		android:layout_weight="0.05"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
         		android:text="@string/TVName"
         		android:textColor="#9c9a9a"
-        		android:textSize="15sp" />
+        		android:textSize="22sp" />
         
         	<TextView
-        		android:id="@+id/EVName"
+        		android:id="@+id/TVName"
         		android:layout_width="fill_parent"
         		android:layout_weight="0.05"
         		android:layout_height="1dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
-        		android:textColorHint="#999999"
+        		android:textColor="#000000"
         		android:singleLine="true"
-        		android:hint="@string/EVName" />
+        		android:text="@string/EVName" />
        	 
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.02"
+        		android:layout_weight="0.05"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
         		android:text="@string/TVEmail"
         		android:textColor="#9c9a9a"
-        		android:textSize="15sp" />
+        		android:textSize="22sp" />
         	
         	<TextView
-				android:id="@+id/EVEmail"
+				android:id="@+id/TVEmail"
 				android:layout_width="fill_parent"
 				android:layout_height="1dip"
 				android:layout_marginLeft="25dip"
 				android:layout_marginRight="25dip"
 				android:layout_weight="0.05"
-				android:hint="@string/EVEmail"
-				android:inputType="textEmailAddress"
+				android:text="@string/EVEmail"
 				android:singleLine="true"
-				android:textColorHint="#999999" />
+				android:textColor="#000000" />
        	 
         	<TextView
         		android:layout_width="fill_parent"
-        		android:layout_weight="0.02"
+        		android:layout_weight="0.05"
         		android:layout_height="0dip"
         		android:layout_marginLeft="25dip"
         		android:layout_marginRight="25dip"
         		android:text="@string/TVAbout"
         		android:textColor="#9c9a9a"
-      			android:textSize="15sp" />
+      			android:textSize="22sp" />
        	 
       	  <TextView
-				android:id="@+id/EVBio"
+				android:id="@+id/TVBio"
 				android:layout_width="fill_parent"
 				android:layout_height="10dip"
 				android:layout_marginLeft="25dip"
 				android:layout_marginRight="25dip"
-				android:layout_weight="0.05"
-				android:hint="@string/EVBio"
-				android:inputType="textEmailAddress"
+				android:layout_weight="0.08"
+				android:text="@string/EVBio"
 				android:singleLine="true"
-				android:textColorHint="#999999" />
+				android:textColor="#000000" />
         
        	 <TextView 
         		android:id="@+id/BtnSave"
@@ -188,6 +186,20 @@
         		android:layout_weight="0.05"
         		android:layout_height="1dip"
         		android:text="@string/BtnSave"
+        		android:textSize="15sp"
+				android:background="@drawable/btn_gradient_yellow"
+        		android:gravity="center"
+        		android:textColor="#FFFFFF"
+        		android:layout_marginBottom="5dip"
+        		android:layout_marginLeft="25dip"
+        		android:layout_marginRight="25dip"
+        		android:clickable="true" />
+       	 <TextView 
+        		android:id="@+id/BtnRequest"
+				android:layout_width="fill_parent"
+        		android:layout_weight="0.05"
+        		android:layout_height="1dip"
+        		android:text="@string/BtnRequest"
         		android:textSize="15sp"
 				android:background="@drawable/btn_gradient_yellow"
         		android:gravity="center"

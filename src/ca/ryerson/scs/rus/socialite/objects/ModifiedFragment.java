@@ -15,7 +15,7 @@ public class ModifiedFragment extends MapFragment {
 
 	   .position(eventInfo.getLatLong())
 
-	   .title(eventInfo.getName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.btn_lookclr)));
+	   .title(eventInfo.getUsername()).icon(BitmapDescriptorFactory.fromResource(R.drawable.btn_lookclr)));
 
 	  return m;
 
