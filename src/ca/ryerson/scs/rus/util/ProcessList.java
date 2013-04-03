@@ -29,8 +29,8 @@ public class ProcessList {
 	}
 	
 	public static ArrayList<User> processFriends(JSONObject response){
-		/*
-		ArrayList<Category> categories = new ArrayList<Category>();
+		
+		/*ArrayList<JSon> categories = new ArrayList<Category>();
 
 		try {
 			// parse JSONObject and add each category to the list of categories

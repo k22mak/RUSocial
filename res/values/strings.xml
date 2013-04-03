@@ -25,7 +25,7 @@
 	<string name="TVName">Name</string>
 	<string name="TVPreference">>preferences</string>
 	<string name="TVProfile">>profile</string>
-	<string name="TVAbout">About</string>
+	<string name="TVAbout">Status Update</string>
 	<string name="TVEmail">E-mail</string>
 	<string name="TVDate">March 12, 2013</string>
 	<string name="TVFriendsList">>friends list</string>
@@ -61,7 +61,7 @@
     <string name="EVConfirmPassword">Confirm Password</string>
     <string name="EVEmail">E-mail</string>
     <string name="EVName">Name</string>
-    <string name="EVBio">Enter your biography here</string>
+    <string name="EVBio">Whats happening?</string>
     
     <!--  Checkbox Strings -->
     <string name="CBSave">Save username and password</string>

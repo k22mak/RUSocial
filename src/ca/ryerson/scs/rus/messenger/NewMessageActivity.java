@@ -1,14 +1,18 @@
 package ca.ryerson.scs.rus.messenger;
 
+import java.util.Calendar;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
+//import ca.ryerson.scs.rus.Preferences.UpdateHandler;
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.URLResource;
+import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,9 +29,9 @@ import android.widget.TextView;
 public class NewMessageActivity extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
 	private TextView btnSend, tvUsername;
-	private EditText evMessage;
+	private EditText evMessage, evRep;
 
-	String receiverString;
+	//String receiverString;
 	Context context;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,9 +42,9 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		context = this;
 
 		Intent intent = getIntent();
-		receiverString = intent.getStringExtra("usernameRequest");
-		tvUsername = (TextView) findViewById(R.id.TVName);
-		tvUsername.setText(receiverString);
+		//receiverString = intent.getStringExtra("usernameRequest");
+		//tvUsername = (TextView) findViewById(R.id.TVName);
+		//tvUsername.setText(receiverString);
 
 		btnMapView = (ImageButton) findViewById(R.id.IBLook);
 		btnHome = (ImageButton) findViewById(R.id.IBHome);
@@ -49,6 +53,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
 		btnSend = (TextView) findViewById(R.id.BtnSend);
 		evMessage = (EditText) findViewById(R.id.EVEmail);
+		evRep = (EditText) findViewById(R.id.EVEmail);
 
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
@@ -121,15 +126,28 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 			}
 
 			if (evMessage.getText().toString() != "") {
+						
+				//needs  user, receiver, message, date
+				String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+				mydate.replaceAll("\\s","");
+				String URLfinal = ValidityCheck.whiteSpace(URLResource.SEND_MESSAGES
+						+ "?user=" + DefaultUser.getUser() + "&receiver=" + evRep.getText().toString() + "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
+						
+				System.out.println(URLfinal);
+				
+				
+
+				// Log.i("URLFINAL",URLfinal+"a");				
+				
 				try {
 					JSONObject json = new JSONObject();
 					json.put("username", DefaultUser.getUser());
-					json.put("receiver", receiverString);
+					//json.put("receiver", receiverString);
+					json.put("receiver", evRep.getText().toString());
 					json.put("message", evMessage.getText().toString());
+					json.put("date",mydate);
 
-					HttpRequestAdapter.httpRequest(context,
-							URLResource.SEND_MESSAGES, json,
-							new MessageRequestHandler());
+					HttpRequestAdapter.httpRequest(this, URLfinal, json, new UpdateHandler());
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -143,7 +161,37 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 
 	}
 
-	private class MessageRequestHandler implements
+	private class UpdateHandler implements HttpRequestAdapter.ResponseHandler{
+		@Override
+		public void postResponse(JSONObject response) {
+
+			try {
+				if (response.getString("Status").equals("Success")) {
+					Toast.makeText(context, response.getString("Status"),
+							Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(context, "Service Currently Unavailable",
+							Toast.LENGTH_LONG).show();
+				}
+				
+				finish();
+			}
+
+			catch (JSONException e) {
+				Toast.makeText(context, "Service Currently Unavailable",
+						Toast.LENGTH_LONG).show();
+			}
+		}
+
+		@Override
+		public void postTimeout() {
+			Toast.makeText(context, "Connection timed out", Toast.LENGTH_LONG)
+					.show();
+		}
+	}
+	
+	
+	/*private class MessageRequestHandler implements
 			HttpRequestAdapter.ResponseHandler {
 
 		@Override
@@ -159,6 +207,6 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 
 		}
 
-	}
+	}*/
 
 }

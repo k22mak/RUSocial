@@ -28,7 +28,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MessageActivity extends Activity implements OnClickListener {
-	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
+	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend, btnNewMail;
 
 	MessageListAdapter mla;
 	Context context;
@@ -46,18 +46,21 @@ public class MessageActivity extends Activity implements OnClickListener {
 		btnMsg = (ImageButton) findViewById(R.id.IBMsg);
 		btnPref = (ImageButton) findViewById(R.id.IBPref);
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
+		btnNewMail = (ImageButton) findViewById(R.id.IBNewMail);
 
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
 		btnMsg.setFocusable(true);
 		btnPref.setFocusable(true);
 		btnFriend.setFocusable(true);
+		btnNewMail.setFocusable(true);
 
 		btnMapView.setOnClickListener(this);
 		btnHome.setOnClickListener(this);
 		btnMsg.setOnClickListener(this);
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
+		btnNewMail.setOnClickListener(this);
 
 		JSONObject json = new JSONObject();
 		try {
@@ -115,6 +118,16 @@ public class MessageActivity extends Activity implements OnClickListener {
 			finish();
 			startActivity(newIntent);
 			}
+		else if (v == btnNewMail) {
+			if (SplashActivity.DEBUG){
+				if (SplashActivity.DEBUG)Log.i(MenuActivity.TAG, "New Mail Button");
+				}
+			Intent newIntent = new Intent(IntentRes.NEW_MESSAGE_STRING);
+			newIntent.putExtra("username", DefaultUser.getUser());
+			finish();
+			startActivity(newIntent);
+			}
+		
 	}
 	
 	private class MessageHandler implements HttpRequestAdapter.ResponseHandler {
