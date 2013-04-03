@@ -63,6 +63,25 @@
         	android:src="@drawable/btn_prefs4" />
     
     </LinearLayout>
+   
+	<!-- JUST A FILLER TO TEST OUT THE NEW MESSAGE ACTIVITY -->
+	<LinearLayout
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="5dip"
+		android:layout_marginBottom="5dip" 
+		android:orientation="vertical"
+		android:background="@android:color/transparent"
+		android:gravity="center"
+		>
+    	<ImageButton
+        	android:id="@+id/IBNewMail"
+        	android:layout_width="60dip"
+        	android:layout_height="40dip"
+			android:background="@android:color/transparent"
+			android:contentDescription="@string/IBPref"
+        	android:src="@drawable/mailicon" />
+    	</LinearLayout>
 
 	<ListView 
          android:id="@+id/list" 
