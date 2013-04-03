@@ -53,7 +53,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
 		btnSend = (TextView) findViewById(R.id.BtnSend);
 		evMessage = (EditText) findViewById(R.id.EVEmail);
-		evRep = (EditText) findViewById(R.id.EVEmail);
+		evRep = (EditText) findViewById(R.id.EVReceiver);
 
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
@@ -147,7 +147,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 					json.put("message", evMessage.getText().toString());
 					json.put("date",mydate);
 
-					HttpRequestAdapter.httpRequest(this, URLfinal, json, new UpdateHandler());
+					HttpRequestAdapter.httpRequest(this, URLfinal, new UpdateHandler());
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
