@@ -84,7 +84,6 @@ public class HttpRequestAdapter {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpGet httpGet = new HttpGet(url);
 			
-			httpGet.setHeader("Content-Type","application/json");
 			
 			HttpResponse httpResponse = httpClient.execute(httpGet);
 			HttpEntity httpEntity = httpResponse.getEntity();

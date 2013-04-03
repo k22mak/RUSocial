@@ -62,11 +62,11 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 
 		super.onStart();
 
-		setUpEventSpots();
+		setUpUsers();
 
 	}
 
-	private void setUpEventSpots() {
+	private void setUpUsers() {
 
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		locationManager.requestLocationUpdates(

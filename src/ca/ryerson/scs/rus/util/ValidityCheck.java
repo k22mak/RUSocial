@@ -39,8 +39,8 @@ public class ValidityCheck {
 		return false;
 	}
 	
-	public static String whiteSPace (String w){
-		w.replaceAll("\\s", "");
+	public static String whiteSpace (String w){
+		w=w.replaceAll("\\s", "%20");
 		return w;
 		
 	}

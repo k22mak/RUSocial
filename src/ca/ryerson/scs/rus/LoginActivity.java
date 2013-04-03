@@ -7,6 +7,7 @@ import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.URLResource;
+import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -78,23 +79,12 @@ public class LoginActivity extends Activity implements LocationListener,
 				Log.i(TAG, evUsername.getText() + " ");
 				Log.i(TAG, evPassword.getText() + " ");
 			}
-			JSONObject json = new JSONObject();
-			try {
-				json.put("user", evUsername.getText().toString());
-				json.put("password", evPassword.getText().toString());
-				// json.put("password", evPassword.getText().toString());
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			String URLfinal = "http://rusocial-rusocialbackend.rhcloud.com/user_tables.json?user="
+			
+			String URLfinal = ValidityCheck.whiteSpace(URLResource.LOGIN
 					+ evUsername.getText().toString()
 					+ "&password="
-					+ evPassword.getText().toString();
-					
-			HttpRequestAdapter.httpRequest(this, URLfinal, json,
-					new LoginHandler());
-			//startActivity(new Intent(IntentRes.MENU_STRING));
+					+ evPassword.getText().toString());
+			HttpRequestAdapter.httpRequest(this, URLfinal,new LoginHandler());
 
 		} else if (v == btnRegister) {
 			startActivity(new Intent(IntentRes.REGISTER_STRING));
