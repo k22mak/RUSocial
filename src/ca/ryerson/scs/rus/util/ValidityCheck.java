@@ -49,4 +49,10 @@ public class ValidityCheck {
 		return w;
 		
 	}
+	
+	public static boolean emptyCheck (String ec){
+		if (ec.equals(""))
+			return true;
+		return false;
+	}
 }

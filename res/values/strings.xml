@@ -37,6 +37,7 @@
 	<string name="TVFLProfile">Profile</string>
 	<string name="TVMsg">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</string>
 	<string name="TVErrPassword">Your passwords do not match. Please re-enter your password.</string>
+	<string name="TVErrPassword2">You did not enter a password.</string>
 	<string name="TVErrUsername">Your username must be at least 3 characters long.</string>
 	<string name="TVErrEmail">You must use a valid Ryerson email (ryerson.ca or scs.ryerson.ca)</string>
 	<string name="TVLookAround">Look Around</string>
