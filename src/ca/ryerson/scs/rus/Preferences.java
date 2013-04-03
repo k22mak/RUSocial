@@ -108,12 +108,18 @@ public class Preferences extends Activity implements OnClickListener {
 			String URLfinal = ValidityCheck.whiteSpace(URLResource.PREFERENCES
 					+ "?status_message=" + evStatus.getText().toString()
 					+ "&user=" + DefaultUser.getUser());
+
 			// Log.i("URLFINAL",URLfinal+"a");
+
 			HttpRequestAdapter.httpRequest(this, URLfinal, new UpdateHandler());
 		}
 	}
+	
 
-	private class UpdateHandler implements HttpRequestAdapter.ResponseHandler {
+	
+	
+
+	private class UpdateHandler implements HttpRequestAdapter.ResponseHandler{
 		@Override
 		public void postResponse(JSONObject response) {
 
@@ -125,8 +131,11 @@ public class Preferences extends Activity implements OnClickListener {
 					Toast.makeText(context, "Service Currently Unavailable",
 							Toast.LENGTH_LONG).show();
 				}
+				
 				finish();
-			} catch (JSONException e) {
+			}
+
+			catch (JSONException e) {
 				Toast.makeText(context, "Service Currently Unavailable",
 						Toast.LENGTH_LONG).show();
 			}

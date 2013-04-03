@@ -100,6 +100,7 @@ public class HttpRequestAdapter {
 				}
 				Log.i("RESPONSEGET", fullResponse.toString());
 				return (new JSONObject(fullResponse.toString()));
+
 			}
 
 		} catch (ClientProtocolException e) {
@@ -167,6 +168,7 @@ public class HttpRequestAdapter {
 		public void postResponse(JSONObject response);
 
 		public void postTimeout();
+
 	}
 }
 
