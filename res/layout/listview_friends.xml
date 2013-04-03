@@ -22,17 +22,31 @@
        android:layout_width="0dip"
        android:layout_weight="1"
        android:layout_height="wrap_content">
-       
+     <RelativeLayout
+       android:orientation="horizontal"
+       android:layout_height="wrap_content"
+       android:layout_width="fill_parent">  
     <TextView 
-        android:id="@+id/FriendUsername"
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TVName"
         android:gravity="center"
         android:textColor="#0380db"/>
     
+    <TextView
+	        android:id="@+id/tvState"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:gravity="center"
+	        android:text="@string/TVDate"
+	        android:layout_marginRight="5dip"
+	        android:textColor="#0380db" />
+	    
+    </RelativeLayout>
      <TextView 
-        android:id="@+id/FriendAbout"
+        android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TVMsg"

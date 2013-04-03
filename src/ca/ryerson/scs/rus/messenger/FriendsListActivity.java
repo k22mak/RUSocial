@@ -2,6 +2,7 @@ package ca.ryerson.scs.rus.messenger;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ca.ryerson.scs.rus.MenuActivity;
@@ -9,11 +10,14 @@ import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
 import ca.ryerson.scs.rus.adapters.FriendsListAdapter;
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
+import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
+import ca.ryerson.scs.rus.messenger.objects.Friend;
 import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.ProcessList;
 import ca.ryerson.scs.rus.util.URLResource;
+import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -56,17 +60,10 @@ public class FriendsListActivity extends Activity implements OnClickListener {
 		btnMsg.setOnClickListener(this);
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
-
-		JSONObject json = new JSONObject();
-		try {
-			Intent intent = getIntent();
-			json.put("username", intent.getStringExtra("username"));
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		HttpRequestAdapter.httpRequest(this, URLResource.MESSAGES, json,
-				new FriendsHandler());
+		
+		String URLfinal = ValidityCheck.removeWhiteSpace(URLResource.FRIENDS+"?user="+DefaultUser.getUser());
+		HttpRequestArrayAdapter.httpRequest(context, URLfinal, new FriendsHandler());
+		
 	}
 
 	@Override
@@ -116,21 +113,24 @@ public class FriendsListActivity extends Activity implements OnClickListener {
 			}
 	}
 
-	private class FriendsHandler implements HttpRequestAdapter.ResponseHandler {
+	private class FriendsHandler implements HttpRequestArrayAdapter.ResponseHandler {
 
 		@Override
-		public void postResponse(JSONObject response) {
-			final ArrayList<User> friendsList = ProcessList
+		public void postResponse(JSONArray response) {
+			final ArrayList<Friend> friendsList = ProcessList
 					.processFriends(response);
+			
 			fla = new FriendsListAdapter(context, 0, friendsList);
 			ListView messageListView = (ListView) findViewById(R.id.list);
 			messageListView.setAdapter(fla);
+			
 		}
 
 		@Override
 		public void postTimeout() {
 			// TODO Auto-generated method stub
 		}
+
 
 	}
 

@@ -2,6 +2,7 @@ package ca.ryerson.scs.rus.adapters;
 
 import java.util.ArrayList;
 import ca.ryerson.scs.rus.R;
+import ca.ryerson.scs.rus.messenger.objects.Friend;
 import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.IntentRes;
 import android.content.Context;
@@ -12,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class FriendsListAdapter extends ArrayAdapter<User> {
+public class FriendsListAdapter extends ArrayAdapter<Friend> {
 
 	private LayoutInflater inflater;
-	ArrayList<User> users = new ArrayList<User>();
+	ArrayList<Friend> users = new ArrayList<Friend>();
 	Context context;
 	
 	public FriendsListAdapter(Context context, int textViewResourceId,
-			ArrayList<User> users) {
+			ArrayList<Friend> users) {
 		super(context, textViewResourceId, users);
 		this.users = users;
 		this.inflater = LayoutInflater.from(context);
@@ -29,17 +30,20 @@ public class FriendsListAdapter extends ArrayAdapter<User> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		final User user = getItem(position);
+		final Friend user = getItem(position);
 
 		if (convertView==null){
 			convertView =  inflater.inflate(R.layout.listview_friends, null);
 		}
 		
-		TextView username = (TextView) convertView.findViewById(R.id.FriendUsername);
+		TextView username = (TextView) convertView.findViewById(R.id.tvUsername);
 		username.setText(user.getUsername());
 		
-		TextView about = (TextView) convertView.findViewById(R.id.FriendAbout);
-		about.setText(user.getAbout());
+		TextView status = (TextView) convertView.findViewById(R.id.tvStatus);
+		status.setText(user.getStatus());
+		
+		TextView state = (TextView) convertView.findViewById(R.id.tvState);
+		state.setText(user.getState());
 		
 		TextView profileBtn = (TextView) convertView.findViewById(R.id.BtnFLProfile);
 		TextView messageBtn = (TextView) convertView.findViewById(R.id.BtnFLMessage);
@@ -48,7 +52,9 @@ public class FriendsListAdapter extends ArrayAdapter<User> {
 			public void onClick(View view) {
 				Intent showProfile = new Intent(IntentRes.PROFILE_STRING);
 				showProfile.putExtra("username", user.getUsername());
-				context.startActivity(showProfile); // start the ShowPosts view
+				showProfile.putExtra("email", user.getEmail());
+				showProfile.putExtra("status", user.getStatus());
+				context.startActivity(showProfile);
 			}
 		});
 		
