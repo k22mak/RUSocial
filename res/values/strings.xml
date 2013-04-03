@@ -63,6 +63,8 @@
     <string name="EVEmail">E-mail</string>
     <string name="EVName">Name</string>
     <string name="EVBio">Whats happening?</string>
+    <string name="EVBody">Write your message here</string>
+    <string name="EVMsg">Writemsghere</string>
     
     <!--  Checkbox Strings -->
     <string name="CBSave">Save username and password</string>
