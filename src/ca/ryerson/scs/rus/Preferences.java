@@ -112,15 +112,9 @@ public class Preferences extends Activity implements OnClickListener {
 					+ "?status_message=" + evStatus.getText().toString()
 					+ "&user=" + DefaultUser.getUser());
 
-			// Log.i("URLFINAL",URLfinal+"a");
-
 			HttpRequestAdapter.httpRequest(this, URLfinal, new UpdateHandler());
 		}
 	}
-	
-
-	
-	
 
 	private class UpdateHandler implements HttpRequestAdapter.ResponseHandler{
 		@Override

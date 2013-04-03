@@ -59,7 +59,6 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 		latitude.setText(",Lat: "+user.getLatitude()+")");
 		
 		TextView profileBtn = (TextView) convertView.findViewById(R.id.BtnFLProfile);
-		TextView messageBtn = (TextView) convertView.findViewById(R.id.BtnFLMessage);
 		final TextView requestBtn = (TextView) convertView.findViewById(R.id.BtnFLFriend);
 		
 		profileBtn.setOnClickListener(new View.OnClickListener() {
@@ -70,15 +69,7 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 				showProfile.putExtra("status", user.getAbout());
 				context.startActivity(showProfile); 
 			}
-		});
-		
-		messageBtn.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Intent showProfile = new Intent(IntentRes.NEW_MESSAGE_STRING);
-				showProfile.putExtra("usernameRequest", user.getUsername());
-				context.startActivity(showProfile);
-			}
-		});
+		});		
 		
 		requestBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
