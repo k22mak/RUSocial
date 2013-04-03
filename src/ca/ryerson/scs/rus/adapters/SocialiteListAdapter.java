@@ -68,7 +68,7 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 				showProfile.putExtra("username", user.getUsername());
 				showProfile.putExtra("email", user.getEmail());
 				showProfile.putExtra("status", user.getAbout());
-				context.startActivity(showProfile); // start the ShowPosts view
+				context.startActivity(showProfile); 
 			}
 		});
 		
@@ -76,7 +76,7 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 			public void onClick(View view) {
 				Intent showProfile = new Intent(IntentRes.NEW_MESSAGE_STRING);
 				showProfile.putExtra("usernameRequest", user.getUsername());
-				context.startActivity(showProfile); // start the ShowPosts view
+				context.startActivity(showProfile);
 			}
 		});
 		
