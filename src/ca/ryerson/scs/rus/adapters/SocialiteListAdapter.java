@@ -13,6 +13,7 @@ import ca.ryerson.scs.rus.util.URLResource;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +85,9 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 					e.printStackTrace();
 				}
 				
-				HttpRequestAdapter.httpRequest(context, URLResource.REGISTER, json,
+				String URLfinal = URLResource.FRIEND_REQUEST+"?user="+DefaultUser.getUser()+"&friend="+user.getUsername()+"&state=pending";
+				Log.i("THIS IS THE FREIEND REQUEST STRING",""+URLfinal);
+				HttpRequestAdapter.httpRequest(context, URLfinal,
 						new FriendRequestHandler());
 				requestBtn.setClickable(false);
 			}
