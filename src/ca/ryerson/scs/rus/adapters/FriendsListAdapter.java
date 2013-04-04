@@ -67,7 +67,6 @@ public class FriendsListAdapter extends ArrayAdapter<Friend> {
 			}
 		});
 		
-		
 		/*
 		ImageView avatar = (ImageView) convertView.findViewById(R.id.FriendAvatar);
 		byte[] decodedString = Base64.decode(user.getPicture(), Base64.DEFAULT);
