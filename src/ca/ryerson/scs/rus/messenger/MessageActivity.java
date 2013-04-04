@@ -139,9 +139,12 @@ public class MessageActivity extends Activity implements OnClickListener {
 			messageListView.setOnItemClickListener(new OnItemClickListener() {
 
 				public void onItemClick(AdapterView<?> av, View v, int position, long id) {
+					
+					/*
 					Intent intent = new Intent(IntentRes.PROFILE_STRING);
 					intent.putExtra("username", messageList.get(position).getUsername());
 					startActivity(intent);
+					*/
 				}
 			});
 			

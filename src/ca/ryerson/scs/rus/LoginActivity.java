@@ -159,17 +159,15 @@ public class LoginActivity extends Activity implements LocationListener,
 		public void postResponse(JSONArray response) {
 			
 			try {	
-			Log.i("PARSING", "THE ARRAY"); 
+			Log.i("PARSING", ""+response.length()); 
 			
-						if (response.length() == 3){
+						if (response.length() == 4){
 			            JSONObject jd0 = response.getJSONObject(0);
-			            String num_friends = jd0.getString("num_friends");
-			            
-			            JSONObject jd1 = response.getJSONObject(1);
+			            JSONObject jd1 = response.getJSONObject(2);
+			            JSONObject jd2 = response.getJSONObject(3);
+			            String num_friends = jd2.getString("num_friends_online");
 			            String num_messages = jd1.getString("num_messages");
-			            
-			            JSONObject jd2 = response.getJSONObject(2);
-			            String num_online = jd2.getString("num_online");
+			            String num_online = jd0.getString("num_online_all");
 			            
 			            Toast.makeText(context, "Successful Login",
 								Toast.LENGTH_LONG).show();

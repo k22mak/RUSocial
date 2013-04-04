@@ -7,6 +7,7 @@ public class Message {
 	
 	private String username,message, date;
 	private static final int MESSAGE_LENGTH = 20;
+	private boolean isExpanded;
 	
 	
 	
@@ -14,6 +15,7 @@ public class Message {
 		this.username=username;
 		this.message=message;
 		this.date = date;
+		this.isExpanded = false;
 	}
 	
 	public String getUsername(){
@@ -36,6 +38,17 @@ public class Message {
 	}
 	public void setDate(String newDate){
 		date = newDate;
+	}
+	public boolean isExpanded(){
+		return isExpanded;
+	}
+	public void changeExpanded(){
+		if (isExpanded){
+			isExpanded = false;
+		}else{
+			isExpanded = true;
+		}
+			
 	}
 
 
