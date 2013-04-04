@@ -48,6 +48,7 @@
 	<string name="TVLat">Lat coord )</string>
 	<string name="TVNewMessage">>new message</string>
 	<string name="TVProfile">>profile</string>
+	<string name="TVUpdateStatus">Update Status</string>
 	
 	<!--  Content Description Strings -->
 	<string name="CDDefault">default</string>

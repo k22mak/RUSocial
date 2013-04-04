@@ -52,60 +52,10 @@
             android:layout_marginLeft="20dp"
             android:gravity="right"
             android:paddingRight="10dp"
-            android:text="10 New Messages"
             />
     </LinearLayout>
 
-	<LinearLayout 
-        android:id="@+id/LLFriends"
-        android:layout_weight="0.18"
-        android:layout_width="fill_parent"
-        android:layout_height="1dip"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:layout_marginBottom="10dip"
-        >
-        
-		<RelativeLayout
-		    android:layout_width="fill_parent"
-			android:layout_height="60dp"
-			android:orientation="horizontal"
-			android:background="@drawable/btn_menu_main"
-			>
-			<ImageView
-	            android:layout_width="wrap_content"
-				android:layout_height="60dp"
-				android:src="@drawable/btn_menu_lookaround"
-				android:layout_marginLeft="30dp"
-				android:contentDescription="@string/CDDefault"
-				
-	            />
-			<TextView
-		            android:text="@string/TVFriends"
-		            android:layout_width="wrap_content"
-					android:layout_height="60dp"
-		            android:textSize="30sp"
-		            android:layout_centerHorizontal="true"
-		            android:gravity="center"
-		            android:textColor="#ffffff"
-		            android:layout_marginLeft="40dp"
-		            />
-        </RelativeLayout>
-        <TextView
-            android:id="@+id/TVFriendsStatus"
-            android:background="@drawable/btn_menu_sub"
-            android:textColor="#ffffff"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="right"
-            android:paddingRight="10dp"
-            android:text="10 New Messages"
-            />
-    </LinearLayout>
-
-	<LinearLayout 
+    <LinearLayout 
         android:id="@+id/LLMessages"
         android:layout_weight="0.18"
         android:layout_width="fill_parent"
@@ -154,6 +104,55 @@
     </LinearLayout>
     
 	<LinearLayout 
+        android:id="@+id/LLFriends"
+        android:layout_weight="0.18"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        >
+        
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:orientation="horizontal"
+			android:background="@drawable/btn_menu_main"
+			>
+			<ImageView
+	            android:layout_width="wrap_content"
+				android:layout_height="60dp"
+				android:src="@drawable/btn_menu_lookaround"
+				android:layout_marginLeft="30dp"
+				android:contentDescription="@string/CDDefault"
+				
+	            />
+			<TextView
+		            android:text="@string/TVFriends"
+		            android:layout_width="wrap_content"
+					android:layout_height="60dp"
+		            android:textSize="30sp"
+		            android:layout_centerHorizontal="true"
+		            android:gravity="center"
+		            android:textColor="#ffffff"
+		            android:layout_marginLeft="40dp"
+		            />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/TVFriendsStatus"
+            android:background="@drawable/btn_menu_sub"
+            android:textColor="#ffffff"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="10 New Messages"
+            />
+    </LinearLayout>
+    
+	<LinearLayout 
         android:id="@+id/LLPrefs"
         android:layout_weight="0.18"
         android:layout_width="fill_parent"
@@ -179,7 +178,7 @@
 				
 	            />
 			<TextView
-		            android:text="Update Status"
+		            android:text="@string/TVUpdateStatus"
 		            android:layout_width="wrap_content"
 					android:layout_height="60dp"
 		            android:textSize="30sp"

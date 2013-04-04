@@ -26,7 +26,7 @@ public class SplashActivity extends Activity {
 		Thread timer = new Thread() {
 			public void run() {
 				try {
-					sleep(2000);
+					sleep(500);
 
 					ConnectivityManager connectionManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 					NetworkInfo netInfo = connectionManager
