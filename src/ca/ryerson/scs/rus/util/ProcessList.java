@@ -63,7 +63,7 @@ public class ProcessList {
 			try {
 				jd = response.getJSONObject(i);
 				tempUser = new User(jd.getString("username"), "",
-						jd.getString("status"), "", jd.getString("geoX"),
+						jd.getString("status_message"), "", jd.getString("geoX"),
 						jd.getString("geoY"));
 				alReturn.add(tempUser);
 			} catch (JSONException e) {

@@ -2,6 +2,7 @@ package ca.ryerson.scs.rus.messenger;
 
 import java.util.Calendar;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ca.ryerson.scs.rus.MenuActivity;
@@ -9,6 +10,7 @@ import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
 //import ca.ryerson.scs.rus.Preferences.UpdateHandler;
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
+import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.URLResource;
@@ -28,17 +30,17 @@ import android.widget.TextView;
 
 public class NewMessageActivity extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
-	private TextView btnSend;
-	private EditText evMessage, evRep;
+	private TextView btnSend,tvName;
+	private EditText evMessage;
 
-	Intent intent = getIntent();
+	Intent intent;
 	Context context;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.new_message);
-
+		intent = getIntent();
 		context = this;
 
 		btnMapView = (ImageButton) findViewById(R.id.IBLook);
@@ -47,15 +49,18 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		btnPref = (ImageButton) findViewById(R.id.IBPref);
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
 		btnSend = (TextView) findViewById(R.id.BtnSend);
-		evMessage = (EditText) findViewById(R.id.EVEmail);
-		evRep = (EditText) findViewById(R.id.EVReceiver);
-
+		evMessage = (EditText) findViewById(R.id.EVMessage);
+		tvName = (TextView) findViewById(R.id.TVReceiver);
+		
+		tvName.setText(intent.getStringExtra("receiver"));
+		
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
 		btnMsg.setFocusable(true);
 		btnPref.setFocusable(true);
 		btnFriend.setFocusable(true);
 		btnSend.setFocusable(true);
+		
 
 		btnMapView.setOnClickListener(this);
 		btnHome.setOnClickListener(this);
@@ -120,12 +125,12 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 					Log.i(MenuActivity.TAG, "Send Button");
 			}
 
-			if ((evMessage.getText().toString() != "") || (evRep.getText().toString() != "")) {
+			if ((evMessage.getText().toString() != "")) {
 						
 				String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 				mydate.replaceAll("\\s","");
 				String URLfinal = ValidityCheck.whiteSpace(URLResource.SEND_MESSAGES
-						+ "?sender=" + DefaultUser.getUser() + "&receiver=" + intent.getStringExtra("receiver")+ "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
+						+ "?sender=" + DefaultUser.getUser() + "&user=" + intent.getStringExtra("receiver")+ "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
 						
 				System.out.println(URLfinal);
 
@@ -134,11 +139,11 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 				try {
 					JSONObject json = new JSONObject();
 					json.put("username", DefaultUser.getUser());
-					json.put("receiver", evRep.getText().toString());
+					json.put("receiver", tvName.getText().toString());
 					json.put("message", evMessage.getText().toString());
 					json.put("date",mydate);
 
-					HttpRequestAdapter.httpRequest(this, URLfinal, new UpdateHandler());
+					HttpRequestArrayAdapter.httpRequest(this, URLfinal, new UpdateHandler());
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -152,13 +157,13 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 
 	}
 
-	private class UpdateHandler implements HttpRequestAdapter.ResponseHandler{
+	private class UpdateHandler implements HttpRequestArrayAdapter.ResponseHandler{
 		@Override
-		public void postResponse(JSONObject response) {
+		public void postResponse(JSONArray response) {
 
 			try {
-				if (response.getString("Status").equals("Success")) {
-					Toast.makeText(context, response.getString("Status"),
+				if (response.getJSONObject(0).getString("Status").equals("Success")) {
+					Toast.makeText(context, response.getJSONObject(0).getString("Status"),
 							Toast.LENGTH_LONG).show();
 				} else {
 					Toast.makeText(context, "Service Currently Unavailable",

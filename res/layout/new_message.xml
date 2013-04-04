@@ -125,18 +125,18 @@
         		android:layout_marginRight="25dip"
         		android:text="@string/TVName"
         		android:textColor="#9c9a9a"
-        		android:textSize="15sp" />
+        		android:textSize="22sp" />
         
-        	<EditText
-        	    android:id="@+id/EVReceiver"
+        	<TextView
+        	    android:id="@+id/TVReceiver"
         	    android:layout_width="fill_parent"
         	    android:layout_height="1dip"
         	    android:layout_marginLeft="25dip"
         	    android:layout_marginRight="25dip"
-        	    android:layout_weight="0.07"
+        	    android:layout_weight="0.01"
+        	    android:textSize="15sp"
         	    android:hint="@string/EVRecipient"
-        	    android:inputType="textEmailAddress|textMultiLine"
-        	    android:textColorHint="#999999" />
+        	    android:textColor="#000000" />
         	
         	<!--  <TextText
         		android:id="@+id/TVName"
@@ -157,17 +157,17 @@
         		android:layout_marginRight="25dip"
         		android:text="@string/TVMessage"
         		android:textColor="#9c9a9a"
-        		android:textSize="15sp" />
+        		android:textSize="22sp" />
         	
         	<EditText
-        	    android:id="@+id/EVEmail"
+        	    android:id="@+id/EVMessage"
         	    android:layout_width="fill_parent"
         	    android:layout_height="1dip"
         	    android:layout_marginLeft="25dip"
         	    android:layout_marginRight="25dip"
         	    android:layout_weight="0.07"
         	    android:hint="@string/EVBody"
-        	    android:inputType="textEmailAddress|textMultiLine"
+        	    android:inputType="textMultiLine"
         	    android:textColorHint="#999999" />
         
        	 <TextView 

@@ -121,7 +121,7 @@ public class SocialiteMapActivity extends Activity implements LocationListener {
 					infoBox = new UserBoxInfo(new LatLng(Double.parseDouble(jd
 							.getString("geoX")), Double.parseDouble(jd
 							.getString("geoY"))), jd.getString("username"),
-							jd.getString("email"), jd.getString("status"));
+							jd.getString("email"), jd.getString("status_message"));
 					infoMarker = mapFragment.placeMarker(infoBox);
 					infoBoxMap.put(infoMarker.getId(), infoBox);
 
