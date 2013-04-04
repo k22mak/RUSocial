@@ -19,19 +19,23 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.TextView;
 
 public class NewMessageActivity extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
-	private TextView btnSend,tvName;
+	private TextView btnSend, tvName;
 	private EditText evMessage;
+	private LinearLayout hideKeyboard;
 
 	Intent intent;
 	Context context;
@@ -51,16 +55,17 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		btnSend = (TextView) findViewById(R.id.BtnSend);
 		evMessage = (EditText) findViewById(R.id.EVMessage);
 		tvName = (TextView) findViewById(R.id.TVReceiver);
+		hideKeyboard = (LinearLayout) findViewById(R.id.hideKeyboard);
 		
 		tvName.setText(intent.getStringExtra("receiver"));
-		
+
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
 		btnMsg.setFocusable(true);
 		btnPref.setFocusable(true);
 		btnFriend.setFocusable(true);
 		btnSend.setFocusable(true);
-		
+		hideKeyboard.setFocusable(true);
 
 		btnMapView.setOnClickListener(this);
 		btnHome.setOnClickListener(this);
@@ -68,6 +73,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
 		btnSend.setOnClickListener(this);
+		hideKeyboard.setOnClickListener(this);
 	}
 
 	@Override
@@ -119,6 +125,10 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
 			startActivity(newIntent);
+		} else if (v == hideKeyboard) {
+			InputMethodManager imm = (InputMethodManager)getSystemService(
+				      Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(evMessage.getWindowToken(), 0);
 		} else if (v == btnSend) {
 			if (SplashActivity.DEBUG) {
 				if (SplashActivity.DEBUG)
@@ -126,50 +136,55 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 			}
 
 			if ((evMessage.getText().toString() != "")) {
-						
-				String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-				mydate.replaceAll("\\s","");
-				String URLfinal = ValidityCheck.whiteSpace(URLResource.SEND_MESSAGES
-						+ "?sender=" + DefaultUser.getUser() + "&user=" + intent.getStringExtra("receiver")+ "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
-						
-				System.out.println(URLfinal);
 
-				// Log.i("URLFINAL",URLfinal+"a");				
-				
+				String mydate = java.text.DateFormat.getDateTimeInstance()
+						.format(Calendar.getInstance().getTime());
+				mydate.replaceAll("\\s", "");
+				String URLfinal = ValidityCheck
+						.whiteSpace(URLResource.SEND_MESSAGES + "?sender="
+								+ DefaultUser.getUser() + "&user="
+								+ intent.getStringExtra("receiver")
+								+ "&message=" + evMessage.getText().toString()
+								+ "&date=" + mydate);
 				try {
 					JSONObject json = new JSONObject();
 					json.put("username", DefaultUser.getUser());
 					json.put("receiver", tvName.getText().toString());
 					json.put("message", evMessage.getText().toString());
-					json.put("date",mydate);
+					json.put("date", mydate);
 
-					HttpRequestArrayAdapter.httpRequest(this, URLfinal, new UpdateHandler());
+					HttpRequestArrayAdapter.httpRequest(this, URLfinal,
+							new UpdateHandler());
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else{
-				Toast.makeText(getApplicationContext(), "Message/Recipient Cannot Be Empty",
-						Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(getApplicationContext(),
+						"Message/Recipient Cannot Be Empty", Toast.LENGTH_LONG)
+						.show();
 			}
 
 		}
 
 	}
 
-	private class UpdateHandler implements HttpRequestArrayAdapter.ResponseHandler{
+	private class UpdateHandler implements
+			HttpRequestArrayAdapter.ResponseHandler {
 		@Override
 		public void postResponse(JSONArray response) {
 
 			try {
-				if (response.getJSONObject(0).getString("Status").equals("Success")) {
-					Toast.makeText(context, response.getJSONObject(0).getString("Status"),
+				if (response.getJSONObject(0).getString("Status")
+						.equals("Success")) {
+					Toast.makeText(context,
+							response.getJSONObject(0).getString("Status"),
 							Toast.LENGTH_LONG).show();
 				} else {
 					Toast.makeText(context, "Service Currently Unavailable",
 							Toast.LENGTH_LONG).show();
 				}
-				
+
 				finish();
 			}
 

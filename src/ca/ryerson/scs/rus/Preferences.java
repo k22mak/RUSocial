@@ -119,7 +119,7 @@ public class Preferences extends Activity implements OnClickListener {
 	private class UpdateHandler implements HttpRequestAdapter.ResponseHandler{
 		@Override
 		public void postResponse(JSONObject response) {
-
+/*
 			try {
 				if (response.getString("Status").equals("Success")) {
 					Toast.makeText(context, response.getString("Status"),
@@ -136,6 +136,8 @@ public class Preferences extends Activity implements OnClickListener {
 				Toast.makeText(context, "Service Currently Unavailable",
 						Toast.LENGTH_LONG).show();
 			}
+			*/
+			finish();
 		}
 
 		@Override
