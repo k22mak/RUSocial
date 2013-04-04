@@ -7,6 +7,7 @@ import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.IntentRes;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,8 +62,8 @@ public class FriendsListAdapter extends ArrayAdapter<Friend> {
 		messageBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent showProfile = new Intent(IntentRes.NEW_MESSAGE_STRING);
-				showProfile.putExtra("usernameRequest", user.getUsername());
-				context.startActivity(showProfile); // start the ShowPosts view
+				showProfile.putExtra("receiver", user.getUsername());
+				context.startActivity(showProfile); 
 			}
 		});
 		

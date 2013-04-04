@@ -14,6 +14,7 @@ import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.ProcessList;
 import ca.ryerson.scs.rus.util.URLResource;
+import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -62,14 +63,10 @@ public class MessageActivity extends Activity implements OnClickListener {
 		btnFriend.setOnClickListener(this);
 		btnNewMail.setOnClickListener(this);
 
-		JSONObject json = new JSONObject();
-		try {
-			json.put("username", "mak");
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		HttpRequestAdapter.httpRequest(this, URLResource.MESSAGES, json,
+		
+		String URLfinal = ValidityCheck.removeWhiteSpace(URLResource.MESSAGES+"?user="+DefaultUser.getUser());
+		Log.i("THIS IS THE URL", ""+URLfinal);
+		HttpRequestAdapter.httpRequest(this, URLfinal,
 				new MessageHandler());
 	}
 

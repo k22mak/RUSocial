@@ -74,16 +74,6 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 		
 		requestBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				//TODO: CORRECT THE URL, SHOW A TOAST
-				
-				JSONObject json = new JSONObject();
-				try {
-					json.put("username", DefaultUser.getUser());
-					json.put("requestUser", user.getUsername());
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				
 				String URLfinal = URLResource.FRIEND_REQUEST+"?user="+DefaultUser.getUser()+"&friend="+user.getUsername()+"&state=pending";
 				Log.i("THIS IS THE FREIEND REQUEST STRING",""+URLfinal);

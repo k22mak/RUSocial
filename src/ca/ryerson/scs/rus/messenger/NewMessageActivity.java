@@ -31,7 +31,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 	private TextView btnSend, tvUsername;
 	private EditText evMessage, evRep;
 
-	//String receiverString;
+	Intent intent = getIntent();
 	Context context;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,10 +41,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 
 		context = this;
 
-		Intent intent = getIntent();
-		//receiverString = intent.getStringExtra("usernameRequest");
-		//tvUsername = (TextView) findViewById(R.id.TVName);
-		//tvUsername.setText(receiverString);
+		
 
 		btnMapView = (ImageButton) findViewById(R.id.IBLook);
 		btnHome = (ImageButton) findViewById(R.id.IBHome);
@@ -131,7 +128,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 				String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 				mydate.replaceAll("\\s","");
 				String URLfinal = ValidityCheck.whiteSpace(URLResource.SEND_MESSAGES
-						+ "?user=" + DefaultUser.getUser() + "&receiver=" + evRep.getText().toString() + "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
+						+ "?user=" + DefaultUser.getUser() + "&receiver=" + intent.getStringExtra("receiver")+ "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
 						
 				System.out.println(URLfinal);
 				
