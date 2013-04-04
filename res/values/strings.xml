@@ -38,8 +38,9 @@
 	<string name="TVFLProfile">Profile</string>
 	<string name="TVMsg">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</string>
 	<string name="TVErrPassword">Your passwords do not match. Please re-enter your password.</string>
-	<string name="TVErrPassword2">You did not enter a password.</string>
+	<string name="TVErrPassword2">Please enter your password.</string>
 	<string name="TVErrUsername">Your username must be at least 3 characters long.</string>
+	<string name="TVErrUsername2">Please enter a recipient</string>
 	<string name="TVErrEmail">You must use a valid Ryerson email (ryerson.ca or scs.ryerson.ca)</string>
 	<string name="TVLookAround">Look Around</string>
 	<string name="TVProgram">Program: Computer Science</string>
@@ -67,6 +68,7 @@
     <string name="EVBio">Whats happening?</string>
     <string name="EVBody">Write your message here</string>
     <string name="EVMsg">Writemsghere</string>
+    <string name="EVRecipient">Recipient</string>
     
     <!--  Checkbox Strings -->
     <string name="CBSave">Save username and password</string>

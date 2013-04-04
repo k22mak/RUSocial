@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 public class NewMessageActivity extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
-	private TextView btnSend, tvUsername;
+	private TextView btnSend;
 	private EditText evMessage, evRep;
 
 	Intent intent = getIntent();
@@ -40,8 +40,6 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.new_message);
 
 		context = this;
-
-		
 
 		btnMapView = (ImageButton) findViewById(R.id.IBLook);
 		btnHome = (ImageButton) findViewById(R.id.IBHome);
@@ -122,24 +120,20 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 					Log.i(MenuActivity.TAG, "Send Button");
 			}
 
-			if (evMessage.getText().toString() != "") {
+			if ((evMessage.getText().toString() != "") || (evRep.getText().toString() != "")) {
 						
-				//needs  user, receiver, message, date
 				String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 				mydate.replaceAll("\\s","");
 				String URLfinal = ValidityCheck.whiteSpace(URLResource.SEND_MESSAGES
 						+ "?sender=" + DefaultUser.getUser() + "&receiver=" + intent.getStringExtra("receiver")+ "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
 						
 				System.out.println(URLfinal);
-				
-				
 
 				// Log.i("URLFINAL",URLfinal+"a");				
 				
 				try {
 					JSONObject json = new JSONObject();
 					json.put("username", DefaultUser.getUser());
-					//json.put("receiver", receiverString);
 					json.put("receiver", evRep.getText().toString());
 					json.put("message", evMessage.getText().toString());
 					json.put("date",mydate);
@@ -150,7 +144,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 					e.printStackTrace();
 				}
 			}else{
-				Toast.makeText(getApplicationContext(), "Message Cannot Be Empty",
+				Toast.makeText(getApplicationContext(), "Message/Recipient Cannot Be Empty",
 						Toast.LENGTH_LONG).show();
 			}
 
@@ -186,24 +180,4 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 					.show();
 		}
 	}
-	
-	
-	/*private class MessageRequestHandler implements
-			HttpRequestAdapter.ResponseHandler {
-
-		@Override
-		public void postResponse(JSONObject response) {
-			Toast.makeText(context, "Message Sent", Toast.LENGTH_LONG)
-					.show();
-			finish();
-		}
-
-		@Override
-		public void postTimeout() {
-			// TODO Auto-generated method stub
-
-		}
-
-	}*/
-
 }

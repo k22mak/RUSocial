@@ -23,7 +23,7 @@ public class ValidityCheck {
 			}
 		return true; }
 	
-	//check username is [a-z]*[A-Z]*[0-9]*
+	//check user name is [a-z]*[A-Z]*[0-9]*
 	public static boolean usernameCheck (String u){
 		if (username.matcher(u).matches() == false)
 			{ 
