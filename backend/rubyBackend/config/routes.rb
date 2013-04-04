@@ -1,4 +1,41 @@
 RUSocial::Application.routes.draw do
+  resources :messages
+
+
+  resources :friends
+
+  get "/users/get_friends_pending" => "users#get_friends_pending"
+
+  get "/users/make_a_friend" => "users#make_a_friend"
+
+  get "/users/send_message" => "users#send_message"
+
+  get "/users/get_messages" => "users#get_messages"
+
+  get "/users/find_friends" => "users#find_friends"
+
+  get "/users/login" => "users#login"
+
+  get "/users/look_around" => "users#look_around"
+
+  get "users/change_user_pref" => "users#change_user_pref"
+
+  get "users/json_message_tester" => "users#json_message_tester"
+
+  get "users/json_message_default" => "users#json_message_default"
+
+  get "users/json_message_hash1" => "users#json_message_hash1"
+
+  get "users/json_message_hash2" => "users#json_message_hash2"
+
+  resources :users
+
+
+
+  
+  resources :user_tables
+
+
   resources :registers
 
 

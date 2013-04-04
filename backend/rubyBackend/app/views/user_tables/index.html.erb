@@ -1,0 +1,35 @@
+<h1>Listing user_tables</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Password</th>
+    <th>Email</th>
+    <th>Geox</th>
+    <th>Geoy</th>
+    <th>Status</th>
+    <th>Statusmsg</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_tables.each do |user_table| %>
+  <tr>
+    <td><%= user_table.user %></td>
+    <td><%= user_table.password %></td>
+    <td><%= user_table.email %></td>
+    <td><%= user_table.geoX %></td>
+    <td><%= user_table.geoY %></td>
+    <td><%= user_table.status %></td>
+    <td><%= user_table.statusMsg %></td>
+    <td><%= link_to 'Show', user_table %></td>
+    <td><%= link_to 'Edit', edit_user_table_path(user_table) %></td>
+    <td><%= link_to 'Destroy', user_table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User table', new_user_table_path %>
