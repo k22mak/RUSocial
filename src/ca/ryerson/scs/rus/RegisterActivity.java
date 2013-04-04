@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.util.URLResource;
 import ca.ryerson.scs.rus.util.ValidityCheck;
+import android.location.Location;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Dialog;
@@ -17,8 +18,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 
-public class RegisterActivity extends Activity implements OnClickListener {
+public class RegisterActivity extends Activity implements OnClickListener, LocationListener {
 	// Flag for debug/log messages
 	public static final boolean DEBUG = true;
 
@@ -26,6 +30,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	public static final String TAG = "RyeSocial";
 
 	private TextView btnRegister;
+	private LocationManager locationManager;
+	private Location locationSend;
 
 	private EditText evUsername, evPassword, evConfirmPassword, evEmail;
 
@@ -134,6 +140,10 @@ public class RegisterActivity extends Activity implements OnClickListener {
 					json.put("username", evUsername.getText().toString());
 					json.put("password", evPassword.getText().toString());
 					json.put("email", evEmail.getText().toString());
+					json.put("geoX", "8");//Double.toString(locationSend.getLatitude()));
+					json.put("geoY", "9");//Double.toString(locationSend.getLongitude()));
+					json.put("status", "Online");
+					json.put("status_message", "I am using RUSocial!");
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -141,9 +151,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 				HttpRequestAdapter.httpRequest(this, URLResource.REGISTER, json,
 						new RegisterHandler());
-
 			}
-
 		}
 	}
 
@@ -162,5 +170,28 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 		}
 
+	}
+	
+	@Override
+	public void onLocationChanged(Location location) {
+		locationSend = location;
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
 	}
 }
