@@ -134,6 +134,7 @@ public class LoginActivity extends Activity implements LocationListener,
 			else {
 		
 			String URLfinal = (ValidityCheck.removeWhiteSpace(URLResource.LOGIN
+					+ "?user="
 					+ evUsername.getText().toString()
 					+ "&password="
 					+ evPassword.getText().toString()
@@ -141,6 +142,8 @@ public class LoginActivity extends Activity implements LocationListener,
 					+ Double.toString(locationSend.getLatitude())
 					+ "&geoY="
 					+ Double.toString(locationSend.getLongitude())));
+			
+			System.out.println(URLfinal);
 					
 			HttpRequestAdapter.httpRequest(this, URLfinal,new LoginHandler());
 			}
@@ -173,7 +176,7 @@ public class LoginActivity extends Activity implements LocationListener,
 			 * intent.putExtra("location", locationSend); startActivity(intent);
 			 */
 			
-			try {
+			/*try {
 				if (response.getString("Status").equals("Success")) {
 					Toast.makeText(context, response.getString("Status"),
 							Toast.LENGTH_LONG).show();
@@ -188,7 +191,7 @@ public class LoginActivity extends Activity implements LocationListener,
 			catch (JSONException e) {
 				Toast.makeText(context, "Service Currently Unavailable",
 						Toast.LENGTH_LONG).show();
-			}
+			}*/
 			
 		}
 
