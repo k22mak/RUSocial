@@ -47,13 +47,15 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
 		username.setText(message.getUsername());
 		
 		TextView msg = (TextView) convertView.findViewById(R.id.MsgTVMsg);
-		msg.setText(message.getMessage());
+		msg.setText(message.getMessageShort());
 		
 		TextView msgDate = (TextView) convertView.findViewById(R.id.MsgTVDate);
+		msgDate.setText(message.getDate());
+		/*
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		String stringDate = formatter.format(message.getDate());
 		msgDate.setText(stringDate); 
-		
+		*/
 		/*
 		ImageView avatar = (ImageView) convertView.findViewById(R.id.MsgIVAvatar);
 		byte[] decodedString = Base64.decode(message.getPicture(), Base64.DEFAULT);

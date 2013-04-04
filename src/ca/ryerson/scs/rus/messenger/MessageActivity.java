@@ -2,12 +2,13 @@ package ca.ryerson.scs.rus.messenger;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
-import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
+import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
 import ca.ryerson.scs.rus.adapters.MessageListAdapter;
 import ca.ryerson.scs.rus.messenger.objects.Message;
 import ca.ryerson.scs.rus.util.DefaultUser;
@@ -66,7 +67,7 @@ public class MessageActivity extends Activity implements OnClickListener {
 		
 		String URLfinal = ValidityCheck.removeWhiteSpace(URLResource.MESSAGES+"?user="+DefaultUser.getUser());
 		Log.i("THIS IS THE URL", ""+URLfinal);
-		HttpRequestAdapter.httpRequest(this, URLfinal,
+		HttpRequestArrayAdapter.httpRequest(this, URLfinal,
 				new MessageHandler());
 	}
 
@@ -127,10 +128,10 @@ public class MessageActivity extends Activity implements OnClickListener {
 		
 	}
 	
-	private class MessageHandler implements HttpRequestAdapter.ResponseHandler {
+	private class MessageHandler implements HttpRequestArrayAdapter.ResponseHandler {
 
 		@Override
-		public void postResponse(JSONObject response) {
+		public void postResponse(JSONArray response) {
 			final ArrayList<Message> messageList = ProcessList.processMessages(response);
 			mla = new MessageListAdapter(context, 0, messageList);
 			ListView messageListView = (ListView) findViewById(R.id.list);
