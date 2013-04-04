@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330233420) do
+ActiveRecord::Schema.define(:version => 20130404003944) do
+
+  create_table "friends", :force => true do |t|
+    t.string   "friend"
+    t.string   "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "sender"
+    t.text     "message"
+    t.string   "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
 
   create_table "people", :force => true do |t|
     t.string   "username"
@@ -66,6 +83,30 @@ ActiveRecord::Schema.define(:version => 20130330233420) do
     t.boolean  "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_tables", :force => true do |t|
+    t.string   "user"
+    t.string   "password"
+    t.string   "email"
+    t.decimal  "geoX"
+    t.decimal  "geoY"
+    t.boolean  "status"
+    t.string   "statusMsg"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "email"
+    t.string   "geoX"
+    t.string   "geoY"
+    t.string   "status"
+    t.string   "status_message"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end
