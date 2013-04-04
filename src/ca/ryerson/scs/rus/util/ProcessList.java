@@ -15,14 +15,14 @@ public class ProcessList {
 		
 		ArrayList<Message> alReturn = new ArrayList<Message>();
 		JSONObject jd;
-		Message tempUser;
+		Message tempMessage;
 
 		for (int i = 0; i < response.length(); i++) {
 			try {
 				jd = response.getJSONObject(i);
 				
-				tempUser = new Friend(jd.getString("friend"),jd.getString("state"), "a@b.com", "Hello world");
-				alReturn.add(tempUser);
+				tempMessage = new Message(jd.getString("sender"),jd.getString("message"),jd.getString("created_at"));
+				alReturn.add(tempMessage);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
