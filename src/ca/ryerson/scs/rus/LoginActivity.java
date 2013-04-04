@@ -12,12 +12,14 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,13 +81,66 @@ public class LoginActivity extends Activity implements LocationListener,
 				Log.i(TAG, evPassword.getText() + " ");
 			}
 			
+			
+			if (!ValidityCheck.usernameCheck(evUsername.getText().toString())) {
+				
+				final Dialog dialogUser = new Dialog(LoginActivity.this);
+				dialogUser.setContentView(R.layout.dialouge_email);
+				dialogUser.setTitle("Username Error");
+				dialogUser.setCancelable(true);
+
+				// set up text
+				TextView text = (TextView) dialogUser
+						.findViewById(R.id.dia_email);
+				text.setText(R.string.TVErrUsername);
+
+				// set up button
+				Button button = (Button) dialogUser.findViewById(R.id.Button01);
+				button.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialogUser.dismiss();
+					}
+				});
+
+				dialogUser.show();
+			}
+			
+			else if (ValidityCheck.emptyCheck((evPassword.getText().toString()))) {
+				System.out.println("No password");
+				
+				final Dialog dialog = new Dialog(LoginActivity.this);
+				dialog.setContentView(R.layout.dialouge_email);
+				dialog.setTitle("Password Error");
+				dialog.setCancelable(true);
+
+				// set up text
+				TextView text = (TextView) dialog.findViewById(R.id.dia_email);
+				text.setText(R.string.TVErrPassword2);
+
+				// set up button
+				Button button = (Button) dialog.findViewById(R.id.Button01);
+				button.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+						evPassword.setText("");
+					}
+				});
+
+				dialog.show();
+			}
+			
+			else {
+		
 			String URLfinal = ValidityCheck.removeWhiteSpace(URLResource.LOGIN);
 					/*+ evUsername.getText().toString()
 					+ "&password="
 					+ evPassword.getText().toString());
 					*/
 			HttpRequestAdapter.httpRequest(this, URLfinal,new LoginHandler());
-
+			}
+			
 		} else if (v == btnRegister) {
 			startActivity(new Intent(IntentRes.REGISTER_STRING));
 		}
