@@ -128,7 +128,7 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 				String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 				mydate.replaceAll("\\s","");
 				String URLfinal = ValidityCheck.whiteSpace(URLResource.SEND_MESSAGES
-						+ "?user=" + DefaultUser.getUser() + "&receiver=" + intent.getStringExtra("receiver")+ "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
+						+ "?sender=" + DefaultUser.getUser() + "&receiver=" + intent.getStringExtra("receiver")+ "&message=" + evMessage.getText().toString() + "&date=" + mydate); 
 						
 				System.out.println(URLfinal);
 				
