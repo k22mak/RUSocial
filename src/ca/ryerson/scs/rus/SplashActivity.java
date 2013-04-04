@@ -2,8 +2,10 @@ package ca.ryerson.scs.rus;
 
 import ca.ryerson.scs.rus.util.IntentRes;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,7 +14,7 @@ import android.view.Window;
 public class SplashActivity extends Activity {
 	// Flag for debug/log messages
 	public static final boolean DEBUG = true;
-
+	private LocationManager locationManager;
 	public static Context context;
 
 	@Override
@@ -24,7 +26,7 @@ public class SplashActivity extends Activity {
 		Thread timer = new Thread() {
 			public void run() {
 				try {
-					sleep(1000);
+					sleep(2000);
 
 					ConnectivityManager connectionManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 					NetworkInfo netInfo = connectionManager
@@ -46,5 +48,4 @@ public class SplashActivity extends Activity {
 		timer.start();
 
 	}
-
 }

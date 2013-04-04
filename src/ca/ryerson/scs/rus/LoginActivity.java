@@ -43,7 +43,7 @@ public class LoginActivity extends Activity implements LocationListener,
 	private static final long MIN_TIME = 400;
 	private static final float MIN_DISTANCE = 1000;
 
-//	private static final String JSON_STATUS = "user";
+	// private static final String JSON_STATUS = "user";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class LoginActivity extends Activity implements LocationListener,
 		btnRegister.setOnClickListener(this);
 
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locationManager.isProviderEnabled(Context.LOCATION_SERVICE);
 		locationManager.requestLocationUpdates(
 				LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE, this);
 
@@ -80,10 +81,10 @@ public class LoginActivity extends Activity implements LocationListener,
 				Log.i(TAG, evUsername.getText() + " ");
 				Log.i(TAG, evPassword.getText() + " ");
 			}
-			
-			
-			if (!ValidityCheck.usernameCheck(ValidityCheck.removeWhiteSpace(evUsername.getText().toString()))) {
-				
+
+			if (!ValidityCheck.usernameCheck(ValidityCheck
+					.removeWhiteSpace(evUsername.getText().toString()))) {
+
 				final Dialog dialogUser = new Dialog(LoginActivity.this);
 				dialogUser.setContentView(R.layout.dialouge_email);
 				dialogUser.setTitle("Username Error");
@@ -105,9 +106,10 @@ public class LoginActivity extends Activity implements LocationListener,
 
 				dialogUser.show();
 			}
-			
-			else if (ValidityCheck.emptyCheck((evPassword.getText().toString()))) {
-				
+
+			else if (ValidityCheck
+					.emptyCheck((evPassword.getText().toString()))) {
+
 				final Dialog dialog = new Dialog(LoginActivity.this);
 				dialog.setContentView(R.layout.dialouge_email);
 				dialog.setTitle("Password Error");
@@ -129,22 +131,22 @@ public class LoginActivity extends Activity implements LocationListener,
 
 				dialog.show();
 			}
-			
-			else {
-		
-			String URLfinal = (ValidityCheck.removeWhiteSpace(URLResource.LOGIN
-					+ "?user="
-					+ evUsername.getText().toString()
-					+ "&password="
-					+ evPassword.getText().toString()
-					+ "&geoX="
-					+ Double.toString(locationSend.getLatitude())
-					+ "&geoY="
-					+ Double.toString(locationSend.getLongitude())));
-			
-			System.out.println(URLfinal);
 
-			HttpRequestArrayAdapter.httpRequest(this, URLfinal,new LoginHandler());
+			else {
+
+				String URLfinal = (ValidityCheck
+						.removeWhiteSpace(URLResource.LOGIN + "?user="
+								+ evUsername.getText().toString()
+								+ "&password="
+								+ evPassword.getText().toString() + "&geoX="
+								+ Double.toString(locationSend.getLatitude())
+								+ "&geoY="
+								+ Double.toString(locationSend.getLongitude())));
+
+				System.out.println(URLfinal);
+
+				HttpRequestArrayAdapter.httpRequest(this, URLfinal,
+						new LoginHandler());
 			}
 
 		} else if (v == btnRegister) {
@@ -153,60 +155,67 @@ public class LoginActivity extends Activity implements LocationListener,
 
 	}
 
-	private class LoginHandler implements HttpRequestArrayAdapter.ResponseHandler {
+	private class LoginHandler implements
+			HttpRequestArrayAdapter.ResponseHandler {
 
 		@Override
 		public void postResponse(JSONArray response) {
-			
-			try {	
-			Log.i("PARSING", ""+response.length()); 
-			
-						if (response.length() == 4){
-			            JSONObject jd0 = response.getJSONObject(0);
-			            JSONObject jd1 = response.getJSONObject(2);
-			            JSONObject jd2 = response.getJSONObject(3);
-			            String num_friends = jd2.getString("num_friends_online");
-			            String num_messages = jd1.getString("num_messages");
-			            String num_online = jd0.getString("num_online_all");
-			            
-			            Toast.makeText(context, "Successful Login",
-								Toast.LENGTH_LONG).show();
-			            
-			            //System.out.println("SKJDHLKSAHDJASD" + num_online+ num_messages + num_friends);
-			            //Log.i("LAT", ""+Double.toString(locationSend.getLatitude()));
-						//Log.i("LONG", ""+Double.toString(locationSend.getLongitude()));
-						Intent intent = new Intent(IntentRes.MENU_STRING);
-						intent.putExtra("user", evUsername.getText().toString());
-						intent.putExtra("location", locationSend);
-						intent.putExtra("lookAroundNumber", num_online);
-						intent.putExtra("friendNumber", num_friends);
-						intent.putExtra("messageNumber", num_messages);
-						DefaultUser.setUser(evUsername.getText().toString());
-						startActivity(intent);
-							}
-						
-						else {
-							
-							JSONObject jd0 = response.getJSONObject(0);
-				            String Status = jd0.getString("Status");
-				            Toast.makeText(context, "Login " + Status + "\n" + "Incorrect username or password",
-									Toast.LENGTH_LONG).show();
-						}
+
+			try {
+				if (response.length() == 5) {
+
+					JSONObject tempJSON = response.getJSONObject(0);
+					String num_online = tempJSON.getString("num_online_all");
+
+					tempJSON = response.getJSONObject(2);
+					String num_messages = tempJSON.getString("num_messages");
+
+					tempJSON = response.getJSONObject(3);
+					String num_friends = tempJSON
+							.getString("num_friends_online");
+
+					tempJSON = response.getJSONObject(4);
+					String email = tempJSON.getString("user_email");
+
+					DefaultUser.setEmail(email);
+
+					Toast.makeText(context, "Successful Login",
+							Toast.LENGTH_LONG).show();
+
+					Intent intent = new Intent(IntentRes.MENU_STRING);
+					intent.putExtra("user", evUsername.getText().toString());
+					intent.putExtra("location", locationSend);
+					intent.putExtra("lookAroundNumber", num_online);
+					intent.putExtra("friendNumber", num_friends);
+					intent.putExtra("messageNumber", num_messages);
+					DefaultUser.setUser(evUsername.getText().toString());
+					startActivity(intent);
 				}
-			
-			catch (Exception ex){
-				Log.e("log_tag", "Error getJSONfromURL "+ex.toString());    
-				          Toast.makeText(context, "Service Currently Unavailable",
-				            Toast.LENGTH_LONG).show(); 
+
+				else {
+
+					// JSONObject jd0 = response.getJSONObject(0);
+					// String Status = jd0.getString("Status");
+					// Toast.makeText(context, "Login " + Status + "\n" +
+					// "Incorrect username or password",
+					// Toast.LENGTH_LONG).show();
+				}
+			}
+
+			catch (Exception ex) {
+				Log.e("log_tag", "Error getJSONfromURL " + ex.toString());
+				Toast.makeText(context, "Service Currently Unavailable",
+						Toast.LENGTH_LONG).show();
 			}
 
 		}
-			@Override
-			public void postTimeout() {
-				// TODO Auto-generated method stub
-			}
+
+		@Override
+		public void postTimeout() {
+			// TODO Auto-generated method stub
+		}
 	}
-	
+
 	@Override
 	public void onLocationChanged(Location location) {
 		locationSend = location;

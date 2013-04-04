@@ -4,12 +4,9 @@ import java.util.Calendar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
-//import ca.ryerson.scs.rus.Preferences.UpdateHandler;
-import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
@@ -19,7 +16,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -32,7 +28,6 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 public class NewMessageActivity extends Activity implements OnClickListener {
-	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
 	private TextView btnSend, tvName;
 	private EditText evMessage;
 	private LinearLayout hideKeyboard;
@@ -47,88 +42,25 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 		intent = getIntent();
 		context = this;
 
-		btnMapView = (ImageButton) findViewById(R.id.IBLook);
-		btnHome = (ImageButton) findViewById(R.id.IBHome);
-		btnMsg = (ImageButton) findViewById(R.id.IBMsg);
-		btnPref = (ImageButton) findViewById(R.id.IBPref);
-		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
 		btnSend = (TextView) findViewById(R.id.BtnSend);
 		evMessage = (EditText) findViewById(R.id.EVMessage);
 		tvName = (TextView) findViewById(R.id.TVReceiver);
 		hideKeyboard = (LinearLayout) findViewById(R.id.hideKeyboard);
-		
+
 		tvName.setText(intent.getStringExtra("receiver"));
 
-		btnMapView.setFocusable(true);
-		btnHome.setFocusable(true);
-		btnMsg.setFocusable(true);
-		btnPref.setFocusable(true);
-		btnFriend.setFocusable(true);
 		btnSend.setFocusable(true);
 		hideKeyboard.setFocusable(true);
 
-		btnMapView.setOnClickListener(this);
-		btnHome.setOnClickListener(this);
-		btnMsg.setOnClickListener(this);
-		btnPref.setOnClickListener(this);
-		btnFriend.setOnClickListener(this);
 		btnSend.setOnClickListener(this);
 		hideKeyboard.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
-		if (v == btnHome) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Home button");
-			}
-			// TODO: Make it go back to the main page while finishing all other
-			// activities
-
-		} else if (v == btnMapView) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Map View Button");
-			}
-			Intent newIntent = new Intent(IntentRes.SOCIALITE_MAP_STRING);
-			newIntent.putExtra("username", DefaultUser.getUser());
-			finish();
-			startActivity(newIntent);
-
-		} else if (v == btnMsg) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Message Button");
-			}
-			Intent newIntent = new Intent(IntentRes.MESSAGE_STRING);
-			newIntent.putExtra("username", DefaultUser.getUser());
-			finish();
-			startActivity(newIntent);
-
-		} else if (v == btnFriend) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Friend Button");
-			}
-			Intent newIntent = new Intent(IntentRes.FRIEND_STRING);
-			newIntent.putExtra("username", DefaultUser.getUser());
-			finish();
-			startActivity(newIntent);
-
-		} else if (v == btnPref) {
-			if (SplashActivity.DEBUG) {
-				if (SplashActivity.DEBUG)
-					Log.i(MenuActivity.TAG, "Preference Button");
-			}
-			Intent newIntent = new Intent(IntentRes.PREFERENCE_STRING);
-			newIntent.putExtra("username", DefaultUser.getUser());
-			finish();
-			startActivity(newIntent);
-		} else if (v == hideKeyboard) {
-			InputMethodManager imm = (InputMethodManager)getSystemService(
-				      Context.INPUT_METHOD_SERVICE);
-				imm.hideSoftInputFromWindow(evMessage.getWindowToken(), 0);
+		if (v == hideKeyboard) {
+			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(evMessage.getWindowToken(), 0);
 		} else if (v == btnSend) {
 			if (SplashActivity.DEBUG) {
 				if (SplashActivity.DEBUG)
@@ -136,7 +68,6 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 			}
 
 			if ((evMessage.getText().toString() != "")) {
-
 				String mydate = java.text.DateFormat.getDateTimeInstance()
 						.format(Calendar.getInstance().getTime());
 				mydate.replaceAll("\\s", "");
@@ -146,19 +77,9 @@ public class NewMessageActivity extends Activity implements OnClickListener {
 								+ intent.getStringExtra("receiver")
 								+ "&message=" + evMessage.getText().toString()
 								+ "&date=" + mydate);
-				try {
-					JSONObject json = new JSONObject();
-					json.put("username", DefaultUser.getUser());
-					json.put("receiver", tvName.getText().toString());
-					json.put("message", evMessage.getText().toString());
-					json.put("date", mydate);
 
-					HttpRequestArrayAdapter.httpRequest(this, URLfinal,
-							new UpdateHandler());
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				HttpRequestArrayAdapter.httpRequest(this, URLfinal,
+						new UpdateHandler());
 			} else {
 				Toast.makeText(getApplicationContext(),
 						"Message/Recipient Cannot Be Empty", Toast.LENGTH_LONG)

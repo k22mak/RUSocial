@@ -47,6 +47,7 @@
 	<string name="TVLong">( Long coord,</string>
 	<string name="TVLat">Lat coord )</string>
 	<string name="TVNewMessage">>new message</string>
+	<string name="TVProfile">>profile</string>
 	
 	<!--  Content Description Strings -->
 	<string name="CDDefault">default</string>

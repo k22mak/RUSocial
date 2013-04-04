@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 public class Preferences extends Activity implements OnClickListener {
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
-	private TextView btnSave, tvName;
+	private TextView btnSave, tvName,tvEmail;
 	private EditText evStatus;
 
 	private Context context;
@@ -45,6 +45,7 @@ public class Preferences extends Activity implements OnClickListener {
 		btnSave = (TextView) findViewById(R.id.BtnSave);
 		evStatus = (EditText) findViewById(R.id.EVBio);
 		tvName = (TextView) findViewById(R.id.TVName);
+		tvEmail = (TextView) findViewById(R.id.TVEmail);
 
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
@@ -63,6 +64,7 @@ public class Preferences extends Activity implements OnClickListener {
 		btnSave.setOnClickListener(this);
 		
 		tvName.setText(DefaultUser.getUser());
+		tvEmail.setText(DefaultUser.getEmail());
 	}
 
 	@Override
