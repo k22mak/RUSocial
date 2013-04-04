@@ -134,7 +134,7 @@
         	    android:layout_marginLeft="25dip"
         	    android:layout_marginRight="25dip"
         	    android:layout_weight="0.07"
-        	    android:hint="@string/EVEmail"
+        	    android:hint="@string/EVRecipient"
         	    android:inputType="textEmailAddress|textMultiLine"
         	    android:textColorHint="#999999" />
         	
@@ -166,7 +166,7 @@
         	    android:layout_marginLeft="25dip"
         	    android:layout_marginRight="25dip"
         	    android:layout_weight="0.07"
-        	    android:hint="@string/EVEmail"
+        	    android:hint="@string/EVBody"
         	    android:inputType="textEmailAddress|textMultiLine"
         	    android:textColorHint="#999999" />
         
