@@ -1,5 +1,6 @@
 package ca.ryerson.scs.rus;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
@@ -107,7 +108,6 @@ public class LoginActivity extends Activity implements LocationListener,
 			}
 			
 			else if (ValidityCheck.emptyCheck((evPassword.getText().toString()))) {
-				System.out.println("No password");
 				
 				final Dialog dialog = new Dialog(LoginActivity.this);
 				dialog.setContentView(R.layout.dialouge_email);
@@ -133,11 +133,15 @@ public class LoginActivity extends Activity implements LocationListener,
 			
 			else {
 		
-			String URLfinal = ValidityCheck.removeWhiteSpace(URLResource.LOGIN);
-					/*+ evUsername.getText().toString()
+			String URLfinal = (ValidityCheck.removeWhiteSpace(URLResource.LOGIN
+					+ evUsername.getText().toString()
 					+ "&password="
-					+ evPassword.getText().toString());
-					*/
+					+ evPassword.getText().toString()
+					+ "&geoX="
+					+ Double.toString(locationSend.getLatitude())
+					+ "&geoY="
+					+ Double.toString(locationSend.getLongitude())));
+					
 			HttpRequestAdapter.httpRequest(this, URLfinal,new LoginHandler());
 			}
 			
@@ -168,6 +172,24 @@ public class LoginActivity extends Activity implements LocationListener,
 			 * intent.putExtra("username", evUsername.getText().toString());
 			 * intent.putExtra("location", locationSend); startActivity(intent);
 			 */
+			
+			try {
+				if (response.getString("Status").equals("Success")) {
+					Toast.makeText(context, response.getString("Status"),
+							Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(context, "Service Currently Unavailable",
+							Toast.LENGTH_LONG).show();
+				}
+				
+				finish();
+			}
+
+			catch (JSONException e) {
+				Toast.makeText(context, "Service Currently Unavailable",
+						Toast.LENGTH_LONG).show();
+			}
+			
 		}
 
 		@Override
