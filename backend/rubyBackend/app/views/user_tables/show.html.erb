@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @user_table.user %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user_table.password %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user_table.email %>
+</p>
+
+<p>
+  <b>Geox:</b>
+  <%= @user_table.geoX %>
+</p>
+
+<p>
+  <b>Geoy:</b>
+  <%= @user_table.geoY %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @user_table.status %>
+</p>
+
+<p>
+  <b>Statusmsg:</b>
+  <%= @user_table.statusMsg %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_table_path(@user_table) %> |
+<%= link_to 'Back', user_tables_path %>
