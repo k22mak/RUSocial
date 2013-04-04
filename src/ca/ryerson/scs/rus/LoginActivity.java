@@ -1,11 +1,18 @@
 package ca.ryerson.scs.rus;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
+import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
+import ca.ryerson.scs.rus.adapters.SocialiteListAdapter;
+import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
+import ca.ryerson.scs.rus.util.ProcessList;
 import ca.ryerson.scs.rus.util.URLResource;
 import ca.ryerson.scs.rus.util.ValidityCheck;
 import android.location.Location;
@@ -22,6 +29,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -145,16 +153,91 @@ public class LoginActivity extends Activity implements LocationListener,
 			
 			System.out.println(URLfinal);
 					
-			HttpRequestAdapter.httpRequest(this, URLfinal,new LoginHandler());
-			}
+			//HttpRequestAdapter.httpRequest(this, URLfinal,new LoginHandler());
 			
+			
+			HttpRequestArrayAdapter.httpRequest(this, URLfinal,new LoginHandler());
+			}
+
 		} else if (v == btnRegister) {
 			startActivity(new Intent(IntentRes.REGISTER_STRING));
 		}
 
 	}
 
-	private class LoginHandler implements HttpRequestAdapter.ResponseHandler {
+	//BEGINNINGINGINGINGIGNNGNGNGSDFSLDKFJSDLKFKSJLFJSFJSJDFSF34343254RGG
+	private class LoginHandler implements HttpRequestArrayAdapter.ResponseHandler {
+
+		@Override
+		public void postResponse(JSONArray response) {
+			
+			/*if (response.getString("Status").equals("Failure")){
+				Toast.makeText(context, response.getString("Status"),
+						Toast.LENGTH_LONG).show();
+			}*/
+			
+			try {	
+			Log.i("PARSING", "THE ARRAY"); 
+			
+						if (response.length() == 3){
+			            JSONObject jd0 = response.getJSONObject(0);
+			            String num_friends = jd0.getString("num_friends");
+			            
+			            JSONObject jd1 = response.getJSONObject(1);
+			            String num_messages = jd1.getString("num_messages");
+			            
+			            JSONObject jd2 = response.getJSONObject(2);
+			            String num_online = jd2.getString("num_online");
+			            
+			            Toast.makeText(context, "Successful Login",
+								Toast.LENGTH_LONG).show();
+			            
+			            System.out.println("SKJDHLKSAHDJASD" + num_online+ num_messages + num_friends);
+			            Log.i("LAT", ""+Double.toString(locationSend.getLatitude()));
+						Log.i("LONG", ""+Double.toString(locationSend.getLongitude()));
+						Intent intent = new Intent(IntentRes.MENU_STRING);
+						intent.putExtra("user", evUsername.getText().toString());
+						intent.putExtra("location", locationSend);
+						intent.putExtra("lookAroundNumber", num_online);
+						intent.putExtra("friendNumber", num_friends);
+						intent.putExtra("messageNumber", num_messages);
+						DefaultUser.setUser(evUsername.getText().toString());
+						startActivity(intent);
+							}
+						
+						else {
+							
+							JSONObject jd0 = response.getJSONObject(0);
+				            String Status = jd0.getString("Status");
+				            Toast.makeText(context, Status,
+									Toast.LENGTH_LONG).show();
+						}
+				}
+			
+			catch (Exception ex){
+				Log.e("log_tag", "Error getJSONfromURL "+ex.toString());    
+				          Toast.makeText(context, "Service Currently Unavailable",
+				            Toast.LENGTH_LONG).show(); 
+			}
+
+				//ArrayList<User> userList = ProcessList.processLocations(response);
+				//Log.i("TESTING LENGTH OF ARRAY", userList.size()+" ");
+				//sla = new SocialiteListAdapter(context, 0, userList);
+				//ListView userListView = (ListView) findViewById(R.id.list);
+				//userListView.setAdapter(sla);
+		}
+			@Override
+			public void postTimeout() {
+				// TODO Auto-generated method stub
+			}
+	}//ENDOFLINESJKFHSDFJDHFHSDHFKJSDHFKHDKJFHSKJDHFSDFEORWIEPROI93993884
+	
+	
+	
+	
+/*	
+	
+	private class FailureHandler implements HttpRequestAdapter.ResponseHandler {
 		@Override
 		public void postResponse(JSONObject response) {
 
@@ -174,34 +257,17 @@ public class LoginActivity extends Activity implements LocationListener,
 			 * Intent intent = new Intent(MENU_STRING);
 			 * intent.putExtra("username", evUsername.getText().toString());
 			 * intent.putExtra("location", locationSend); startActivity(intent);
-			 */
-			
-			/*try {
-				if (response.getString("Status").equals("Success")) {
-					Toast.makeText(context, response.getString("Status"),
-							Toast.LENGTH_LONG).show();
-				} else {
-					Toast.makeText(context, "Service Currently Unavailable",
-							Toast.LENGTH_LONG).show();
-				}
-				
-				finish();
-			}
-
-			catch (JSONException e) {
-				Toast.makeText(context, "Service Currently Unavailable",
-						Toast.LENGTH_LONG).show();
-			}*/
-			
-		}
+			 */			
+		/*}
 
 		@Override
 		public void postTimeout() {
 			Toast.makeText(context, "Connection timed out", Toast.LENGTH_LONG)
 					.show();
 		}
-	}
-
+	}*/ 
+	//Login Handler end
+	
 	@Override
 	public void onLocationChanged(Location location) {
 		locationSend = location;
