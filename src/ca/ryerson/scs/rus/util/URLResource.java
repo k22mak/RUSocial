@@ -2,7 +2,7 @@ package ca.ryerson.scs.rus.util;
 
 public class URLResource {
 public static final String LOGIN ="http://rusocial-rusocialbackend.rhcloud.com/users/login.json";
-public static final String REGISTER = "http://rusocial-rusocialbackend.rhcloud.com/registers.json";
+public static final String REGISTER = "http://rusocial-rusocialbackend.rhcloud.com/users.json";
 public static final String MESSAGES = "http://rusocial-rusocialbackend.rhcloud.com/users/get_messages.json";
 public static final String FRIENDS = "http://rusocial-rusocialbackend.rhcloud.com/users/find_friends.json";
 public static final String FRIEND_REQUEST = "http://rusocial-rusocialbackend.rhcloud.com/users/make_a_friend.json";
