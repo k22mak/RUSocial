@@ -35,14 +35,15 @@ public class ProcessList {
 	public static ArrayList<Friend> processFriends(JSONArray response) {
 
 		ArrayList<Friend> alReturn = new ArrayList<Friend>();
-		JSONObject jd;
+		JSONObject jd,jd1;
 		Friend tempUser;
 
-		for (int i = 0; i < response.length(); i++) {
+		for (int i = 0; i < response.length(); i=i+2) {
 			try {
 				jd = response.getJSONObject(i);
-				tempUser = new Friend(jd.getString("friend"),
-						jd.getString("state"), "a@b.com", "Hello world");
+				jd1= response.getJSONObject(i+1);
+				tempUser = new Friend(jd.getString("username"),
+						jd1.getString("state"), jd.getString("email"), jd.getString("status_message"));
 				alReturn.add(tempUser);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
