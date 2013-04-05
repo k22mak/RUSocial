@@ -1,6 +1,11 @@
 package ca.ryerson.scs.rus.util;
 
+import java.util.Map;
 import java.util.regex.Pattern;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ValidityCheck {
 
@@ -55,4 +60,19 @@ public class ValidityCheck {
 			return true;
 		return false;
 	}
-}
+	
+	public static String statusReturn (JSONArray ja) throws JSONException {
+		
+		Map responseText = null;
+		JSONObject jsonObject = new JSONObject(responseText);
+
+		// routesArray contains ALL routes
+		JSONArray routesArray = jsonObject.getJSONArray("routes");
+		// Grab the first route
+		JSONObject route = ja.getJSONObject(0);
+		// Take all legs from the route
+		String statusJSON = route.getString("Status");
+	 
+		return statusJSON;
+		}
+	}

@@ -41,6 +41,7 @@
 	<string name="TVErrPassword2">Please enter your password.</string>
 	<string name="TVErrUsername">Your username must be at least 3 characters long.</string>
 	<string name="TVErrUsername2">Please enter a recipient</string>
+	<string name="TVErrUsername3">Please enter your username</string>
 	<string name="TVErrEmail">You must use a valid Ryerson email (ryerson.ca or scs.ryerson.ca)</string>
 	<string name="TVLookAround">Look Around</string>
 	<string name="TVProgram">Program: Computer Science</string>
