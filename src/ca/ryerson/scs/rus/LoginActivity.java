@@ -72,6 +72,8 @@ public class LoginActivity extends Activity implements LocationListener,
 				LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE, this);
 
 		// TODO: Implement persistence checking for saved username and password
+		evUsername.setText("Kelvin"); // REMOVE THIS
+		evPassword.setText("Mak");
 	}
 
 	public void onClick(View v) {
@@ -139,9 +141,11 @@ public class LoginActivity extends Activity implements LocationListener,
 								+ evUsername.getText().toString()
 								+ "&password="
 								+ evPassword.getText().toString() + "&geoX="
-								+ Double.toString(locationSend.getLatitude())
+								//+ Double.toString(locationSend.getLatitude()) TEMP LOCATION
+								+ Double.toString(43.809319)
 								+ "&geoY="
-								+ Double.toString(locationSend.getLongitude())));
+								//+ Double.toString(locationSend.getLongitude())
+								+ Double.toString(-79.268723)));
 
 				System.out.println(URLfinal);
 
