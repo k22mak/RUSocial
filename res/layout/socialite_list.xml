@@ -7,62 +7,9 @@
 
     <!-- Menu Bar -->
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:orientation="horizontal"
-        android:paddingBottom="5dip"
-        android:paddingTop="5dip" >
-
-        <ImageButton
-            android:id="@+id/IBHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/IBHome"
-            android:src="@drawable/btn_rusocial" />
-
-        <ImageButton
-            android:id="@+id/IBLook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="2dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/IBLook"
-            android:src="@drawable/btn_look" />
-
-        <ImageButton
-            android:id="@+id/IBMsg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/IBMsg"
-            android:src="@drawable/btn_msg2" />
-
-        <ImageButton
-            android:id="@+id/IBFriend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/IBFriend"
-            android:src="@drawable/btn_friends2" />
-
-        <ImageButton
-            android:id="@+id/IBPref"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="3dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/IBPref"
-            android:src="@drawable/btn_prefs4" />
-    </LinearLayout>
+    <include
+        android:id="@+id/menuBar"
+        layout="@layout/menu_bar" />
 
     <!-- Social Lite List Content -->
 

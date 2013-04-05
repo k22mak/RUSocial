@@ -61,6 +61,14 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/tvProgram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/TVProgram"
+                    android:textColor="#9c9a9a"
+                    android:textSize="11sp" />
+                
+                <TextView
                     android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

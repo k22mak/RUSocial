@@ -2,33 +2,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/bg_regular"
     android:orientation="vertical" >
 
-    <!-- Profile Content -->
     <LinearLayout
         android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_marginTop="10dip" 
-		android:orientation="vertical"
-		android:background="@drawable/bg_regular" >
-    	
-        <TextView
-        	android:layout_width="wrap_content"
-        	android:layout_weight="0.01"
-        	android:layout_height="0dip"
-        	android:layout_marginTop="5dip"
-        	android:layout_marginLeft="5dip"
-        	android:text="@string/TVProfile"        
-        	android:textColor="#FFFFFF"
-        	android:textSize="12sp" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp" >
 
-        <!--  Profile Pic Area -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:text="@string/TVProfile"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+    
+    <!-- Profile Content -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:orientation="vertical" >
+
+        <!-- Profile Pic Area -->
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
-            android:background="@drawable/btn_gray"
+            android:background="@drawable/btn_profile_area1"
             android:orientation="horizontal" >
 
             <ImageView
@@ -36,121 +43,115 @@
                 android:layout_width="110dip"
                 android:layout_height="110dip"
                 android:layout_centerInParent="true"
-                android:src="@drawable/btn_profile"
                 android:background="@drawable/stroke_element"
-                android:contentDescription="@string/IVProfilePic" />
-
-           
-
+                android:contentDescription="@string/IVProfilePic"
+                android:src="@drawable/btn_profile" />
         </RelativeLayout>
-        
-        
+
         <!-- Name Email area -->
-        
-        
+
         <LinearLayout
- 			android:layout_width="fill_parent"
+            android:layout_width="fill_parent"
             android:layout_height="290dip"
-            android:layout_marginLeft="10dip"
             android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
             android:background="@drawable/btn_profile_area2"
-        	android:orientation="vertical" >
-            
-        	<TextView
-        		android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
-        		android:layout_height="0dip"
-        		android:layout_marginLeft="25dip"
-        		android:layout_marginRight="25dip"
-        		android:text="@string/TVName"
-        		android:textColor="#9c9a9a"
-        		android:textSize="22sp" />
-        
-        	<TextView
-        		android:id="@+id/TVName"
-        		android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
-        		android:layout_height="1dip"
-        		android:layout_marginLeft="25dip"
-        		android:layout_marginRight="25dip"
-        		android:textColor="#000000"
-        		android:singleLine="true"
-        		android:text="@string/EVName" />
-       	 
-        	<TextView
-        		android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
-        		android:layout_height="0dip"
-        		android:layout_marginLeft="25dip"
-        		android:layout_marginRight="25dip"
-        		android:text="@string/TVEmail"
-        		android:textColor="#9c9a9a"
-        		android:textSize="22sp" />
-        	
-        	<TextView
-				android:id="@+id/TVEmail"
-				android:layout_width="fill_parent"
-				android:layout_height="1dip"
-				android:layout_marginLeft="25dip"
-				android:layout_marginRight="25dip"
-				android:layout_weight="0.05"
-				android:text="@string/EVEmail"
-				android:singleLine="true"
-				android:textColor="#000000" />
-       	 
-        	<TextView
-        		android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
-        		android:layout_height="0dip"
-        		android:layout_marginLeft="25dip"
-        		android:layout_marginRight="25dip"
-        		android:text="@string/TVAbout"
-        		android:textColor="#9c9a9a"
-      			android:textSize="22sp" />
-       	 
-      	  <TextView
-				android:id="@+id/TVBio"
-				android:layout_width="fill_parent"
-				android:layout_height="10dip"
-				android:layout_marginLeft="25dip"
-				android:layout_marginRight="25dip"
-				android:layout_weight="0.08"
-				android:text="@string/EVBio"
-				android:singleLine="true"
-				android:textColor="#000000" />
-        
-       	 <TextView 
-        		android:id="@+id/BtnMessage"
-				android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
-        		android:layout_height="1dip"
-        		android:text="@string/BtnMessage"
-        		android:textSize="15sp"
-				android:background="@drawable/btn_gradient_yellow"
-        		android:gravity="center"
-        		android:textColor="#FFFFFF"
-        		android:layout_marginBottom="5dip"
-        		android:layout_marginLeft="25dip"
-        		android:layout_marginRight="25dip"
-        		android:clickable="true" />
-       	 <TextView 
-        		android:id="@+id/BtnRequest"
-				android:layout_width="fill_parent"
-        		android:layout_weight="0.05"
-        		android:layout_height="1dip"
-        		android:text="@string/BtnRequest"
-        		android:textSize="15sp"
-				android:background="@drawable/btn_gradient_yellow"
-        		android:gravity="center"
-        		android:textColor="#FFFFFF"
-        		android:layout_marginBottom="10dip"
-        		android:layout_marginLeft="25dip"
-        		android:layout_marginRight="25dip"
-        		android:clickable="true" />
-    	
-   		</LinearLayout>
-   
-   </LinearLayout>
-		   
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.05"
+                android:text="@string/TVName"
+                android:textColor="#9c9a9a"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/TVName"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.05"
+                android:singleLine="true"
+                android:text="@string/EVName"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.05"
+                android:text="@string/TVEmail"
+                android:textColor="#9c9a9a"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/TVEmail"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.05"
+                android:singleLine="true"
+                android:text="@string/EVEmail"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.05"
+                android:text="@string/TVAbout"
+                android:textColor="#9c9a9a"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/TVBio"
+                android:layout_width="fill_parent"
+                android:layout_height="10dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.08"
+                android:singleLine="true"
+                android:text="@string/EVBio"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/BtnMessage"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.05"
+                android:background="@drawable/btn_gradient_yellow"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/BtnMessage"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/BtnRequest"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:layout_weight="0.05"
+                android:background="@drawable/btn_gradient_yellow"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/BtnRequest"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
