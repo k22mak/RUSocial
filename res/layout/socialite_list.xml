@@ -6,13 +6,14 @@
     android:orientation="vertical" >
 
     <!-- Menu Bar -->
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dip"
-        android:paddingTop="5dip"
         android:background="#000000"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingBottom="5dip"
+        android:paddingTop="5dip" >
 
         <ImageButton
             android:id="@+id/IBHome"
@@ -64,20 +65,21 @@
     </LinearLayout>
 
     <!-- Social Lite List Content -->
+
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_marginBottom="5dip"
-        android:layout_weight="0.5">
+        android:layout_height="wrap_content"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dip"
-            android:text="@string/TVPreference"
+            android:text="@string/TVSocialiteList"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/switchView"
@@ -89,23 +91,16 @@
             android:padding="5dp"
             android:text="@string/BtnSocialiteMap"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="6"
-        
-        android:orientation="vertical" >
-
-        <ListView
-            android:id="@+id/list"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:cacheColorHint="#000F1F"
-            android:paddingRight="5dp"
-            android:scrollbarStyle="outsideOverlay" />
-    </LinearLayout>
+        android:layout_weight="1"
+        android:cacheColorHint="#000F1F"
+        android:paddingRight="5dp"
+        android:scrollbarStyle="outsideOverlay" />
 
 </LinearLayout>
