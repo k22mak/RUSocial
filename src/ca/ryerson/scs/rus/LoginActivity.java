@@ -82,7 +82,7 @@ public class LoginActivity extends Activity implements LocationListener,
 				Log.i(TAG, evPassword.getText() + " ");
 			}
 
-			if (!ValidityCheck.usernameCheck(ValidityCheck
+			if (ValidityCheck.emptyCheck(ValidityCheck
 					.removeWhiteSpace(evUsername.getText().toString()))) {
 
 				final Dialog dialogUser = new Dialog(LoginActivity.this);
@@ -93,7 +93,7 @@ public class LoginActivity extends Activity implements LocationListener,
 				// set up text
 				TextView text = (TextView) dialogUser
 						.findViewById(R.id.dia_email);
-				text.setText(R.string.TVErrUsername);
+				text.setText(R.string.TVErrUsername3);
 
 				// set up button
 				Button button = (Button) dialogUser.findViewById(R.id.Button01);
@@ -194,11 +194,11 @@ public class LoginActivity extends Activity implements LocationListener,
 
 				else {
 
-					// JSONObject jd0 = response.getJSONObject(0);
-					// String Status = jd0.getString("Status");
-					// Toast.makeText(context, "Login " + Status + "\n" +
-					// "Incorrect username or password",
-					// Toast.LENGTH_LONG).show();
+					 JSONObject jd0 = response.getJSONObject(0);
+					 String Status = jd0.getString("Status");
+					 Toast.makeText(context, "Login " + Status + "\n" +
+					 "Incorrect username or password",
+					 Toast.LENGTH_LONG).show();
 				}
 			}
 
