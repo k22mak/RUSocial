@@ -1,10 +1,12 @@
 package ca.ryerson.scs.rus;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
+import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.URLResource;
@@ -114,23 +116,29 @@ public class Preferences extends Activity implements OnClickListener {
 					+ "?status_message=" + evStatus.getText().toString()
 					+ "&user=" + DefaultUser.getUser());
 
-			HttpRequestAdapter.httpRequest(this, URLfinal, new UpdateHandler());
+			HttpRequestArrayAdapter.httpRequest(this, URLfinal, new UpdateHandler());
 		}
 	}
 
-	private class UpdateHandler implements HttpRequestAdapter.ResponseHandler{
+	private class UpdateHandler implements HttpRequestArrayAdapter.ResponseHandler{
+		
 		@Override
-		public void postResponse(JSONObject response) {
-/*
+		public void postResponse(JSONArray response) {
+			// TODO Auto-generated method stub
 			try {
-				if (response.getString("Status").equals("Success")) {
-					Toast.makeText(context, response.getString("Status"),
-							Toast.LENGTH_LONG).show();
-				} else {
-					Toast.makeText(context, "Service Currently Unavailable",
-							Toast.LENGTH_LONG).show();
-				}
 				
+				 JSONObject jd0 = response.getJSONObject(0);
+				 String Status = jd0.getString("Status");
+				 
+				 if (Status.equals("Success")){
+					 Toast.makeText(context, "Status update successful",
+							 Toast.LENGTH_LONG).show();
+				 }
+				 
+				 else {
+					 Toast.makeText(context, "We could not update your status",
+							 Toast.LENGTH_LONG).show();
+				 }
 				finish();
 			}
 
@@ -138,10 +146,9 @@ public class Preferences extends Activity implements OnClickListener {
 				Toast.makeText(context, "Service Currently Unavailable",
 						Toast.LENGTH_LONG).show();
 			}
-			*/
 			finish();
 		}
-
+		
 		@Override
 		public void postTimeout() {
 			Toast.makeText(context, "Connection timed out", Toast.LENGTH_LONG)
