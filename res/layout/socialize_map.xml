@@ -73,32 +73,39 @@
         android:background="@drawable/bg_regular"
         android:orientation="vertical" >
 
-        <RelativeLayout android:layout_width="fill_parent"
-            android:layout_height="0dip"  
-            android:layout_weight="0.01">
+            <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginBottom="5dip"
+        android:layout_weight="0.5">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_marginLeft="5dip"
-                android:layout_marginTop="5dip"
-                android:layout_alignParentLeft="true"
-                android:text="@string/TVSocialiteMap"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_marginLeft="5dip"
-                android:layout_marginTop="5dip"
-                android:layout_alignParentRight="true"
-                android:text="LIST VIEW"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp" />
-        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dip"
+            android:text="@string/TVSocialiteMap"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn_gradient_blue"
+            android:padding="5dp"
+            android:text="@string/BtnSocialiteList"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+        
+        
+     
 
         <fragment
             android:id="@+id/map"
+            android:layout_weight="6"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_marginBottom="10dip"
