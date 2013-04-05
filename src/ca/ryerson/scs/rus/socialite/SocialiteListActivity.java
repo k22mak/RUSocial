@@ -32,12 +32,14 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class SocialiteListActivity extends Activity implements OnClickListener {
 	private Context context;
 	private ImageButton btnMapView, btnHome, btnMsg, btnPref, btnFriend;
+	private TextView switchView;
 	
 	SocialiteListAdapter sla;
 	
@@ -53,19 +55,21 @@ public class SocialiteListActivity extends Activity implements OnClickListener {
 		btnMsg = (ImageButton) findViewById(R.id.IBMsg);
 		btnPref = (ImageButton) findViewById(R.id.IBPref);
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
-		
+		switchView = (TextView)findViewById(R.id.switchView);
 				
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
 		btnMsg.setFocusable(true);
 		btnPref.setFocusable(true);
 		btnFriend.setFocusable(true);
+		switchView.setFocusable(true);
 		
 		btnMapView.setOnClickListener(this);
 		btnHome.setOnClickListener(this);
 		btnMsg.setOnClickListener(this);
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
+		switchView.setOnClickListener(this);
 		
 		
 		String URLfinal = ValidityCheck.whiteSpace(URLResource.LOOK_AROUND
@@ -116,6 +120,11 @@ public class SocialiteListActivity extends Activity implements OnClickListener {
 				}
 			Intent newIntent = new Intent(IntentRes.PREFERENCE_STRING);
 			newIntent.putExtra("username", DefaultUser.getUser());
+			finish();
+			startActivity(newIntent);
+			}
+		else if (v == switchView){
+			Intent newIntent = new Intent(IntentRes.SOCIALITE_MAP_STRING);
 			finish();
 			startActivity(newIntent);
 			}

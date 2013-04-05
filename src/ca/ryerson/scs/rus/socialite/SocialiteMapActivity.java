@@ -52,6 +52,7 @@ public class SocialiteMapActivity extends Activity implements LocationListener,O
 	private UserBoxInfo infoBox;
 	private Marker infoMarker;
 	private Context context;
+	private TextView switchView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class SocialiteMapActivity extends Activity implements LocationListener,O
 		btnMsg = (ImageButton) findViewById(R.id.IBMsg);
 		btnPref = (ImageButton) findViewById(R.id.IBPref);
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
+		switchView = (TextView)findViewById(R.id.switchView);
 		
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 
@@ -79,12 +81,14 @@ public class SocialiteMapActivity extends Activity implements LocationListener,O
 		btnMsg.setFocusable(true);
 		btnPref.setFocusable(true);
 		btnFriend.setFocusable(true);
+		switchView.setFocusable(true);
 		
 		btnMapView.setOnClickListener(this);
 		btnHome.setOnClickListener(this);
 		btnMsg.setOnClickListener(this);
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
+		switchView.setOnClickListener(this);
 		
 		String URLfinal = ValidityCheck.whiteSpace(URLResource.LOOK_AROUND
 				+ "?geoX=43.812" + "&geoY=-79.298");
@@ -279,7 +283,11 @@ public class SocialiteMapActivity extends Activity implements LocationListener,O
 			newIntent.putExtra("username", DefaultUser.getUser());
 			finish();
 			startActivity(newIntent);
-		}
+		}		else if (v == switchView){
+			Intent newIntent = new Intent(IntentRes.SOCIALITE_LIST_STRING);
+			finish();
+			startActivity(newIntent);
+			}
 	}
 
 }
