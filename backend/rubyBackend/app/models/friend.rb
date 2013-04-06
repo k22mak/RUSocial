@@ -26,6 +26,10 @@ class Friend < ActiveRecord::Base
     end
   end
 
+  def get_state
+    return self.state
+  end
+
 
 
 end
