@@ -141,11 +141,11 @@ public class LoginActivity extends Activity implements LocationListener,
 								+ evUsername.getText().toString()
 								+ "&password="
 								+ evPassword.getText().toString() + "&geoX="
-								//+ Double.toString(locationSend.getLatitude()) TEMP LOCATION
-								+ Double.toString(43.809319)
+								+ Double.toString(locationSend.getLatitude()) 
+								//+ Double.toString(43.809319)
 								+ "&geoY="
-								//+ Double.toString(locationSend.getLongitude())
-								+ Double.toString(-79.268723)));
+								+ Double.toString(locationSend.getLongitude())));
+								//+ Double.toString(-79.268723)));
 
 				System.out.println(URLfinal);
 

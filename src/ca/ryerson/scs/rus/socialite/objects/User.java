@@ -5,9 +5,9 @@ public class User {
 	
 	
 	
-	public User(String username, String program, String about, String picture, String latitude, String longitude) {
+	public User(String username, String email, String about, String picture, String latitude, String longitude) {
 		this.username=username;
-		this.program=program;
+		this.email=email;
 		this.about=about;
 		this.latitude=latitude;
 		this.longitude=longitude;

@@ -57,7 +57,7 @@ public class HttpRequestArrayAdapter {
 				while ((line = br.readLine()) != null) {
 					fullResponse.append(line + "\n");
 				}
-				Log.i("RESPONSE", fullResponse.toString());
+				Log.i("Response", fullResponse.toString());
 				return (new JSONArray(fullResponse.toString()));
 			}
 
@@ -96,7 +96,7 @@ public class HttpRequestArrayAdapter {
 					fullResponse.append(line + "\n");
 				}
 
-				Log.i("RESPONSEGET", fullResponse.toString());
+				Log.i("Response", fullResponse.toString());
 				return (new JSONArray(fullResponse.toString()));
 
 			}

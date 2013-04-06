@@ -63,7 +63,7 @@ public class ProcessList {
 		for (int i = 0; i < response.length(); i++) {
 			try {
 				jd = response.getJSONObject(i);
-				tempUser = new User(jd.getString("username"), "",
+				tempUser = new User(jd.getString("username"), jd.getString("email"),
 						jd.getString("status_message"), "", jd.getString("geoX"),
 						jd.getString("geoY"));
 				alReturn.add(tempUser);
