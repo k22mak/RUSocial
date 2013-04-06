@@ -35,6 +35,7 @@
 	<string name="TVFriends">Friends</string>
 	<string name="TVMessage">Message</string>
 	<string name="TVMessages">Messages</string>
+	<string name="TVMessageList">>messages</string>
 	<string name="TVFLProfile">Profile</string>
 	<string name="TVMsg">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</string>
 	<string name="TVErrPassword">Your passwords do not match. Please re-enter your password.</string>

@@ -48,21 +48,21 @@ public class MessageActivity extends Activity implements OnClickListener {
 		btnMsg = (ImageButton) findViewById(R.id.IBMsg);
 		btnPref = (ImageButton) findViewById(R.id.IBPref);
 		btnFriend = (ImageButton) findViewById(R.id.IBFriend);
-		btnNewMail = (ImageButton) findViewById(R.id.IBNewMail);
+//		btnNewMail = (ImageButton) findViewById(R.id.IBNewMail);
 
 		btnMapView.setFocusable(true);
 		btnHome.setFocusable(true);
 		btnMsg.setFocusable(true);
 		btnPref.setFocusable(true);
 		btnFriend.setFocusable(true);
-		btnNewMail.setFocusable(true);
+//		btnNewMail.setFocusable(true);
 
 		btnMapView.setOnClickListener(this);
 		btnHome.setOnClickListener(this);
 		btnMsg.setOnClickListener(this);
 		btnPref.setOnClickListener(this);
 		btnFriend.setOnClickListener(this);
-		btnNewMail.setOnClickListener(this);
+//		btnNewMail.setOnClickListener(this);
 
 		
 		String URLfinal = ValidityCheck.removeWhiteSpace(URLResource.MESSAGES+"?user="+DefaultUser.getUser());
