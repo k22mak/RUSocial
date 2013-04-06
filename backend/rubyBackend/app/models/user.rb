@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
   has_many :friends, :dependent => :destroy
 
+  constant_threshold = "0.02".to_f
 
   #update status message
   def update_status_message(updated_message)
@@ -11,33 +12,43 @@ class User < ActiveRecord::Base
   end
 
 
-  #NEED PROF TO HELP
+  #NEED PROF TO HELP      - he idn't help , he said install third party proximity.
+  def check_nearby2(x, y) # edited to work
+    constant_threshold = "0.02".to_f
+
+    if (self.geoX.to_f > (x.to_f - constant_threshold)) && (self.geoX.to_f < (x.to_f + constant_threshold))&& (self.geoY.to_f < (y.to_f + constant_threshold))&& (self.geoY.to_f < (y.to_f + constant_threshold))
+      return true
+    else
+      return false
+    end
+  end
+
   #for the   def look_around to see if a particular user is near x and y decimal
-  def check_nearby(x, y)
+  def check_nearby(x, y) # depreciated, don't use this unless u wanna just put out everyone
 
-    #buffer_x = 5.0
-    #buffer_y = 5.0
-    #foreign_x = x.to_s.to_f
-    #foreign_y = y.to_s.to_f
+                         #buffer_x = 5.0
+                         #buffer_y = 5.0
+                         #foreign_x = x.to_s.to_f
+                         #foreign_y = y.to_s.to_f
 
-    #own_x = :geoX.to_s.to_f
-    #own_y = :geoY.to_s.to_f
+                         #own_x = :geoX.to_s.to_f
+                         #own_y = :geoY.to_s.to_f
 
-    #difference_x1 = foreign_x - buffer_x
-    #difference_x2 = foreign_x + buffer_x
-    #difference_y1 = foreign_y - buffer_y
-    #difference_y2 = foreign_y + buffer_y
+                         #difference_x1 = foreign_x - buffer_x
+                         #difference_x2 = foreign_x + buffer_x
+                         #difference_y1 = foreign_y - buffer_y
+                         #difference_y2 = foreign_y + buffer_y
 
-    #check if geoX and geoY of the user is in between x
-    #if ((:geoX > difference_x1)
-    # && (own_x < difference_x2)
-    #&& (own_y > difference_y1) && (own_y < difference_y2))
+                         #check if geoX and geoY of the user is in between x
+                         #if ((:geoX > difference_x1)
+                         # && (own_x < difference_x2)
+                         #&& (own_y > difference_y1) && (own_y < difference_y2))
     return true
-    #else
-    #  return false
-    #end
-    #uncommenet out and recompile , it only returns []
-    #if validates_numericality_of(:geoX, :less_than_or_equal_to => x)
+                         #else
+                         #  return false
+                         #end
+                         #uncommenet out and recompile , it only returns []
+                         #if validates_numericality_of(:geoX, :less_than_or_equal_to => x)
   end
 
   #for login - is the password the same as pass - the value passed in?
@@ -51,7 +62,7 @@ class User < ActiveRecord::Base
   end
 
   #update geo locations
-  def update_geo_locations(x,y)
+  def update_geo_locations(x, y)
     self.geoX = x
     self.geoY = y
     self.save
@@ -83,9 +94,9 @@ class User < ActiveRecord::Base
     @all_users = User.find_all_by_status("Online") #grab everyone in User table whos online
     @counter ||= Array.new #make a counter
 
-    @all_friends.each do | friend |      # 9 friend objects
-      @all_users.each do | stranger |           # 4 users by Online
-        if stranger[:username] == friend[:friend]     # problem lies here nvm, its good. GREAT!
+    @all_friends.each do |friend| # 9 friend objects
+      @all_users.each do |stranger| # 4 users by Online
+        if stranger[:username] == friend[:friend] # problem lies here nvm, its good. GREAT!
           @counter.push(stranger)
         end
       end
@@ -95,44 +106,59 @@ class User < ActiveRecord::Base
     return @counter.size
   end
 
-  def get_username  #this code is incorrect
+  def get_username #this code is incorrect
     return :username
   end
+
   #retrieve num of ppl online
-  def self.get_num_online_globally
+  def get_num_online_globally(x,y)
+
+    constant_threshold = "0.02".to_f
 
     #self.messages.find(:all, :condition=>[status =?, online ])
     @all_users = User.find_all_by_status("Online") #grab all people who are online
-    #@counter ||= Array.new #make a counter
+    @counter ||= Array.new #make a counter
 
-    #@all_users.each do | stranger |
-     #     if stranger.get_username.upcase == "online".upcase
-     #       @counter.push(stranger)
-     #     end
+                                                   #@all_users.each do | stranger |
+                                                   #     if stranger.get_username.upcase == "online".upcase
+                                                   #       @counter.push(stranger)
+                                                   #     end
 
-    #end
-    #return the size
-    return @all_users.size # @counter.size
+                                                   #end
+                                                   #return the size
+
+        #but only those who are near your location
+      @all_users.each do | person |
+        if (person.geoX.to_f > (x.to_f - constant_threshold)) && (person.geoX.to_f < (x.to_f + constant_threshold))&& (person.geoY.to_f < (y.to_f + constant_threshold))&& (person.geoY.to_f < (y.to_f + constant_threshold))
+          @counter.push(person)
+        end
+
+      end
+
+
+
+
+    return @counter.size # @counter.size
   end
 
   #### I DUNNO HOW TO ACCESS OR CREATE OR MANIPULATE MY RECORD OF FRIENDS/MESSAGES             nvm i got it
   #helper for find friends of
- # def grab_user_from_friends
- #   #return self.friends.all
+  # def grab_user_from_friends
+  #   #return self.friends.all
   #  @all_friends = self.friends.all #grab all friends
   #  @all_users = User.all #find_all_by_status("Online") #grab everyone in User table whos online
-   # @counter ||= Array.new #make a counter
+  # @counter ||= Array.new #make a counter
 
-   # @all_friends.each do | friend |      # 9 friend objects
-   #   @all_users.each do | stranger |           # 4 users by Online
-    #    if stranger[:username] == friend[:friend]     # problem lies here nvm, its good. GREAT!       if strnager's name is same as friends name
-    #      @counter.push(friend)
-    #    end
-    #  end
-   # end
+  # @all_friends.each do | friend |      # 9 friend objects
+  #   @all_users.each do | stranger |           # 4 users by Online
+  #    if stranger[:username] == friend[:friend]     # problem lies here nvm, its good. GREAT!       if strnager's name is same as friends name
+  #      @counter.push(friend)
+  #    end
+  #  end
+  # end
 
-    #return the counter                                  #THESE TWO METHODS NEED TO BE REVAMPED, IT SHOULD ALGROTIGHM SHOULD BE FIRS TO FIND WHICH USERS MATCH THEN REUTRN them
-    #return @counter
+  #return the counter                                  #THESE TWO METHODS NEED TO BE REVAMPED, IT SHOULD ALGROTIGHM SHOULD BE FIRS TO FIND WHICH USERS MATCH THEN REUTRN them
+  #return @counter
   #end
 
   #helper for find friends and their status messages
@@ -142,9 +168,9 @@ class User < ActiveRecord::Base
     @all_users = User.all #find_all_by_status("Online") #grab everyone in User table whos online
     @counter ||= Array.new #make a counter
 
-    @all_friends.each do | friend |      # 9 friend objects
-      @all_users.each do | stranger |           # 4 users by Online
-        if stranger[:username] == friend[:friend]     # problem lies here nvm, its good. GREAT!       if strnager's name is same as friends name
+    @all_friends.each do |friend| # 9 friend objects
+      @all_users.each do |stranger| # 4 users by Online
+        if stranger[:username] == friend[:friend] # problem lies here nvm, its good. GREAT!       if strnager's name is same as friends name
           friend_state = Hash.new
           friend_state["state"] = friend.get_state
           @counter.push(stranger, friend_state)
