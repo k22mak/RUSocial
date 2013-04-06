@@ -26,7 +26,7 @@ class UsersController < ApplicationController
                 user.update_geo_locations(params[:geoX], params[:geoY])
 
                 #get number of online ppl globally
-                num_online_all = User.get_num_online_globally
+                num_online_all = user.get_num_online_globally(params[:geoX], params[:geoY])
 
                 #get number of friends
                 num_friend = user.get_num_friends
@@ -118,7 +118,7 @@ class UsersController < ApplicationController
         @users = User.all #grab all users
         @array_users ||= Array.new # make a new array, see if it is possible ? ||
         @users.each do |user| #for each user, check if they're nearby
-          if user.check_nearby(params[:geoX], params[:geoY])
+          if user.check_nearby2(params[:geoX], params[:geoY])
             @array_users.push(user)
           end
         end #end of looping thru every user       #return array_users in JSON
