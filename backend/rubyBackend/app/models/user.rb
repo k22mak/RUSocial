@@ -50,7 +50,17 @@ class User < ActiveRecord::Base
 
   end
 
-  #auto return false if not
+  #update geo locations
+  def update_geo_locations(x,y)
+    self.geoX = x
+    self.geoY = y
+    self.save
+  end
+
+  #get_email
+  def get_email
+    return self.email
+  end
 
   #retrieve num of friends
   def get_num_friends
@@ -85,7 +95,7 @@ class User < ActiveRecord::Base
     return @counter.size
   end
 
-  def get_username
+  def get_username  #this code is incorrect
     return :username
   end
   #retrieve num of ppl online
@@ -105,10 +115,50 @@ class User < ActiveRecord::Base
     return @all_users.size # @counter.size
   end
 
-  #### I DUNNO HOW TO ACCESS OR CREATE OR MANIPULATE MY RECORD OF FRIENDS/MESSAGES
+  #### I DUNNO HOW TO ACCESS OR CREATE OR MANIPULATE MY RECORD OF FRIENDS/MESSAGES             nvm i got it
   #helper for find friends of
-  def grab_friends
-    return self.friends.all
+ # def grab_user_from_friends
+ #   #return self.friends.all
+  #  @all_friends = self.friends.all #grab all friends
+  #  @all_users = User.all #find_all_by_status("Online") #grab everyone in User table whos online
+   # @counter ||= Array.new #make a counter
+
+   # @all_friends.each do | friend |      # 9 friend objects
+   #   @all_users.each do | stranger |           # 4 users by Online
+    #    if stranger[:username] == friend[:friend]     # problem lies here nvm, its good. GREAT!       if strnager's name is same as friends name
+    #      @counter.push(friend)
+    #    end
+    #  end
+   # end
+
+    #return the counter                                  #THESE TWO METHODS NEED TO BE REVAMPED, IT SHOULD ALGROTIGHM SHOULD BE FIRS TO FIND WHICH USERS MATCH THEN REUTRN them
+    #return @counter
+  #end
+
+  #helper for find friends and their status messages
+  def grab_friend_from_users
+
+    @all_friends = self.friends.all #grab all friends
+    @all_users = User.all #find_all_by_status("Online") #grab everyone in User table whos online
+    @counter ||= Array.new #make a counter
+
+    @all_friends.each do | friend |      # 9 friend objects
+      @all_users.each do | stranger |           # 4 users by Online
+        if stranger[:username] == friend[:friend]     # problem lies here nvm, its good. GREAT!       if strnager's name is same as friends name
+          friend_state = Hash.new
+          friend_state["state"] = friend.get_state
+          @counter.push(stranger, friend_state)
+        end
+      end
+    end
+
+    #return the counter                                  #THESE TWO METHODS NEED TO BE REVAMPED, IT SHOULD ALGROTIGHM SHOULD BE FIRS TO FIND WHICH USERS MATCH THEN REUTRN them
+    return @counter
+  end
+
+  #helper for find friends and get status_message
+  def get_status_message
+    return self.status_message
   end
 
   #helper for find messages of

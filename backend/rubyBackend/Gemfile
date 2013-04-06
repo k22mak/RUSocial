@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 #gem 'mysql', '2.9.1'
 
+#gem 'rails-erd'
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:

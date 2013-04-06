@@ -22,6 +22,9 @@ class UsersController < ApplicationController
               if user.correct_password(params[:password])
                 #core in here
 
+                #update geolocations
+                user.update_geo_locations(params[:geoX], params[:geoY])
+
                 #get number of online ppl globally
                 num_online_all = User.get_num_online_globally
 
@@ -34,23 +37,34 @@ class UsersController < ApplicationController
                 #get number of friends online
                 num_friends_online = user.get_num_friends_online
 
+                #get user email
+                user_email = user.get_email
+
+                #make hash
+                #@output_hash = Hash.new
+                #@output_hash["num_online_all"] = num_online_all
+                #@output_hash["num_friends"] = num_friend
+                #@output_hash["num_messages"] = num_message
+                #@output_hash["num_friends_online"] = num_friends_online
+                #@output_hash["user_email"] = user_email
+
                 #output to caller   needs to be FIXED JSON OBJECT ONLY
                 respond_to do |format|
-                  format.json { render :json => "[{\"num_online_all\":\"#{num_online_all}\"},{\"num_friends\":\"#{num_friend}\"},{\"num_messages\":\"#{num_message}\"},{\"num_friends_online\":\"#{num_friends_online}\"}]" }
-
+                  format.json { render :json => "[{\"num_online_all\":\"#{num_online_all}\"},{\"num_friends\":\"#{num_friend}\"},{\"num_messages\":\"#{num_message}\"},{\"num_friends_online\":\"#{num_friends_online}\"},{\"user_email\":\"#{user_email}\"}]" }
+                  #format.json { render json: @output_hash.to_json }
                   #format.json { render :json => num_friend, num_message, num_friends_online }
                 end
               else
                 # incorrect password
                 respond_to do |format|
-                  format.json { render :json  => '[{"Status":"Failure"}]' }
+                  format.json { render :json => '[{"Status":"Failure"}]' }
                   #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
                 end
               end
             else
               #no user found
               respond_to do |format|
-                format.json { render :json  => '[{"Status":"Failure"}]' }
+                format.json { render :json => '[{"Status":"Failure"}]' }
                 #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
               end
             end
@@ -59,28 +73,28 @@ class UsersController < ApplicationController
           else
             #no geoY
             respond_to do |format|
-              format.json { render :json  => '[{"Status":"Failure"}]' }
+              format.json { render :json => '[{"Status":"Failure"}]' }
               #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
             end
           end
         else
           #no geoX
           respond_to do |format|
-            format.json { render :json  => '[{"Status":"Failure"}]' }
+            format.json { render :json => '[{"Status":"Failure"}]' }
             #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
           end
         end
       else
         #no password
         respond_to do |format|
-          format.json { render :json  => '[{"Status":"Failure"}]' }
+          format.json { render :json => '[{"Status":"Failure"}]' }
           #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
         end
       end
     else
       #no user
       respond_to do |format|
-        format.json { render :json  => '[{"Status":"Failure"}]' }
+        format.json { render :json => '[{"Status":"Failure"}]' }
         #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
       end
     end
@@ -117,7 +131,7 @@ class UsersController < ApplicationController
       else
         #no geoY but geoX exists
         respond_to do |format|
-          format.json { render :json  => '[{"Status":"Failure"}]' }
+          format.json { render :json => '[{"Status":"Failure"}]' }
           #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
         end
       end
@@ -125,7 +139,7 @@ class UsersController < ApplicationController
     else
       #no geoY but geoX exists
       respond_to do |format|
-        format.json { render :json  => '[{"Status":"Failure"}]' }
+        format.json { render :json => '[{"Status":"Failure"}]' }
         #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
       end
 
@@ -138,7 +152,7 @@ class UsersController < ApplicationController
 
 
   # GET /users/find_friends
-                          #done
+  #done
 
   # app sends in username
   # controller finds the first occurance of username param, calls model method to populate @friends array
@@ -148,22 +162,27 @@ class UsersController < ApplicationController
   def find_friends
     if params[:user]
       if user = User.find_by_username(params[:user])
-        @list_of_friends = user.grab_friends
+        #@list_of_friends = user.grab_user_from_friends
         #return everything inside list of friends
+
+        @users = user.grab_friend_from_users
+
         respond_to do |format|
           #format.json { render :json  => '{"Status":"Success"}' }
-          format.json { render json: @list_of_friends }
+          format.json { render json: @users }
+          #format.json { render json: @users.to_json(:only => [:username, :status_message, :state]) }                 #json: @list_of_friends.to_json, changed
+          #format.json { render :json => @array_users.to_json(:only => [:username, :email, :status_message, :geoX, :geoY]) }
         end
       else
         respond_to do |format|
-          format.json { render :json  => '[{"Status":"Failure"}]' }
+          format.json { render :json => '[{"Status":"Failure"}]' }
           #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
         end
       end
 
     else
       respond_to do |format|
-        format.json { render :json  => '[{"Status":"Failure"}]' }
+        format.json { render :json => '[{"Status":"Failure"}]' }
         #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
       end
     end
@@ -191,7 +210,7 @@ class UsersController < ApplicationController
         end
       else
         respond_to do |format|
-          format.json { render :json  => '[{"Status":"Failure"}]' }
+          format.json { render :json => '[{"Status":"Failure"}]' }
           #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
         end
       end
@@ -199,7 +218,7 @@ class UsersController < ApplicationController
 
     else
       respond_to do |format|
-        format.json { render :json  => '[{"Status":"Failure"}]' }
+        format.json { render :json => '[{"Status":"Failure"}]' }
         #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
       end
     end
@@ -229,12 +248,12 @@ class UsersController < ApplicationController
             if user = User.find_by_username(params[:user]) #grab user
               user.create_new_message(params[:sender], params[:message], params[:date])
               respond_to do |format|
-                format.json { render :json  => '[{"Status":"Success"}]' }
+                format.json { render :json => '[{"Status":"Success"}]' }
                 #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
               end
             else
               respond_to do |format|
-                format.json { render :json  => '[{"Status":"Failure"}]' }
+                format.json { render :json => '[{"Status":"Failure"}]' }
                 #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
               end
             end
@@ -242,19 +261,19 @@ class UsersController < ApplicationController
           end
         else
           respond_to do |format|
-            format.json { render :json  => '[{"Status":"Failure"}]' }
+            format.json { render :json => '[{"Status":"Failure"}]' }
             #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
           end
         end
       else
         respond_to do |format|
-          format.json { render :json  => '[{"Status":"Failure"}]' }
+          format.json { render :json => '[{"Status":"Failure"}]' }
           #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
         end
       end
     else
       respond_to do |format|
-        format.json { render :json  => '[{"Status":"Failure"}]' }
+        format.json { render :json => '[{"Status":"Failure"}]' }
         #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
       end
     end
@@ -278,12 +297,12 @@ class UsersController < ApplicationController
           if user = User.find_by_username(params[:user]) #grab user
             user.create_new_friend(params[:friend], params[:state])
             respond_to do |format|
-              format.json { render :json  => '[{"Status":"Success"}]' }
+              format.json { render :json => '[{"Status":"Success"}]' }
               #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
             end
           else
             respond_to do |format|
-              format.json { render :json  => '[{"Status":"Failure"}]' }
+              format.json { render :json => '[{"Status":"Failure"}]' }
               #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
             end
           end
@@ -292,13 +311,13 @@ class UsersController < ApplicationController
 
       else
         respond_to do |format|
-          format.json { render :json  => '[{"Status":"Failure"}]' }
+          format.json { render :json => '[{"Status":"Failure"}]' }
           #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
         end
       end
     else
       respond_to do |format|
-        format.json { render :json  => '[{"Status":"Failure"}]' }
+        format.json { render :json => '[{"Status":"Failure"}]' }
         #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
       end
     end
@@ -327,25 +346,25 @@ class UsersController < ApplicationController
         if user = User.find_by_username(params[:user]) #now search if there is user match
           user.update_status_message(params[:status_message]) #if yes user then put status message update
           respond_to do |format|
-            format.json { render :json  => '[{"Status":"Success"}]' }
+            format.json { render :json => '[{"Status":"Success"}]' }
             #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
           end
         else
           respond_to do |format|
-            format.json { render :json  => '[{"Status":"Failure"}]' }
+            format.json { render :json => '[{"Status":"Failure"}]' }
             #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
           end
         end
 
       else
         respond_to do |format|
-          format.json { render :json  => '[{"Status":"Failure"}]' }
+          format.json { render :json => '[{"Status":"Failure"}]' }
           #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
         end
       end
     else
       respond_to do |format|
-        format.json { render :json  => '[{"Status":"Failure"}]' }
+        format.json { render :json => '[{"Status":"Failure"}]' }
         #format.json { render :status => :unprocessable_entity }#, '{"Status":"Failure"}' }
 
         #format.json { render :json => :status }#, '{"Status":"Failure"}' }
@@ -360,30 +379,27 @@ class UsersController < ApplicationController
 
   #
   def get_friends_pending
-   if params[:user]
-     if user = User.find_by_username(params[:user])
-     # found a user
-       @list_of_pending_friends = user.grab_pending_friends
-       respond_to do |format|
-         format.json { render :json  => @list_of_pending_friends }
-       end
-     else
-       # no user
+    if params[:user]
+      if user = User.find_by_username(params[:user])
+        # found a user
+        @list_of_pending_friends = user.grab_pending_friends
+        respond_to do |format|
+          format.json { render :json => @list_of_pending_friends }
+        end
+      else
+        # no user
 
-       respond_to do |format|
-         format.json { render :json  => '[{"Status":"Failure"}]' }
-       end
-     end
-   else
-     #bad param
-     respond_to do |format|
-       format.json { render :json  => '[{"Status":"Failure"}]' }
-     end
-   end
+        respond_to do |format|
+          format.json { render :json => '[{"Status":"Failure"}]' }
+        end
+      end
+    else
+      #bad param
+      respond_to do |format|
+        format.json { render :json => '[{"Status":"Failure"}]' }
+      end
+    end
   end
-
-
-
 
 
   #tester for me
@@ -415,7 +431,7 @@ class UsersController < ApplicationController
     @users = User.all
 
     respond_to do |format|
-      format.json { render :json => Hash[*@users.flatten] }
+      format.json { render :json => "{Hash[@users.flatten],0}" }
     end
 
   end
@@ -442,7 +458,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      #format.json { render :json => Hash[*@users.flatten] }
+                  #format.json { render :json => Hash[*@users.flatten] }
 
       format.json { render json: @users }
     end
@@ -456,7 +472,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
-                  #format.json { render :json => Hash[*@user.flatten] }        #changed from scaffold for mak's plugin
+      #format.json { render :json => Hash[*@user.flatten] }        #changed from scaffold for mak's plugin
       #format.json { render :json => Hash[@user.map { |key, value| [key, value] }] }
     end
   end
