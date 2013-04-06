@@ -135,7 +135,7 @@ public class LoginActivity extends Activity implements LocationListener,
 			}
 
 			else {
-
+				
 				String URLfinal = (ValidityCheck
 						.removeWhiteSpace(URLResource.LOGIN + "?user="
 								+ evUsername.getText().toString()
@@ -150,7 +150,7 @@ public class LoginActivity extends Activity implements LocationListener,
 				System.out.println(URLfinal);
 
 				HttpRequestArrayAdapter.httpRequest(this, URLfinal,
-						new LoginHandler());
+						new LoginHandler());				
 			}
 
 		} else if (v == btnRegister) {
@@ -193,6 +193,8 @@ public class LoginActivity extends Activity implements LocationListener,
 					intent.putExtra("friendNumber", num_friends);
 					intent.putExtra("messageNumber", num_messages);
 					DefaultUser.setUser(evUsername.getText().toString());
+					DefaultUser.setLatitude(Double.toString(locationSend.getLatitude()));
+					DefaultUser.setLongitude(Double.toString(locationSend.getLongitude()));
 					startActivity(intent);
 				}
 

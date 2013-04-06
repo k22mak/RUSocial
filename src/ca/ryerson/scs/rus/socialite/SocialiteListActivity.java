@@ -73,7 +73,7 @@ public class SocialiteListActivity extends Activity implements OnClickListener {
 		
 		
 		String URLfinal = ValidityCheck.whiteSpace(URLResource.LOOK_AROUND
-				+ "?geoX=43.812" + "&geoY=-79.298");
+				+ "?geoX="+DefaultUser.getLatitude() + "&geoY="+DefaultUser.getLatitude());
 		HttpRequestArrayAdapter.httpRequest(this, URLfinal, new UpdateHandler());
 		
 	}
