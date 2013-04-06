@@ -1,8 +1,5 @@
 package ca.ryerson.scs.rus.messenger.objects;
 
-import java.util.Date;
-
-
 public class Message {
 	
 	private String username,message, date;

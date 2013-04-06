@@ -3,16 +3,12 @@ package ca.ryerson.scs.rus.messenger;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
 import ca.ryerson.scs.rus.adapters.FriendsListAdapter;
-import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
 import ca.ryerson.scs.rus.messenger.objects.Friend;
-import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
 import ca.ryerson.scs.rus.util.ProcessList;

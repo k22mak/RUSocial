@@ -10,6 +10,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +19,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 
@@ -35,6 +35,9 @@ public class RegisterActivity extends Activity implements OnClickListener, Locat
 
 	private EditText evUsername, evPassword, evConfirmPassword, evEmail;
 
+	private static final long MIN_TIME = 400;
+	private static final float MIN_DISTANCE = 1000;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,6 +54,11 @@ public class RegisterActivity extends Activity implements OnClickListener, Locat
 		evUsername.setFocusable(true);
 		evPassword.setFocusable(true);
 
+		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locationManager.isProviderEnabled(Context.LOCATION_SERVICE);
+		locationManager.requestLocationUpdates(
+				LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE, this);
+		
 		btnRegister.setOnClickListener(this);
 		// TODO: Implement persistence checking for saved username and password
 	}
@@ -140,8 +148,8 @@ public class RegisterActivity extends Activity implements OnClickListener, Locat
 					json.put("username", evUsername.getText().toString());
 					json.put("password", evPassword.getText().toString());
 					json.put("email", evEmail.getText().toString());
-					json.put("geoX", "8");//Double.toString(locationSend.getLatitude()));
-					json.put("geoY", "9");//Double.toString(locationSend.getLongitude()));
+					json.put("geoX", Double.toString(locationSend.getLatitude()));
+					json.put("geoY", Double.toString(locationSend.getLongitude()));
 					json.put("status", "Online");
 					json.put("status_message", "I am using RUSocial!");
 				} catch (JSONException e) {

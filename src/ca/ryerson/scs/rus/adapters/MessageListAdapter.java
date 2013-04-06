@@ -1,22 +1,14 @@
 package ca.ryerson.scs.rus.adapters;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.messenger.objects.Message;
-import ca.ryerson.scs.rus.util.IntentRes;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -39,7 +31,6 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final Message message = getItem(position); // auto loops and knows how
 													// many msgs in arraylist
-		View v = convertView;
 		
 		// TODO: uncomment when layout is done
 

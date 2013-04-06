@@ -2,7 +2,6 @@ package ca.ryerson.scs.rus.adapters;
 
 import java.util.ArrayList;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.R;

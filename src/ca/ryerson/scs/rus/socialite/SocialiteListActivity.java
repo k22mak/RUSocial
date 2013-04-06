@@ -3,18 +3,13 @@ package ca.ryerson.scs.rus.socialite;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
 
-import ca.ryerson.scs.rus.adapters.FriendsListAdapter;
-import ca.ryerson.scs.rus.adapters.HttpRequestAdapter;
 import ca.ryerson.scs.rus.adapters.HttpRequestArrayAdapter;
-import ca.ryerson.scs.rus.adapters.MessageListAdapter;
 import ca.ryerson.scs.rus.adapters.SocialiteListAdapter;
-import ca.ryerson.scs.rus.messenger.objects.Message;
 import ca.ryerson.scs.rus.socialite.objects.User;
 import ca.ryerson.scs.rus.util.DefaultUser;
 import ca.ryerson.scs.rus.util.IntentRes;
@@ -29,12 +24,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class SocialiteListActivity extends Activity implements OnClickListener {
 	private Context context;

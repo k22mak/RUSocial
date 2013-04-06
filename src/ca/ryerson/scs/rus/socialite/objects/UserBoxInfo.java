@@ -1,7 +1,5 @@
 package ca.ryerson.scs.rus.socialite.objects;
 
-import java.util.Date;
-
 import com.google.android.gms.maps.model.LatLng;
 
 public class UserBoxInfo {

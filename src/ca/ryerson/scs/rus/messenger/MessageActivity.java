@@ -3,8 +3,6 @@ package ca.ryerson.scs.rus.messenger;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import ca.ryerson.scs.rus.MenuActivity;
 import ca.ryerson.scs.rus.R;
 import ca.ryerson.scs.rus.SplashActivity;
