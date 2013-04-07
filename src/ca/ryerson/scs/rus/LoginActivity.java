@@ -174,9 +174,9 @@ public class LoginActivity extends Activity implements LocationListener,
 					tempJSON = response.getJSONObject(2);
 					String num_messages = tempJSON.getString("num_messages");
 
-					tempJSON = response.getJSONObject(3);
+					tempJSON = response.getJSONObject(1);
 					String num_friends = tempJSON
-							.getString("num_friends_online");
+							.getString("num_friends");
 
 					tempJSON = response.getJSONObject(4);
 					String email = tempJSON.getString("user_email");
@@ -195,6 +195,8 @@ public class LoginActivity extends Activity implements LocationListener,
 					DefaultUser.setUser(evUsername.getText().toString());
 					DefaultUser.setLatitude(Double.toString(locationSend.getLatitude()));
 					DefaultUser.setLongitude(Double.toString(locationSend.getLongitude()));
+					Log.i("LAT",""+Double.toString(locationSend.getLatitude()));
+					Log.i("LONG",""+Double.toString(locationSend.getLongitude()));
 					startActivity(intent);
 				}
 
