@@ -162,7 +162,7 @@
 				android:layout_marginLeft="30dp"
 	            />
 			<TextView
-	            android:text="Preferences"
+	            android:text="Change Status"
 	            android:layout_width="wrap_content"
 				android:layout_height="60dp"
 	            android:textSize="30sp"

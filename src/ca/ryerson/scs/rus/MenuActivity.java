@@ -67,7 +67,7 @@ public class MenuActivity extends Activity implements OnClickListener {
 		
 		tvLookStatus.setText(lookAroundNumber + " People Around You");
 		tvFriendsStatus.setText(friendNumber + " Friends Online");
-		tvMessageStatus.setText(messageNumber + " New Message");
+		tvMessageStatus.setText(messageNumber + " Message");
 	}
 
 	public void onClick(View v) {
