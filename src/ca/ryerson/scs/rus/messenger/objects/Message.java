@@ -3,7 +3,7 @@ package ca.ryerson.scs.rus.messenger.objects;
 public class Message {
 	
 	private String username,message, date;
-	private static final int MESSAGE_LENGTH = 20;
+	private static final int MESSAGE_LENGTH = 40;
 	private boolean isExpanded;
 	
 	

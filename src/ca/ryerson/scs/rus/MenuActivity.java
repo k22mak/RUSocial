@@ -75,7 +75,7 @@ public class MenuActivity extends Activity implements OnClickListener {
 			if (SplashActivity.DEBUG) {
 				Log.i(TAG, "Look Around Button");
 			}
-			startActivity(new Intent(IntentRes.SOCIALITE_MAP_STRING));
+			startActivity(new Intent(IntentRes.SOCIALITE_LIST_STRING));
 		} else if (v == btnMessages) {
 			if (SplashActivity.DEBUG) {
 				Log.i(TAG, "Messenger Button");

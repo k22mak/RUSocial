@@ -89,8 +89,9 @@ public class SocialiteMapActivity extends Activity implements LocationListener,O
 		btnFriend.setOnClickListener(this);
 		switchView.setOnClickListener(this);
 		
+		
 		String URLfinal = ValidityCheck.whiteSpace(URLResource.LOOK_AROUND
-				+ "?geoX="+DefaultUser.getLatitude() + "&geoY="+DefaultUser.getLatitude());
+				+ "?geoX=43.6580" + "&geoY=-79.3803");
 		HttpRequestArrayAdapter.httpRequest(this, URLfinal, new MapHandler());
 
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

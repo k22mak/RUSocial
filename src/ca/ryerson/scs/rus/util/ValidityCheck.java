@@ -21,11 +21,11 @@ public class ValidityCheck {
 	//check email ends in "ryerson.ca" or "scs.ryerson.ca"
 	public static boolean emailCheck (String e){
 		// || (regEmail.matcher(e).matches() == false)
-		if ((csEmail.matcher(e).matches() == false) || regEmail.matcher(e).matches()) 
+		if ((csEmail.matcher(e).matches()) || (regEmail.matcher(e).matches())) 
 			{
-			return false;
+			return true;
 			}
-		return true; }
+		return false; }
 	
 	//check user name is [a-z]*[A-Z]*[0-9]*
 	public static boolean usernameCheck (String u){
