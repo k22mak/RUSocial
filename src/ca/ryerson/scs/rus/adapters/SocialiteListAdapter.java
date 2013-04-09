@@ -74,8 +74,7 @@ public class SocialiteListAdapter extends ArrayAdapter<User> {
 		requestBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				
-				String URLfinal = URLResource.FRIEND_REQUEST+"?user="+DefaultUser.getUser()+"&friend="+user.getUsername()+"&state=pending";
-				Log.i("THIS IS THE FREIEND REQUEST STRING",""+URLfinal);
+				String URLfinal = URLResource.FRIEND_REQUEST+"?friend="+DefaultUser.getUser()+"&user="+user.getUsername()+"&state=pending";
 				HttpRequestAdapter.httpRequest(context, URLfinal,
 						new FriendRequestHandler());
 				requestBtn.setClickable(false);

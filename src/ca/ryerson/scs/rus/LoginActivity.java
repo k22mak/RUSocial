@@ -147,8 +147,6 @@ public class LoginActivity extends Activity implements LocationListener,
 								+ Double.toString(locationSend.getLongitude())));
 								//+ Double.toString(-79.268723)));
 
-				System.out.println(URLfinal);
-
 				HttpRequestArrayAdapter.httpRequest(this, URLfinal,
 						new LoginHandler());				
 			}

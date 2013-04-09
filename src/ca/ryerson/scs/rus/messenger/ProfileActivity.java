@@ -55,7 +55,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			showProfile.putExtra("receiver", intent.getStringExtra("username"));
 			context.startActivity(showProfile); 
 		} else if (v == btnRequest) {
-			String URLfinal = URLResource.FRIEND_REQUEST+"?user="+DefaultUser.getUser()+"&friend="+intent.getStringExtra("username")+"&state=pending";
+			String URLfinal = URLResource.FRIEND_REQUEST+"?friend="+DefaultUser.getUser()+"&user="+intent.getStringExtra("username")+"&state=pending";
 			Log.i("THIS IS THE FREIEND REQUEST STRING",""+URLfinal);
 			HttpRequestAdapter.httpRequest(context, URLfinal,
 					new FriendRequestHandler());
