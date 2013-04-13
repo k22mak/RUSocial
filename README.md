@@ -1,10 +1,10 @@
-Executive Summary
+**Executive Summary**
 
   RUSocial was created exclusively for Ryerson students. It is an Android-based social media app that allows users to interact with both their friends on campus and with the Ryerson community as a whole. By integrating the dynamic features of Google maps, users are able to interact with their Ryerson peers like never before. Users are able to pull up the Socialite Map that shows them their current location on campus and indicates other nearby RUSocialites. 
 	A status message feature allows users to update other RUSocialites on their current thoughts and activities that is displayed when you tap on one of the markers, making sure students never miss what's happening on campus. Become friends with other RUSocialites, add them to your Socialite List, view their profiles, send them messages, and always stay alert with the newest happenings. RUSocial aims to bring a whole new level of social media to Ryerson, and with campus Wi-Fi available to the community, no one will ever have to miss a thing. 
 	The RUSocial app utilizes the Model-View-Controller architecture pattern alongside Ruby on Rails to organize the backend programming and database server hosted on rhcloud. The hosted Rails application is located at http://rusocial-rusocialbackend.rhcloud.com/ RUSocial is supported on both mobile and tablet platforms. It has been optimized for the Google Nexus 4 Android Phone with other optimizations planned for the future. Our goal is to make a seamless transition between information and social media to ensure each user can have the ultimate experience on campus.
   
-Installation	
+**Installation**
 
 	Download the APK at: http://www.kelvinmak.com/uploads/RUSocial.apk
 	1. You must be connected to the internet for the app to launch.
@@ -14,7 +14,7 @@ Installation
 	You may login with the username "Kelvin" and password "Mak" or  you may also register yourself as a user. Ensure that your username is more than 3 characters long and your email ends with either the "@ryerson.ca" or "@ scs.ryerson.ca" domains. Other users you can log in as and their passwords can be seen here: http://rusocial-rusocialbackend.rhcloud.com/users Everything is fully functional and our database is populate with dummy users, so please enjoy sampling our app. 
  
 
-Features and Functions
+**Features and Functions**
 
 Look Around: Socialite List — This pulls up a list of other RUSocial users within 3km that displays their name, display picture, geographical location, and most recent update status.
 
@@ -29,7 +29,7 @@ Messaging System — RUSocial has implemented a messaging system, which lets use
 Registration and Validation — RUSocial is exclusively for the Ryerson community. The app has implemented full registration and validation. Username lengths, password matching against the database, and email domains are checked and fully functional. 
 
 
-Future Functions
+**Future Functions**
 
   In the future, RUSocial plans to implement a real time chat system so that users can message anyone on their friends list instantly. As well, we plan to extend the profile page to include features such as uploading pictures and enabling profile pictures to change so that users can visually share everything they do. Finally, in the future, users will be able to utilize an advanced search function that lets them narrow down the Socialite Map/List view to users within certain parameters, such as by program.  We envision RUSocial as the ultimate app that every Ryerson student will use, maximizing their time for a whole new level of campus experience.
 Team Feed Back
